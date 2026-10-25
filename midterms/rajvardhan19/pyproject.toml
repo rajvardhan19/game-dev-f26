@@ -1,0 +1,14 @@
+[project]
+name = "cws-midterm-rajvardhan19"
+version = "0.1.0"
+description = "VGA Civil War Strategy v2.11 midterm reconstruction and playing agent"
+requires-python = ">=3.11"
+# The engine, players, runner and tests use only the standard library.
+dependencies = []
+
+[project.optional-dependencies]
+# Only the live model player needs this (Gemini on Vertex AI).
+live = ["google-genai>=1.0,<3"]
+
+[tool.uv]
+package = false

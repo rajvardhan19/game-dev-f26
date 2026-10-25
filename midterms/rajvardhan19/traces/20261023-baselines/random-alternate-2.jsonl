@@ -1,0 +1,44 @@
+{"header": {"player": "random", "scenario": "alternate", "seed": 2, "status": "terminal", "reason": "Rebel victory: cities controlled", "winner": "Rebel", "score": 50, "turns": 6, "date": "March 1862", "cities_union": 9, "steps": 37, "invalid_actions": 0, "model_calls": 0, "failed_calls": 0, "fallback_actions": 0, "input_tokens": 0, "output_tokens": 0, "model_latency_total": 0.0, "wall_seconds": 0.04, "config": {"limits": {"max_steps": 600, "max_model_calls": 150, "max_wall_seconds": 1800.0, "max_actions_per_turn": 40, "max_failures_per_turn": 3, "max_batch": 8, "engine_timeout": 60.0, "decision_timeout": 45.0}, "player": {}}}}
+{"turn_start": 1, "board": {"date": "April 1861", "cash": 350, "vp": [265, 245], "owners": "RNRRRNURURNNUUURRRRNNNRRRRRRNUURRRUURRUR", "forts": "1002200000000000000000020220000022000011", "union": [[1, 30, 10100], [2, 13, 7000], [3, 39, 2000], [4, 7, 2200], [5, 36, 2200], [6, 35, 10500], [7, 15, 5100]], "rebel": [[21, 4, 12000], [22, 3, 5700], [23, 18, 6100], [24, 25, 7500], [25, 24, 4500], [26, 5, 2700], [27, 28, 1200], [28, 34, 1800]]}, "t": 0.024}
+{"turn": 1, "action": "move 1 Harrisburg", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Phildelpha to Harrisburg", "t": 0.024}
+{"turn": 1, "action": "fortify Cincinnati", "source": "scripted", "accepted": true, "text": "Cincinnati fortifications increased to 1", "t": 0.024}
+{"turn": 1, "action": "move 5 Paducah", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from StLouis to Paducah", "t": 0.025}
+{"turn": 1, "action": "cancel 5", "source": "scripted", "accepted": true, "text": "Pope has cancelled move to Paducah", "t": 0.025}
+{"turn": 1, "action": "move 5 Paducah", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from StLouis to Paducah", "t": 0.026}
+{"turn": 1, "action": "move 2 Washington", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Harper Fy to Washington", "t": 0.026}
+{"turn": 1, "action": "move 3 Fredrksbrg", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Washington to Fredrksbrg", "t": 0.027}
+{"turn": 1, "action": "drill 6", "source": "scripted", "accepted": true, "text": "Grant has drilled to reach experience level 1", "t": 0.027}
+{"turn": 1, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now June 1861.", "t": 0.028}
+{"turn_start": 2, "board": {"date": "June 1861", "cash": 424, "vp": [238, 238], "owners": "RNRRRNURURUNUUURRRRNNNRRRRRRNUURRRURRRUR", "forts": "1002201000000000000000021220000022000011", "union": [[1, 14, 10100], [2, 39, 7000], [3, 11, 2000], [4, 7, 2200], [5, 35, 1500], [6, 35, 10500], [7, 15, 5100]], "rebel": [[21, 26, 12000], [22, 27, 5700], [23, 36, 5600], [24, 25, 7500], [25, 24, 4500], [26, 5, 2700], [27, 33, 1200], [28, 25, 1800]]}, "t": 0.028}
+{"turn": 2, "action": "move 5 StLouis", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Sprngfield to StLouis", "t": 0.028}
+{"turn": 2, "action": "move 1 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Harrisburg to Pittsburg", "t": 0.029}
+{"turn": 2, "action": "move 7 Columbus", "source": "scripted", "accepted": true, "text": "Army 7 Banks is moving from Indinaplis to Columbus", "t": 0.029}
+{"turn": 2, "action": "cancel 5", "source": "scripted", "accepted": true, "text": "Pope has cancelled move to StLouis", "t": 0.029}
+{"turn": 2, "action": "cancel 1", "source": "scripted", "accepted": true, "text": "McDowell has cancelled move to Pittsburg", "t": 0.03}
+{"turn": 2, "action": "fortify Fredrksbrg", "source": "scripted", "accepted": true, "text": "Fredrksbrg fortifications increased to 1", "t": 0.03}
+{"turn": 2, "action": "move 2 Manassas", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Washington to Manassas", "t": 0.031}
+{"turn": 2, "action": "move 6 StLouis", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Sprngfield to StLouis", "t": 0.031}
+{"turn": 2, "action": "move 1 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Harrisburg to Pittsburg", "t": 0.032}
+{"turn": 2, "action": "move 5 StLouis", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Sprngfield to StLouis", "t": 0.032}
+{"turn": 2, "action": "move 4 Lexington", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Cincinnati to Lexington", "t": 0.033}
+{"turn": 2, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now August 1861.", "t": 0.033}
+{"turn_start": 3, "board": {"date": "August 1861", "cash": 538, "vp": [328, 309], "owners": "RNRRRNURURUNUUURRRRUNURRRRRRNUURRRUURRUR", "forts": "1002201000100000000000022220000022000011", "union": [[1, 31, 10100], [2, 22, 7000], [3, 11, 2000], [4, 20, 2200], [5, 15, 300], [6, 36, 8800], [7, 9, 5100]], "rebel": [[21, 26, 12000], [22, 27, 5700], [23, 18, 1500], [24, 25, 7500], [25, 10, 4500], [26, 5, 2700], [27, 33, 1200], [28, 25, 1800]]}, "t": 0.033}
+{"turn": 3, "action": "drill 2", "source": "scripted", "accepted": true, "text": "McClellan has drilled to reach experience level 1", "t": 0.034}
+{"turn": 3, "action": "move 7 Indinaplis", "source": "scripted", "accepted": true, "text": "Army 7 Banks is moving from Columbus to Indinaplis", "t": 0.034}
+{"turn": 3, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now October 1861.", "t": 0.035}
+{"turn_start": 4, "board": {"date": "October 1861", "cash": 852, "vp": [382, 361], "owners": "RNRRRNURURURUUURRRRUNURRRRRRNUURRRUURRUR", "forts": "1002201000100000000000022220000022000011", "union": [[1, 31, 10100], [2, 22, 7000], [3, 11, 2000], [4, 20, 2200], [5, 15, 300], [6, 36, 8800], [7, 15, 5100]], "rebel": [[21, 26, 12000], [22, 27, 5700], [23, 18, 1500], [25, 12, 4500], [26, 8, 2700], [27, 33, 1200], [28, 25, 9300]]}, "t": 0.035}
+{"turn": 4, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now December 1861.", "t": 0.035}
+{"turn_start": 5, "board": {"date": "December 1861", "cash": 1165, "vp": [445, 410], "owners": "RNRRRNURURURUUURRRRRRURRRRRRNUURRRUURRUR", "forts": "1002201000100000000000022220000022000011", "union": [[1, 31, 10100], [2, 22, 7000], [3, 11, 2000], [5, 15, 300], [6, 36, 8800], [7, 15, 5100]], "rebel": [[21, 20, 28700], [22, 27, 5700], [23, 18, 1500], [24, 23, 18300], [25, 21, 4500], [26, 1, 2700], [27, 33, 1200], [28, 25, 9300]]}, "t": 0.036}
+{"turn": 5, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now January 1862.", "t": 0.036}
+{"turn_start": 6, "board": {"date": "January 1862", "cash": 1460, "vp": [494, 464], "owners": "RNRRRNRRURURUUURRRRRRURRRRRRRUURRRUURRUR", "forts": "1002201000100000000000022220000022000011", "union": [[1, 31, 10100], [2, 22, 7000], [3, 11, 2000], [6, 36, 8800], [7, 15, 4300]], "rebel": [[21, 7, 28700], [22, 27, 5700], [23, 18, 1500], [24, 29, 18300], [25, 21, 3100], [26, 1, 2700], [27, 33, 1200], [28, 25, 9300]]}, "t": 0.036}
+{"turn": 6, "action": "fortify Fredrksbrg", "source": "scripted", "accepted": true, "text": "Fredrksbrg fortifications increased to 2", "t": 0.036}
+{"turn": 6, "action": "move 2 Richmond", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Manassas to Richmond", "t": 0.037}
+{"turn": 6, "action": "fortify Indinaplis", "source": "scripted", "accepted": true, "text": "Indinaplis fortifications increased to 1", "t": 0.037}
+{"turn": 6, "action": "drill 6", "source": "scripted", "accepted": true, "text": "Grant has drilled to reach experience level 4", "t": 0.038}
+{"turn": 6, "action": "fortify Indinaplis", "source": "scripted", "accepted": true, "text": "Indinaplis fortifications increased to 2", "t": 0.038}
+{"turn": 6, "action": "cancel 2", "source": "scripted", "accepted": true, "text": "McClellan has cancelled move to Richmond", "t": 0.038}
+{"turn": 6, "action": "fortify StLouis", "source": "scripted", "accepted": true, "text": "StLouis fortifications increased to 1", "t": 0.039}
+{"turn": 6, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 1", "t": 0.039}
+{"turn": 6, "action": "fortify Manassas", "source": "scripted", "accepted": true, "text": "Manassas fortifications increased to 1", "t": 0.04}
+{"turn": 6, "action": "fortify StLouis", "source": "scripted", "accepted": true, "text": "StLouis fortifications increased to 2", "t": 0.04}
+{"turn": 6, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now March 1862.", "t": 0.041}

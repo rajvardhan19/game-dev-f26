@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trace Viewer</title>
+<style>
+  :root { --bg: #f6f3ec; --ink: #222; --muted: #6b6457; --union: #2f5fb3; --rebel: #7d7d7d; --neutral: #b8463b;
+          --panel: #fffdf8; --line: #d8d1c2; --accept: #2e7d4f; --reject: #b8463b; --fallback: #9a6b00; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #1b1a17; --ink: #ece7dc; --muted: #a39b8b; --panel: #24221e; --line: #3a362f;
+    --union: #6f9be8; --rebel: #a9a9a9; --neutral: #e0786b; } }
+  :root[data-theme="dark"] { --bg: #1b1a17; --ink: #ece7dc; --muted: #a39b8b; --panel: #24221e; --line: #3a362f;
+    --union: #6f9be8; --rebel: #a9a9a9; --neutral: #e0786b; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 system-ui, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin-bottom: 12px; }
+  .bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  button, input[type=file] { font: inherit; }
+  button { background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+  .grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 12px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+  svg { width: 100%; height: auto; display: block; }
+  .log { max-height: 520px; overflow: auto; font: 12px/1.45 ui-monospace, monospace; }
+  .ok { color: var(--accept); } .no { color: var(--reject); } .fb { color: var(--fallback); } .call { color: var(--muted); }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; margin: 6px 0 0; color: var(--muted); }
+  .stats b { color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>VGA Civil War Strategy: trace viewer</h1>
+  <div class="sub">Open a trace from <code>traces/&lt;run&gt;/*.jsonl</code>. The map shows each turn's opening position; the log shows every model call and every submitted action with who chose it.</div>
+  <div class="bar">
+    <input type="file" id="file" accept=".jsonl,.json">
+    <button id="prev">&larr; turn</button><button id="next">turn &rarr;</button>
+    <button id="play">play</button>
+    <span id="turnlabel"></span>
+  </div>
+  <div class="grid">
+    <div class="panel"><svg id="map" viewBox="0 0 560 450" role="img" aria-label="Map of cities and armies"></svg>
+      <div class="stats" id="stats"></div></div>
+    <div class="panel log" id="log">No trace loaded.</div>
+  </div>
+</main>
+<script src="cities.js"></script>
+<script>
+let header = null, turns = [], k = 0, timer = null;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const color = o => o === "U" ? css("--union") : o === "R" ? css("--rebel") : css("--neutral");
+
+document.getElementById("file").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  f.text().then(text => load(text.split("\n").filter(Boolean).map(l => JSON.parse(l))));
+});
+function load(lines) {
+  header = lines[0].header; turns = []; let cur = null;
+  for (const e of lines.slice(1)) {
+    if (e.turn_start !== undefined) { cur = { board: e.board, events: [] }; turns.push(cur); }
+    else if (cur) cur.events.push(e);
+  }
+  k = 0; draw();
+}
+function draw() {
+  if (!turns.length) return;
+  const t = turns[k], b = t.board, map = header.scenario === "alternate" ? CITY_MAPS.alternate : CITY_MAPS.standard;
+  const svg = document.getElementById("map"); svg.innerHTML = "";
+  const ns = "http://www.w3.org/2000/svg", el = (n, a) => { const x = document.createElementNS(ns, n); for (const [p, v] of Object.entries(a)) x.setAttribute(p, v); svg.appendChild(x); return x; };
+  for (const c of map) for (const l of c.links) if (l > c.id) { const d = map[l - 1];
+    el("line", { x1: c.x, y1: c.y, x2: d.x, y2: d.y, stroke: css("--line"), "stroke-width": 1 }); }
+  const armies = {};
+  for (const [id, city, men] of b.union) (armies[city] = armies[city] || { u: 0, r: 0 }).u += men;
+  for (const [id, city, men] of b.rebel) (armies[city] = armies[city] || { u: 0, r: 0 }).r += men;
+  for (const c of map) {
+    const o = b.owners[c.id - 1], fort = +b.forts[c.id - 1];
+    el("circle", { cx: c.x, cy: c.y, r: 5 + fort, fill: color(o), stroke: fort ? css("--ink") : "none", "stroke-width": fort });
+    const label = el("text", { x: c.x + 8, y: c.y + 4, "font-size": 10, fill: css("--muted") }); label.textContent = c.name;
+    const a = armies[c.id];
+    if (a) { const txt = el("text", { x: c.x - 8, y: c.y - 9, "font-size": 10, "font-weight": 700, fill: a.u ? css("--union") : css("--rebel") });
+      txt.textContent = a.u ? (a.u / 1000).toFixed(0) + "k" : (a.r / 1000).toFixed(0) + "k"; }
+  }
+  document.getElementById("turnlabel").textContent = `${b.date} (turn ${k + 1} of ${turns.length})`;
+  const owned = s => [...b.owners].filter(x => x === s).length;
+  document.getElementById("stats").innerHTML =
+    `<span>player <b>${header.player}</b></span><span>scenario <b>${header.scenario}</b> seed <b>${header.seed}</b></span>` +
+    `<span>Union cities <b>${owned("U")}</b> / Rebel <b>${owned("R")}</b></span><span>cash <b>${b.cash}</b></span><span>VP <b>${b.vp[0]}–${b.vp[1]}</b></span>` +
+    (k === turns.length - 1 ? `<span>result <b>${header.reason}</b></span>` : "");
+  const log = document.getElementById("log"); log.innerHTML = "";
+  for (const e of t.events) {
+    const d = document.createElement("div");
+    if (e.call !== undefined) { d.className = "call"; d.textContent = `model call ${e.call}: ${e.ok ? "ok" : "FAILED " + e.error} · ${e.latency}s · ${e.input_tokens}+${e.output_tokens} tok` + (e.note ? ` · "${e.note}"` : ""); }
+    else { d.className = e.source === "fallback" ? "fb" : e.accepted ? "ok" : "no";
+      d.textContent = `${e.accepted ? "+" : "x"} [${e.source}${e.why ? ": " + e.why : ""}] ${e.action} → ${e.text}`; }
+    log.appendChild(d);
+  }
+}
+document.getElementById("prev").onclick = () => { if (k > 0) { k--; draw(); } };
+document.getElementById("next").onclick = () => { if (k < turns.length - 1) { k++; draw(); } };
+document.getElementById("play").onclick = () => {
+  if (timer) { clearInterval(timer); timer = null; return; }
+  timer = setInterval(() => { if (k < turns.length - 1) { k++; draw(); } else { clearInterval(timer); timer = null; } }, 1200);
+};
+</script>
+</body>
+</html>

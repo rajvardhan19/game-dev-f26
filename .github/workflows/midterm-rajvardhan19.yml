@@ -1,0 +1,41 @@
+name: midterm-rajvardhan19
+
+# Deterministic checks for midterms/rajvardhan19 only. No secrets, no model
+# traffic, no installs beyond Python itself (the checks use the standard library).
+on:
+  pull_request:
+    paths:
+      - 'midterms/rajvardhan19/**'
+      - '.github/workflows/midterm-rajvardhan19.yml'
+  push:
+    branches: ['rajvardhan19/midterm']
+    paths:
+      - 'midterms/rajvardhan19/**'
+      - '.github/workflows/midterm-rajvardhan19.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic:
+    name: rajvardhan19 midterm checks (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    defaults:
+      run:
+        working-directory: midterms/rajvardhan19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Rule invariants, legal and illegal actions, terminal outcomes, regressions, episode limits, QB64 fidelity
+        run: python -m unittest discover -s tests -v
+      - name: Baseline episodes run end to end through the engine process
+        run: python -m cws.evaluate --players original-ai random passive --run ci --quiet

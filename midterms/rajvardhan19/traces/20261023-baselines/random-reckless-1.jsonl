@@ -1,0 +1,28 @@
+{"header": {"player": "random", "scenario": "reckless", "seed": 1, "status": "terminal", "reason": "Rebel victory: capital captured", "winner": "Rebel", "score": 33, "turns": 4, "date": "November 1861", "cities_union": 7, "steps": 23, "invalid_actions": 0, "model_calls": 0, "failed_calls": 0, "fallback_actions": 0, "input_tokens": 0, "output_tokens": 0, "model_latency_total": 0.0, "wall_seconds": 0.04, "config": {"limits": {"max_steps": 600, "max_model_calls": 150, "max_wall_seconds": 1800.0, "max_actions_per_turn": 40, "max_failures_per_turn": 3, "max_batch": 8, "engine_timeout": 60.0, "decision_timeout": 45.0}, "player": {}}}}
+{"turn_start": 1, "board": {"date": "March 1861", "cash": 525, "vp": [190, 241], "owners": "RNRRRUURURRRUUURRNNNNRRRRRRRNUURRRUURRUR", "forts": "0000200001001000000000120021000010000212", "union": [[1, 39, 40000], [2, 7, 28000], [3, 13, 7500], [4, 36, 10000], [5, 9, 12500]], "rebel": [[21, 33, 30000], [22, 12, 20000], [23, 26, 14000], [24, 38, 7500]]}, "t": 0.025}
+{"turn": 1, "action": "move 5 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Pittsburg", "t": 0.026}
+{"turn": 1, "action": "move 2 Chrlstn WV", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Cincinnati to Chrlstn WV", "t": 0.026}
+{"turn": 1, "action": "fortify Harper Fy", "source": "scripted", "accepted": true, "text": "Harper Fy fortifications increased to 2", "t": 0.027}
+{"turn": 1, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1861.", "t": 0.027}
+{"turn_start": 2, "board": {"date": "May 1861", "cash": 421, "vp": [246, 219], "owners": "RNRRRUURURRRUUURRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200001002000000000120021000020000212", "union": [[1, 39, 40000], [2, 6, 28000], [3, 13, 6600], [4, 36, 10000], [5, 31, 12500]], "rebel": [[21, 33, 30000], [22, 12, 18000], [23, 21, 14000], [24, 23, 7500], [25, 25, 7800]]}, "t": 0.028}
+{"turn": 2, "action": "move 2 Frnt Royal", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Chrlstn WV to Frnt Royal", "t": 0.028}
+{"turn": 2, "action": "cancel 2", "source": "scripted", "accepted": true, "text": "McClellan has cancelled move to Frnt Royal", "t": 0.028}
+{"turn": 2, "action": "move 3 Washington", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Washington", "t": 0.029}
+{"turn": 2, "action": "drill 5", "source": "scripted", "accepted": true, "text": "Pope has drilled to reach experience level 1", "t": 0.029}
+{"turn": 2, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now July 1861.", "t": 0.03}
+{"turn_start": 3, "board": {"date": "July 1861", "cash": 629, "vp": [287, 311], "owners": "RNRRRURRURRRRUURRNNNRRRRRRRRRUURRRUURRUR", "forts": "0000200001001000000000120021000020000212", "union": [[1, 39, 40000], [2, 6, 28000], [3, 14, 6000], [4, 36, 10000], [5, 31, 12500]], "rebel": [[21, 33, 30000], [22, 13, 17200], [23, 7, 17000], [24, 29, 7500], [25, 4, 17800]]}, "t": 0.03}
+{"turn": 3, "action": "fortify Harrisburg", "source": "scripted", "accepted": true, "text": "Harrisburg fortifications increased to 1", "t": 0.03}
+{"turn": 3, "action": "move 2 Cincinnati", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Chrlstn WV to Cincinnati", "t": 0.031}
+{"turn": 3, "action": "fortify Harrisburg", "source": "scripted", "accepted": true, "text": "Harrisburg fortifications increased to 2", "t": 0.031}
+{"turn": 3, "action": "move 1 Harper Fy", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Washington to Harper Fy", "t": 0.032}
+{"turn": 3, "action": "cancel 2", "source": "scripted", "accepted": true, "text": "McClellan has cancelled move to Cincinnati", "t": 0.032}
+{"turn": 3, "action": "move 4 Paducah", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from St. Louis to Paducah", "t": 0.032}
+{"turn": 3, "action": "drill 2", "source": "scripted", "accepted": true, "text": "McClellan has drilled to reach experience level 1", "t": 0.033}
+{"turn": 3, "action": "fortify St. Louis", "source": "scripted", "accepted": true, "text": "St. Louis fortifications increased to 1", "t": 0.033}
+{"turn": 3, "action": "cancel 1", "source": "scripted", "accepted": true, "text": "McDowell has cancelled move to Harper Fy", "t": 0.034}
+{"turn": 3, "action": "move 1 Manassas", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Washington to Manassas", "t": 0.034}
+{"turn": 3, "action": "drill 5", "source": "scripted", "accepted": true, "text": "Pope has drilled to reach experience level 2", "t": 0.034}
+{"turn": 3, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now September 1861.", "t": 0.035}
+{"turn_start": 4, "board": {"date": "September 1861", "cash": 278, "vp": [321, 382], "owners": "RNRRRURRRRRRRUURRNNNRURRRRRRRUURRRUURRUR", "forts": "0000200001001200000000120021000020010212", "union": [[1, 22, 40000], [2, 6, 28000], [3, 14, 5400], [4, 36, 10000], [5, 31, 12500]], "rebel": [[21, 33, 30000], [22, 13, 15900], [23, 9, 17000], [24, 21, 7500], [25, 26, 17800], [26, 24, 7800], [27, 28, 12800]]}, "t": 0.035}
+{"turn": 4, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 2", "t": 0.035}
+{"turn": 4, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now November 1861.", "t": 0.036}

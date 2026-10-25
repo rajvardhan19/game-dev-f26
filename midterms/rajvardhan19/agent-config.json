@@ -1,0 +1,57 @@
+{
+  "schema_version": "course-1",
+  "project": "VGA Civil War Strategy v2.11, midterm reconstruction (rajvardhan19)",
+  "agent_team": [
+    {
+      "role": "Implementation agent",
+      "assistant": "Claude Code (VS Code extension), model claude-opus-5-5",
+      "native_artifact": "AGENTS.md (loaded through CLAUDE.md)",
+      "purpose": "Port mechanics from CWSTRAT.BAS, build the interface, players, runner, tests and harness under the student's direction.",
+      "context": ["AGENTS.md", "docs/rule-source-map.md", "QUESTIONS.md", "cws/", "tests/", "source/CWSTRAT.BAS", "source/VariablesGuide.md"],
+      "tools_and_permissions": "Repository read/write and local commands in the student's workspace; no credentials, no push or PR without the student; no paid model calls.",
+      "outputs": "Code, tests, recorded QB64 comparisons and change summaries in the port-mechanic skill's format.",
+      "handoff": "Summary to the rules-reviewer; the student opens the PR.",
+      "human_approval": "The student accepts or rejects each change and submits."
+    },
+    {
+      "role": "Reusable skill: port-mechanic",
+      "native_artifact": ".claude/skills/port-mechanic/SKILL.md",
+      "purpose": "One procedure per mechanic: read one SUB, hand-trace with scripted dice, test first, port with QB64 numeric rules, compare with the original under QB64, record ambiguities, summarise.",
+      "context": ["the one SUB being ported", "VariablesGuide.md", "docs/rule-source-map.md", "cws/qb.py"],
+      "tools_and_permissions": "Runs inside the implementation agent with its permissions.",
+      "outputs": "Map row, test, port, QB64 comparison result, QUESTIONS.md entry, summary.",
+      "handoff": "The summary is the reviewer's input.",
+      "human_approval": "The student accepts or rejects the summary's assumptions."
+    },
+    {
+      "role": "Independent review task: rules-reviewer",
+      "native_artifact": ".claude/agents/rules-reviewer.md",
+      "purpose": "Check fidelity against cited source lines, evidence labels, agreement of engine, tests, map and QB64 recordings, the information boundary, limits and evaluation fairness.",
+      "context": ["docs/", "QUESTIONS.md", "cws/", "tests/", "SUITE.md", "EVALUATION.md", "source/CWSTRAT.BAS"],
+      "tools_and_permissions": "Read, Grep, Glob only; a fresh context that did not write the code; no instruction to approve.",
+      "outputs": "review.md: findings as [blocking | should fix | note] file:line lines.",
+      "handoff": "Findings to the student, who decides; accepted fixes go back to the implementation agent.",
+      "human_approval": "The student decides every finding."
+    }
+  ],
+  "playing_agent": {
+    "native_artifact": "cws/players/model_player.py",
+    "provider": "vertex (Gemini on Vertex AI, course credit)",
+    "model": "COURSE_MODEL at run time; the course suggests gemini-3.5-flash-lite. Results record the model_version the API returns.",
+    "tools_available": [],
+    "sees": "observe() and legal_actions() rendered as text, plus in history mode its own last 3 turns (actions, notes, turn reports)",
+    "never_sees": ["the Game object", "repository files", "docs/rule-source-map.md", "cws/smarts.py", "the dice or seed", "enemy leader, experience, supply or orders", "credentials"],
+    "memory_policy": "history: last 3 turns of its own actions, notes and the visible turn report; obs-only: none beyond the current observation and the last rejection",
+    "output": "JSON {actions: up to 8 legal action strings, note}; validated; submitted one at a time through step()",
+    "limits": {"max_steps": 600, "max_model_calls": 150, "request_timeout_seconds": 30, "request_attempts": 1,
+               "max_output_tokens": 2048, "max_wall_seconds": 1800, "max_actions_per_turn": 40,
+               "max_failures_per_turn": 3, "max_batch": 8},
+    "fallback": "After 3 failed calls or fully rejected replies in a turn, or 40 actions in a turn, the runner submits 'end turn' labelled fallback with its reason. A model-call limit or wall-clock timeout ends the episode with that terminal reason."
+  },
+  "baselines": ["original-ai (the original smarts/evaluate code playing the Union on the Union's observation)", "random", "passive"],
+  "opponent": "The original computer player (SUB smarts), playing the Rebels with the full game state, as in the original.",
+  "evaluation_cases": "SUITE.md; cws/evaluate.py",
+  "test_command": "python -m unittest discover -s tests -v",
+  "ci_workflow_path": ".github/workflows/midterm-rajvardhan19.yml",
+  "logging_policy": "Traces record observations' summaries, model proposals, notes, tokens, latency and every submitted action with its source. No credentials or personal data."
+}

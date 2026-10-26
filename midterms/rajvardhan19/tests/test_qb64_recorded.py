@@ -1,7 +1,7 @@
 """The Python engine against states recorded from the original SUBs under QB64.
 
 tools/qb64-harness/compare.py compiled CWSTRAT.BAS's own SUBs with QB64-PE,
-replayed 36 games, and saved a hash of the full game state after every
+replayed 48 games, and saved a hash of the full game state after every
 command. This test replays the same commands in Python and requires every
 hash to match, so CI re-checks fidelity without QB64.
 """
@@ -20,7 +20,7 @@ import compare  # noqa: E402
 
 class RecordedOriginal(unittest.TestCase):
     def test_recordings_exist(self):
-        self.assertGreaterEqual(len(list(RECORDED.glob("*.json"))), 36)
+        self.assertGreaterEqual(len(list(RECORDED.glob("*.json"))), 48)
 
     def test_every_state_matches_the_original(self):
         commands_checked = 0
@@ -35,7 +35,7 @@ class RecordedOriginal(unittest.TestCase):
                     self.fail(f"{path.name}: state differs from QB64 after {where}")
             self.assertEqual(len(hashes), len(rec["qb64_state_sha256_16"]), path.name)
             commands_checked += len(rec["commands"])
-        self.assertGreater(commands_checked, 3300)
+        self.assertGreater(commands_checked, 3600)
 
 
 if __name__ == "__main__":

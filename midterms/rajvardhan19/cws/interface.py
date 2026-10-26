@@ -12,13 +12,16 @@ cash, income and victory points (City Report line 3496, topbar line 3973,
 Army Report line 3437); its own armies in full (Army Report line 3460); and
 each enemy army's number, name, size and city (Army Report line 3459 prints
 no more for the enemy), plus whether it is out of supply (the map's "S"
-glyph, placearmy line 1961). Hidden: enemy leader ratings, experience,
-supply levels and orders; the dice; the opponent's routines.
+glyph, placearmy line 1961); both navies' ships, ironclads and position
+(Army Report lines 3468-3474); the railroad's capacity and its own train.
+Hidden: enemy leader ratings, experience, supply levels and orders; the
+dice; the opponent's routines.
 
 Action vocabulary (design, see the rule map): one string per menu choice
 the original offers, listed only when it would change the game now.
 """
 
+from . import navy, railroad
 from .engine import FORCE, MONTHS, UNION, Event, Game, starfin
 from .qb import cint, f32
 from .scenarios import SCENARIOS
@@ -30,6 +33,7 @@ VISIBLE_EVENTS = {
     "turn", "plan", "move", "battle", "withdraw", "retreat", "surrender", "crushed",
     "capture", "capital", "raze", "defenders", "supply_out", "new_army", "reinforce",
     "fortify", "combine", "supply", "game_over",
+    "navy", "naval_battle", "raid", "rail", "blockade",
 }
 
 
@@ -84,9 +88,9 @@ class CivilWarEpisode:
         } for c in range(1, 41)]
         own = [{
             "id": i, "name": g.armyname[i], "men": g.armysize[i] * 100, "city": g.armyloc[i],
-            "city_name": g.city[g.armyloc[i]], "leader": g.armylead[i],
+            "city_name": g.city[g.armyloc[i]] if g.armyloc[i] else "on the train", "leader": g.armylead[i],
             "experience": g.armyexper[i], "supply": g.supply[i], "order": _order(g, i),
-        } for i in starfin(me) if g.armyloc[i] > 0]
+        } for i in starfin(me) if g.armyloc[i] > 0 or g.rr[me] == i]
         enemy = [{
             "id": i, "name": g.armyname[i], "men": g.armysize[i] * 100, "city": g.armyloc[i],
             "city_name": g.city[g.armyloc[i]], "out_of_supply": g.supply[i] < 1,
@@ -111,6 +115,14 @@ class CivilWarEpisode:
             "cities": cities,
             "your_armies": own,
             "enemy_armies": enemy,
+            "navies": {FORCE[k]: {"ships": g.navysize[k], "ironclads": g.fleet[k].count("I"),
+                                  "at": None if g.navyloc[k] == 0 else navy.name(g, g.navyloc[k])}
+                       for k in (1, 2)},
+            "commerce_raiding": {"by": FORCE[g.commerce] if g.commerce else None,
+                                 "last_loss": g.raider if g.commerce else 0},
+            "fleet_acted_this_turn": bool(g.nflag),
+            "railroad": {"capacity_men": railroad.traincapacity(g, me) * 100,
+                         "train": {"army": g.rr[me], "to": g.city[g.armymove[g.rr[me]]]} if g.rr[me] else None},
             "recruiting": {"rolled": g.rflag > 0,
                            "offered": [g.city[c] for c in g._sorted_by_name(g.rcity)] if g.rflag > 0 else []},
             "last_turn_report": list(self._report),
@@ -156,6 +168,11 @@ class CivilWarEpisode:
             if (g.armyloc[i] > 0 and g.armymove[i] == 0 and g.armyexper[i] <= 5
                     and g.armyexper[i] < g.armylead[i]):
                 acts.append(f"drill {i}")
+        acts += [a for a, _ in _navy_actions(g, me)]
+        for i in starfin(me):
+            if railroad.can_board(g, me, i):
+                for c in railroad.destinations(g, me, g.armyloc[i]):
+                    acts.append(f"rail {i} {g.city[c]}")
         acts.append("end turn")
         return acts
 
@@ -193,20 +210,25 @@ class CivilWarEpisode:
             text = ("Recruiting offered in: " + ", ".join(g.city[c] for c in offered)) if offered \
                 else "No cities offer recruits this time."
         elif verb == "recruit":
-            text = g.levy(me, _city_id(g, rest))
+            text = g.human_recruit(_city_id(g, rest))
         elif verb == "move":
             army, _, dest = rest.partition(" ")
-            text = g.order_move(int(army), _city_id(g, dest))
+            text = g.human_move(int(army), _city_id(g, dest))
         elif verb == "cancel":
-            text = g.cancel(int(rest))
+            text = g.human_cancel(int(rest))
         elif verb == "fortify":
-            text = g.fortify(me, _city_id(g, rest))
+            text = g.human_fortify(_city_id(g, rest))
         elif verb == "join":
-            text = g.combine(me, _city_id(g, rest))
+            text = g.human_join(_city_id(g, rest))
         elif verb == "supply":
-            text = g.resupply(int(rest))
+            text = g.human_supply(int(rest))
         elif verb == "drill":
-            text = g.drill(int(rest))
+            text = g.human_drill(int(rest))
+        elif verb in ("build", "fleet"):
+            text = g.human_navy(dict(_navy_actions(g, me))[action])
+        elif verb == "rail":
+            army, _, dest = rest.partition(" ")
+            text = g.human_rail(int(army), _city_id(g, dest))
         else:                                              # unreachable: only listed actions arrive
             raise ValueError(action)
         self._messages.append(text)
@@ -222,8 +244,41 @@ def union_share(g: Game) -> int:
     return cint(f32(100 * (max(g.victory[1], 0) / total))) if total > 0 else 0
 
 
+def _navy_actions(g: Game, me: int) -> list[tuple[str, list[int]]]:
+    """The Ships menu's choices that would do something now, with the menu rows that make them.
+
+    Rows as SUB navy reads them (lines 1489-1735): 1 Build (then Type, then
+    Port for a new fleet), 2 Attack, 3 Sail (then To), 4 Raid, 5 Invasion.
+    """
+    if g.nflag > 0:
+        return []
+    out: list[tuple[str, list[int]]] = []
+    loc, n, cash = g.navyloc[me], g.navysize[me], g.cash[me]
+    typed = navy.ironclads_allowed(g) and cash >= 200          # the Type menu appears (line 1527)
+    kinds = [("wooden", [1] if typed else [])] + ([("ironclad", [2])] if typed else [])
+    if loc != navy.AT_SEA and cash >= 100 and n <= 9:
+        if loc == 0 and n == 0:
+            for row, port in enumerate(navy.port_list(g, me), 1):
+                out += [(f"build {kind} at {g.city[port]}", [1] + t + [row]) for kind, t in kinds]
+        elif loc > 0 and g.cityp[loc] == me and g.matrix[loc][7] == 99:
+            out += [(f"build {kind}", [1] + t) for kind, t in kinds]
+    if loc >= 1 and len(g.fleet[me]) >= 1:
+        if loc != navy.AT_SEA and g.cityp[loc] == 3 - me:
+            out.append(("fleet attack", [2]))
+        for row, dest in enumerate(navy.sail_list(g, me), 1):
+            out.append((f"fleet sail {g.city[dest]}", [3, row]))
+        if g.commerce != me:
+            out.append(("fleet raid", [4]))
+        if (me == 1 and loc != navy.AT_SEA and n > 1 and g.cityp[loc] == 0
+                and any(g.armyloc[k] == 0 for k in starfin(me))):
+            out.append(("fleet invade", [5]))
+    return out
+
+
 def _order(g: Game, i: int) -> str:
     m = g.armymove[i]
+    if g.armyloc[i] == 0 and m > 0:
+        return f"on the train to {g.city[m]}"
     if m > 0:
         return f"moving to {g.city[m]}"
     return "resting this turn" if m < 0 else "none"

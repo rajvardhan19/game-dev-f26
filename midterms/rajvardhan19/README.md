@@ -25,15 +25,20 @@ matches what CWSTRAT.BAS computes from the same state and dice rolls.
 - the full 40-city map and the shipped setups (standard and alternate);
 - the leaders, the treasury and the shipped options;
 - Union recruiting, movement, fortification, supply, joining, drilling and cancelling;
-- the whole monthly resolution: the original computer opponent (`smarts`), initiative, battles, retreats, surrender, capture, supply, attrition and victory points;
+- navies: wooden ships and ironclads, sailing, bombardment, naval battles, blockades, commerce raiding and Union invasions;
+- railroads: one train per side per turn, within its capacity;
+- the whole monthly resolution: the original computer opponent (`smarts`, with its own fleet and trains), initiative, battles, retreats, surrender, capture, supply, attrition and victory points;
 - all six victory conditions.
+
+Navies and railroads were added on 2026-10-25, before any live model run or
+prompt tuning (SUITE.md).
 
 An episode is one war, from the start date to a victory condition. The
 original's own deadline (March 1865) is one of them, so every game ends.
 
-**Excluded.** Navies, railroads, random events (an option the original
-lets you turn off), relieving commanders, moving the capital, two-player
-mode, saving and graphics. The [rule map](docs/rule-source-map.md#scope)
+**Excluded.** Random events (an option the original lets you turn off),
+relieving commanders, moving the capital, two-player mode, saving and
+graphics. The [rule map](docs/rule-source-map.md#scope)
 says what each exclusion changes.
 
 **Evidence.** The original game code was compiled with QB64-PE and run
@@ -41,9 +46,12 @@ against this engine on the same seeds and commands. That covers every SUB,
 including the computer opponent and SUB victor, plus the main-module rule
 paths copied by line number.
 
-- **Result:** 36 games and 3,392 commands produced identical game states
-  after every command.
-- **Coverage:** every command type and eight of the game's end conditions.
+- **Result:** 48 games and 3,637 commands produced identical game states
+  after every command. The compared state includes both fleets, the trains
+  and every value the menus leave behind.
+- **Coverage:** every command type, including 416 navy and 212 railroad
+  commands, and nine of the game's ten end conditions. The tenth,
+  annihilation, has a hand-traced test.
 - **Where:** `tools/qb64-harness/`, re-checked in CI from recorded hashes.
   The rule map says exactly what the harness changes.
 
@@ -62,7 +70,9 @@ cd midterms/rajvardhan19
 Use `python3` wherever this page says `python` if that is the name your
 installation provides.
 
-**Play** (you are the Union; type an action's number or its text, or
+**Play** (you are the Union; type an action's number or its text, such as
+`move 1 Manassas`, `rail 2 Phildelpha`, `fleet sail Norfolk` or
+`build ironclad`, or
 `map`, `cities`, `armies`, `report`, `help`, `quit`):
 
 ```sh
@@ -144,6 +154,8 @@ The full map labels every rule `code` (with a CWSTRAT.BAS line), `observed`
 - the action vocabulary, and listing only actions that change state;
 - `troops` as the action that rolls recruits;
 - ESC for the human retreat menu, No for "Raze?", Yes for "End Game";
+- Attack in every naval battle, so you cannot break off a battle your
+  fleet starts (the original's Retreat sails to an own shipyard);
 - the episode seed in place of `TIMER`;
 - the separate engine process;
 - batched model replies;
@@ -169,12 +181,13 @@ is drawn from the city coordinates in `CITIES.GRD`.
 | Path | What it is |
 |---|---|
 | `cws/engine.py`, `cws/smarts.py`, `cws/qb.py` | The rules, the original computer opponent, and QBasic numeric semantics |
+| `cws/navy.py`, `cws/railroad.py` | SUB navy (fleets, battles, raiding, invasions) and SUB railroad |
 | `cws/interface.py`, `cws/server.py`, `cws/client.py` | Five operations, the engine process, the runner's handle and the player's port |
 | `cws/runner.py`, `cws/evaluate.py` | Episode limits, fallbacks and traces; the declared suite |
 | `cws/players/` | `model_player.py` (Gemini), `baselines.py` (original AI, random, passive), `view.py` (masked board for the baseline) |
 | `cws/play.py` | Terminal play and watch |
 | `tests/` | Deterministic checks (see [EVALUATION.md](EVALUATION.md#ci)) |
-| `tools/qb64-harness/` | The differential harness, its debugging aid and 36 recorded games |
+| `tools/qb64-harness/` | The differential harness, its debugging aid and 48 recorded games |
 | `source/`, `data/original/` | The original source and data, unmodified, with the MIT licence |
 | `AGENTS.md`, `CLAUDE.md`, `.claude/`, `agent-config.json` | The building agent team's configuration |
 | `ci/midterm-rajvardhan19.yml` | Copy of `.github/workflows/midterm-rajvardhan19.yml` |

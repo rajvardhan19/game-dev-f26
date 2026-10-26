@@ -2,7 +2,7 @@
 
 In the source, `side` is the human's side and `3 - side` the computer's.
 These helpers take both explicitly (`me`, `foe`) so the same code can also
-drive the Union baseline (cws/players/original_ai.py), which is the
+drive the Union baseline (OriginalAI in cws/players/baselines.py), which is the
 original's own Union AI, the one a player meets after choosing the Rebels.
 
 The decision helpers read only a "board": the Game itself for the opponent,
@@ -10,6 +10,7 @@ or a View built from a player's observation for the baseline. A View raises
 if asked for something the observation does not contain.
 """
 
+from . import navy, railroad
 from .engine import REBEL, UNION, starfin
 from .qb import S, cint, f32, idiv, qint
 
@@ -50,7 +51,9 @@ def evaluate(b, index: int, me: int, foe: int, rnd, aggress: float, bold: int) -
     if bold > 1:
         x = cint(f32(.5 * x))
     best = b.armysize[index]
-    array = [0] + [-1] * 6
+    array = b.array                                       # the shared array(): evaluate writes 1-6
+    for j in range(1, 7):
+        array[j] = -1
     for j in range(1, 7):
         a = b.matrix[frm][j]
         if a > 0 and b.occupied[a] > 0:
@@ -229,7 +232,7 @@ def march_order(b, i: int, me: int, foe: int, rnd, aggress: float, bold: int) ->
 
 
 def smarts(g) -> None:
-    """SUB smarts for the computer side, without navies, railroads or events."""
+    """SUB smarts for the computer side: its fleet and trains included, random events off."""
     who, foe = 3 - g.side, g.side
     rnd = g.rnd
     slots = starfin(who)
@@ -266,7 +269,7 @@ def smarts(g) -> None:
                 break
             g.fortify(who, target, refresh=False)
             roll = rnd()
-            if who == UNION and roll > S(.5):            # navysize(1) < 1 and the unset cash < 222 hold
+            if who == UNION and g.navysize[1] < 1 and roll > S(.5):   # line 2251; the unset cash < 222 holds
                 break
             again = f32(3 * rnd()) > f32(1 + g.aggress)
             if again and g.cash[who] >= cost:
@@ -274,8 +277,21 @@ def smarts(g) -> None:
                 continue
             break
 
-    # Recruit New Armies, label signup
-    if enufarmies(g, who) <= f32(2 + 3 * foe + f32(3 * rnd())):
+    # Recruit New Armies, label signup (lines 2255-2260)
+    slush = 0
+    while True:                                          # a block to leave with "GOTO isok"
+        if who == UNION and g.navysize[1] < 1 and g.cash[1] > 100:
+            navy.navy(g, 1, 1)
+            if g.cash[who] < 100:
+                break
+        if enufarmies(g, who) > f32(2 + 3 * foe + f32(3 * rnd())):
+            break
+        if g.navysize[who] < 5 and g.cash[who] > 100 and g.navyloc[who] != navy.AT_SEA:
+            if g.cityp[g.navyloc[who]] == who:           # cityp(0) when there is no fleet: see navy line 1483
+                slush += 100                             # money kept back for ships
+                g.cash[who] -= 100
+                if g.cash[who] < 100:
+                    break
         cities = g.recruit_open(who)
         while cities and g.cash[who] >= 100:             # label levy
             pick = cities[randsel(g, cities, who, rnd)]
@@ -283,11 +299,17 @@ def smarts(g) -> None:
             if g.occupied[pick] == 0 and not any(g.armyloc[k] == 0 for k in slots):
                 break                                    # no commander: the computer stops
             g.levy(who, pick)
+        break
+    g.cash[who] += slush                                 # label isok
+
+    _naval_orders(g, who)                                # labels dock and movenavy, lines 2265-2293
 
     # Give Move Orders to Each Army, label movearmy
-    eligible = g.combine_cities(who)
+    navy.ships(g)
+    eligible = g.combine_menu(who)
     if eligible:
         g.combine(who, eligible[qint(f32(len(eligible) * rnd()))])
+    railroad.computer_railroad(g, who)                   # line 2301
 
     for i in slots:
         dest = march_order(g, i, who, foe, rnd, g.aggress, g.bold)
@@ -300,3 +322,40 @@ def smarts(g) -> None:
         if g.armymove[i] == 0 and g.armyexper[i] < 6 and g.armyexper[i] < g.armylead[i]:
             g.armyexper[i] += 1
             g.armymove[i] = -1
+
+
+def _naval_orders(g, who: int) -> None:
+    """Labels dock and movenavy, lines 2265-2293: build, then sail, raid or attack."""
+    rnd, side = g.rnd, g.side
+    while True:                                          # dock
+        if (side == 2 and g.navyloc[1] == 0 and g.navysize[1] < 1 and g.cityp[30] == 1
+                and g.cash[1] > 100):
+            g.navyloc[1] = 30
+            navy.navy(g, 1, 1)
+            break                                        # GOTO movenavy
+        if g.navyloc[who] == navy.AT_SEA:
+            if rnd() < S(.9):
+                navy.navy(g, who, 3)
+            return                                       # GOTO movearmy
+        if g.cash[who] < 100 or g.navysize[who] > 9 or g.cityp[g.navyloc[who]] != who:
+            break
+        navy.navy(g, who, 1)
+        break
+    if g.navysize[who] == 0:                             # movenavy
+        g.navyloc[who] = 0
+    if g.navyloc[who] == 0:
+        return
+    if g.navyloc[who] != navy.AT_SEA:
+        if g.cityp[g.navyloc[who]] == who or g.cityp[g.navyloc[who]] == 0:
+            navy.navy(g, who, 3)
+            return
+    else:
+        if rnd() < S(.5):
+            navy.navy(g, who, 3)
+        return
+    if g.cityp[g.navyloc[who]] != who:
+        roll = rnd()                                     # OR does not short-circuit
+        if g.occupied[g.navyloc[who]] == 0 or roll > S(.3):
+            navy.navy(g, who, 2)
+        else:
+            navy.navy(g, who, 3)

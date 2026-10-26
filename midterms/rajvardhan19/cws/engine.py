@@ -6,9 +6,10 @@ Arrays keep the source's 1-based indices; index 0 is the source's scratch
 slot (combine uses armysize(0), for example) and is kept because other
 routines read it. Union armies are slots 1-20, Confederate 21-40.
 
-Out of scope, and therefore absent: navies, railroads, random events,
-saving, two-player mode, graphics and sound. docs/rule-source-map.md lists
-every omission and what it changes.
+Navies are in cws/navy.py and railroads in cws/railroad.py. Out of scope,
+and therefore absent: random events (off, as the Utility menu allows),
+relieving commanders, moving the capital, saving, two-player mode, graphics
+and sound. docs/rule-source-map.md lists every omission and what it changes.
 """
 
 import math
@@ -41,6 +42,7 @@ class Settings:
     jancam: int = 1          # January campaigns allowed (CWS.CFG)
     bold: int = 3            # computer aggression: 3 = NORMAL (CWS.CFG)
     randbal: int = 0         # Random Events OFF (Utility option 8, line 600)
+    train: tuple = (600, 300)  # railroad capacity train(1), train(2) in hundreds (CWS.CFG)
 
 
 def starfin(who: int) -> range:
@@ -115,10 +117,22 @@ class Game:
         self.aggress = 0.0          # aggress! starts at 0 until the first iterate
         self.rflag = 0
         self.rcity: list[int] = []
+        self.array = [0] * n        # the menus' shared array(); navy line 1865 reads row 30
+        self.navysize = [0, 0, 0]
+        self.navyloc = [0, 0, 0]    # a city, 0 (no fleet) or 99 (at sea, raiding commerce)
+        self.fleet = ["", "", ""]   # fleet$: "W" wooden at the end, "I" ironclad at the front
+        self.commerce = self.raider = self.grudge = self.nflag = 0
+        self.rr = [0, 0, 0]         # army on the train, per side
+        self.rrfrom = [0, 0, 0]
+        self.tracks = [0, 0, 0]
+        self.train = [0, st.train[0], st.train[1]]
         self.turn = 1
         self.result: dict | None = None
 
         self._filer_load()
+        if self.realism > 0 and self.year < 1862:          # lines 151-156: no ironclads yet
+            for i in (1, 2):
+                self.fleet[i] = "W" * len(self.fleet[i])
         # Line 160-161 would set randbal from the side; the scenario's
         # Utility setting (Random Events OFF) is applied after it.
         self.randbal = st.randbal
@@ -171,8 +185,10 @@ class Game:
                 self.lname[i] = ""
         self.cash[1], self.cash[2] = ini.int(), ini.int()
         self.ATKFAC, self.DEFAC, self.TCR = ini.int(), ini.int(), ini.int()
-        for _ in range(4):
-            ini.take()                                     # fleets: navies are out of scope
+        self.fleet[1], self.navyloc[1] = ini.take(), ini.int()     # line 1173
+        self.fleet[2], self.navyloc[2] = ini.take(), ini.int()
+        for k in (1, 2):
+            self.navysize[k] = len(self.fleet[k])
         self.capcity[1], self.capcity[2] = ini.int(), ini.int()
 
     def _load_cities(self) -> None:
@@ -213,6 +229,15 @@ class Game:
                 a += 1
         return a
 
+    def set_array(self, values: list[int]) -> None:
+        """A menu writes its choices into array(1..n); later entries keep stale values."""
+        for k, v in enumerate(values, 1):
+            self.array[k] = v
+
+    def set_menu(self, entries: list[tuple[str, int]], sort: bool = True) -> None:
+        """array(1..n) as a menu leaves it: SUB bubble's stable sort by the menu text."""
+        self.set_array([v for _, v in (sorted(entries, key=lambda e: e[0]) if sort else entries)])
+
     def neighbours(self, c: int) -> list[int]:
         return [self.matrix[c][j] for j in range(1, 7) if self.matrix[c][j] > 0]
 
@@ -239,7 +264,8 @@ class Game:
         """
         if self.cash[who] < 100:
             return []
-        if who == self.side and self.rflag > 0:
+        if who == self.side and self.rflag > 0:            # line 2078, then bubble at alldone
+            self.set_menu([(self.city[c], c) for c in self.rcity])
             return self._sorted_by_name(self.rcity)
         size, chosen = 0, []
         mx = 4
@@ -256,6 +282,7 @@ class Game:
                 pct = S(.3)
             if size < 2 and i > 30:
                 pct = S(.3)
+            self.array[i] = 0                              # line 2086
             if self.occupied[i] > 0 and self.cityp[i] == who:
                 pct = S(.4)
             roll = self.rnd()                              # consumed for every city
@@ -264,10 +291,12 @@ class Game:
                     continue
                 size += 1
                 chosen.append(i)
+                self.array[size] = i
                 if size > mx - 1:
                     break
         if size == 0:
             return []
+        self.set_menu([(self.city[c], c) for c in chosen])   # CALL bubble(size), line 2100
         if who == self.side and self.rflag == 0:
             self.rcity, self.rflag = list(chosen), size
         return self._sorted_by_name(chosen)
@@ -275,6 +304,78 @@ class Game:
     def _sorted_by_name(self, cities: list[int]) -> list[int]:
         """SUB bubble, line 2684: a stable sort of menu text."""
         return sorted(cities, key=lambda c: self.city[c])
+
+    def combine_menu(self, who: int) -> list[int]:
+        """SUB combine's city list as it leaves array() (lines 1043-1052)."""
+        cities = self.combine_cities(who)
+        self.set_array(cities)
+        return cities
+
+    # ---------------------------------------------- the human's menus
+    # The interface calls these. Each does what the original menu does,
+    # including what it leaves in array().
+
+    def _menu_movefrom(self, index: int) -> None:
+        """SUB movefrom, lines 1443-1469: "From" the idle armies' cities, then "Which"."""
+        idle = [i for i in starfin(self.side) if self.armyloc[i] > 0 and self.armymove[i] == 0]
+        self.set_menu([(self.city[self.armyloc[i]], self.armyloc[i]) for i in idle])
+        here = [i for i in idle if self.armyloc[i] == self.armyloc[index]]
+        if len(here) == 1:
+            self.set_array(here)
+        else:
+            self.set_menu([(f"Army {i}", i) for i in here])           # "Army" + STR$(i)
+
+    def human_move(self, index: int, dest: int) -> str:
+        self._menu_movefrom(index)
+        self.set_menu([(self.city[m], m) for m in self.neighbours(self.armyloc[index])])   # SUB armies 806-810
+        return self.order_move(index, dest)
+
+    def human_drill(self, index: int) -> str:
+        self._menu_movefrom(index)
+        return self.drill(index)
+
+    def human_rail(self, index: int, dest: int) -> str:
+        from . import railroad
+        self._menu_movefrom(index)
+        return railroad.haul(self, self.side, index, dest)
+
+    def human_cancel(self, index: int) -> str:
+        names = []                                         # SUB cancel lines 2702-2706
+        for j in starfin(self.side):
+            a = self.armyname[j]
+            if len(a) > 10:
+                a = a[a.find(" ") + 1:]
+            if self.armyloc[j] > 0 and self.armymove[j] > 0:
+                names.append((a, self.armyloc[j]))
+        self.set_menu(names)
+        return self.cancel(index)
+
+    def human_fortify(self, target: int) -> str:
+        self.set_menu([(self.city[self.armyloc[i]], self.armyloc[i]) for i in starfin(self.side)
+                       if self.armyloc[i] > 0 and self.fort[self.armyloc[i]] < 2])   # lines 1301-1309
+        return self.fortify(self.side, target)
+
+    def human_supply(self, index: int) -> str:
+        listed = [i for i in starfin(self.side) if self.armyloc[i] != 0 and self.supply[i] <= 1
+                  and not (self.realism > 0 and self.cutoff(self.side, self.armyloc[i]) < 1)]
+        self.set_array(listed)                             # lines 406-417, no sort
+        return self.resupply(index)
+
+    def human_join(self, target: int) -> str:
+        self.set_menu([(self.city[c], c) for c in self.combine_cities(self.side)])
+        return self.combine(self.side, target)
+
+    def human_recruit(self, target: int) -> str:
+        self.recruit_open(self.side)                       # reopening the kept list rewrites array()
+        return self.levy(self.side, target)
+
+    def human_navy(self, rows: list[int]) -> str:
+        """Main menu Ships (line 322): SUB navy with the human's menu rows."""
+        from . import navy
+        mark = len(self.log)
+        navy.navy(self, self.side, 0, rows)
+        texts = [e.text for e in self.log[mark:]]
+        return " ".join(texts) or "The fleet did nothing."
 
     def commander(self, who: int) -> int:
         """SUB commander, line 2887: a free slot with a leader, else a generic one."""
@@ -485,7 +586,8 @@ class Game:
 
     def newmonth(self) -> None:
         """Everything END TURN does before SUB victor."""
-        self.rflag = 0
+        self.rflag = 0                                     # endrnd, line 352
+        self.nflag = 0
         self.rcity = []
         from . import smarts
         self.say("turn", f"--------> EVENTS FOR {MONTHS[self.month]} {self.year} --------")
@@ -507,6 +609,8 @@ class Game:
             if self.capcity[i] > 0:
                 self.income[i] += 100
             self.cash[i] += self.income[i]
+            if self.commerce > 0 and i != self.commerce:    # line 272: raided commerce
+                self.cash[i] -= self.raider
         self.vptotal = self.income[1] + self.income[2]
         self.turn += 1
 
@@ -542,7 +646,10 @@ class Game:
         """tupdate lines 2434-2648: moves, battles, iterate, victory points."""
         # win and lose are tupdate locals: a skipped battle reuses the last pair.
         self._win = self._lose = 0
-        from . import smarts
+        from . import navy, railroad, smarts
+        for i in (1, 2):                                   # line 2408: trains arrive first
+            if self.rr[i] > 0:
+                railroad.arrive(self, i)
         for active in self._initiative():
             s = side_of(active)
             if smarts.PROBE is not None:
@@ -564,6 +671,8 @@ class Game:
             outcome = self._attack(active, origin, target, s) if hostile else "arrive"
             if outcome == "arrive":
                 self._arrive(active, target, s, self._fought)
+        navy.commerce_raiding(self)                        # label allthru, lines 2603-2633
+        navy.ships(self)                                   # line 2636
         self.iterate()
         self._victory_points()
 
@@ -631,6 +740,10 @@ class Game:
         """
         who = side_of(defend)
         options = [c for c in self.neighbours(self.armyloc[defend]) if self.cityp[c] == who]
+        if who == self.side:                               # SUB retreat writes its menu (lines 3626-3632)
+            self.set_array(options)
+            if len(options) >= 2:
+                self.set_menu([(self.city[c], c) for c in options])
         if who == self.side and len(options) == 1:
             return options[0]
         best = flee = 0
@@ -854,6 +967,9 @@ class Game:
                     self.cash[s] = cint(f32(self.cash[s] - .2 * self.armysize[i]))
             if (self.month < 7 or self.month > 10) and self.matrix[self.armyloc[i]][7] < 99:
                 self.supply[i] -= 1
+            if self.matrix[self.armyloc[i]][7] == 99 and self.navyloc[3 - s] == self.armyloc[i]:
+                self.supply[i] -= 1                        # line 1424: blockaded
+                self.say("blockade", f"{self.armyname[i]} is blockaded", army=i)
             if self.supply[i] < 1:
                 self.supply[i] = 0
                 self.say("supply_out", f"{self.armyname[i]} is out of supplies", army=i)

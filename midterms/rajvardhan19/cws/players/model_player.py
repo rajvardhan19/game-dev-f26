@@ -60,6 +60,19 @@ give more men; a city with no friendly neighbour gives a third.
 - supply <army>: buy supply for an army at 1 or less (up to 5).
 - drill <army>: +1 experience, up to the leader's rating (maximum 6). The army rests.
 - move <army> <city>, cancel <army>, end turn.
+- rail <army> <city>: one army per turn, up to the railroad capacity, from a city with friendly \
+rail links to any friendly city that also has them. It arrives before any army marches this turn \
+and then rests.
+- build wooden / build ironclad: add a ship ($100 / $200; ironclads from March 1862) to your fleet \
+in one of your seaports; "at <port>" starts a new fleet when you have none. At most 10 ships.
+- fleet sail <port>: move the fleet to any seaport. Meeting the enemy fleet means a naval battle \
+(ironclads are tougher and fight better).
+- fleet attack: bombard the enemy port the fleet is in: it hurts the garrison and its supply, or \
+damages the forts (shore batteries can sink ships), or turns an empty city neutral.
+- fleet raid: put to sea and sink enemy commerce, which costs them cash every turn.
+- fleet invade: land 3,500 men in the neutral port the fleet is in (uses one ship; Union only).
+- One fleet order a turn (sail, attack, raid or invade). An enemy fleet in one of your ports \
+blockades it: armies there lose a supply each turn.
 
 Reply with JSON only: {"actions": [...], "note": "..."}. "actions" is an ordered list of up to 8 \
 strings, each copied exactly from LEGAL ACTIONS. They are carried out one at a time, and the \
@@ -92,6 +105,19 @@ def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None
     for a in obs["enemy_armies"]:
         lines.append(f"{a['id']} {a['name']} | {a['men']} | {a['city_name']} ({a['city']}) | "
                      f"{'yes' if a['out_of_supply'] else 'no'}")
+    nv = obs["navies"]
+    for side in ("Union", "Rebel"):
+        f = nv[side]
+        where = f["at"] or "no fleet"
+        lines.append(f"{side.upper()} NAVY: {f['ships']} ship(s), {f['ironclads']} ironclad(s), {where}")
+    raid = obs["commerce_raiding"]
+    if raid["by"]:
+        lines.append(f"COMMERCE RAIDING by {raid['by']}: last loss ${raid['last_loss']}")
+    rail = obs["railroad"]
+    lines.append(f"RAILROAD: capacity {rail['capacity_men']} men"
+                 + (f"; army {rail['train']['army']} is on the train to {rail['train']['to']}" if rail["train"] else ""))
+    if obs["fleet_acted_this_turn"]:
+        lines.append("Your fleet has already acted this turn.")
     if obs["recruiting"]["rolled"]:
         lines.append("RECRUITS OFFERED THIS TURN IN: " + ", ".join(obs["recruiting"]["offered"]))
     if obs["last_turn_report"]:
@@ -107,7 +133,7 @@ def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None
         lines += ["", "THIS TURN SO FAR:"] + [f"- {m}" for m in obs["this_turn_messages"]]
     if memory.get("feedback"):
         lines += ["", "FEEDBACK: " + " ".join(memory["feedback"])]
-    lines += ["", "LEGAL ACTIONS:"] + legal
+    lines += ["", "LEGAL ACTIONS (one per line, reply with these exact strings):"] + legal
     return "\n".join(lines)
 
 

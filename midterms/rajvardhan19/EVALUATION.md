@@ -31,14 +31,14 @@ Ties are broken by turns resolved.
 **VP share is not the score.** A player conquered in 1862 can end with a
 higher VP share than one that held out to 1865, because of VP decay and the
 deadline's ×0.7. `tests/test_episodes.py` has a case of this, standard
-seed 3.
+seed 13.
 
 ## Comparison table
 
 ### Paired suite: evaluation seeds 1 and 2
 
-Run `20261023-baselines` (offline). Model rows will be filled from the live
-run; nothing below is estimated.
+Run `20261025-baselines` (offline), with navies and railroads in the game.
+Model rows will be filled from the live run; nothing below is estimated.
 
 | player | scenario | trials | win | held out | decisive loss | incomplete | mean turns | mean Union cities | invalid actions | fallbacks | model calls (failed) | mean latency s | tokens in / out | est. cost USD |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -48,15 +48,15 @@ run; nothing below is estimated.
 | model-obs-only | standard | **not yet run** | | | | | | | | | | | | |
 | model-obs-only | alternate | **not yet run** | | | | | | | | | | | | |
 | model-obs-only | reckless (held out) | **not yet run** | | | | | | | | | | | | |
-| original-ai | standard | 2 | 0 | 2 | 0 | 0 | 24.0 | 20.0 | 0 | 0 | - | - | - | - |
-| original-ai | alternate | 2 | 2 | 0 | 0 | 0 | 5.5 | 21.0 | 0 | 0 | - | - | - | - |
-| original-ai | reckless | 2 | 0 | 2 | 0 | 0 | 24.0 | 14.5 | 0 | 0 | - | - | - | - |
-| random | standard | 2 | 0 | 0 | 2 | 0 | 3.5 | 9.0 | 0 | 0 | - | - | - | - |
-| random | alternate | 2 | 0 | 0 | 2 | 0 | 5.5 | 8.5 | 0 | 0 | - | - | - | - |
-| random | reckless | 2 | 0 | 0 | 2 | 0 | 3.5 | 8.0 | 0 | 0 | - | - | - | - |
-| passive | standard | 2 | 0 | 0 | 2 | 0 | 7.0 | 4.0 | 0 | 0 | - | - | - | - |
-| passive | alternate | 2 | 0 | 0 | 2 | 0 | 6.5 | 6.5 | 0 | 0 | - | - | - | - |
-| passive | reckless | 2 | 0 | 0 | 2 | 0 | 6.5 | 5.0 | 0 | 0 | - | - | - | - |
+| original-ai | standard | 2 | 1 | 1 | 0 | 0 | 22.5 | 26.0 | 0 | 0 | - | - | - | - |
+| original-ai | alternate | 2 | 2 | 0 | 0 | 0 | 6.5 | 19.0 | 0 | 0 | - | - | - | - |
+| original-ai | reckless | 2 | 0 | 2 | 0 | 0 | 24.0 | 25.0 | 0 | 0 | - | - | - | - |
+| random | standard | 2 | 0 | 0 | 2 | 0 | 4.5 | 7.0 | 0 | 0 | - | - | - | - |
+| random | alternate | 2 | 0 | 0 | 2 | 0 | 4.0 | 7.5 | 0 | 0 | - | - | - | - |
+| random | reckless | 2 | 0 | 0 | 2 | 0 | 4.5 | 7.5 | 0 | 0 | - | - | - | - |
+| passive | standard | 2 | 0 | 0 | 2 | 0 | 8.0 | 4.5 | 0 | 0 | - | - | - | - |
+| passive | alternate | 2 | 0 | 0 | 2 | 0 | 5.5 | 7.5 | 0 | 0 | - | - | - | - |
+| passive | reckless | 2 | 0 | 0 | 2 | 0 | 7.0 | 4.5 | 0 | 0 | - | - | - | - |
 
 Live command, from `midterms/rajvardhan19/`:
 
@@ -71,30 +71,37 @@ returned (in `results.jsonl`) and the run date here.
 ### The cheap players over more seeds (1-20)
 
 Free, deterministic per seed, and not part of the paired comparison:
-[results/20261023-baselines/table.md](results/20261023-baselines/table.md).
+[results/20261025-baselines/table.md](results/20261025-baselines/table.md).
 
 | player | scenario | trials | win | held out | decisive loss | mean turns | mean Union cities |
 |---|---|---|---|---|---|---|---|
-| original-ai | standard | 20 | 2 | 17 | 1 | 22.0 | 16.3 |
-| original-ai | alternate | 20 | 20 | 0 | 0 | 8.5 | 19.8 |
-| original-ai | reckless | 20 | 1 | 10 | 9 | 20.4 | 12.5 |
-| random | standard | 20 | 0 | 0 | 20 | 4.2 | 7.7 |
-| random | alternate | 20 | 0 | 0 | 20 | 5.8 | 8.6 |
-| random | reckless | 20 | 0 | 0 | 20 | 4.8 | 7.7 |
+| original-ai | standard | 20 | 7 | 8 | 5 | 17.5 | 18.9 |
+| original-ai | alternate | 20 | 17 | 0 | 3 | 6.7 | 19.3 |
+| original-ai | reckless | 20 | 2 | 12 | 6 | 19.0 | 17.7 |
+| random | standard | 20 | 0 | 0 | 20 | 4.8 | 7.0 |
+| random | alternate | 20 | 0 | 0 | 20 | 4.3 | 7.2 |
+| random | reckless | 20 | 0 | 0 | 20 | 5.0 | 7.0 |
 | passive | standard | 20 | 0 | 0 | 20 | 7.5 | 5.2 |
-| passive | alternate | 20 | 0 | 0 | 20 | 7.2 | 7.0 |
-| passive | reckless | 20 | 0 | 0 | 20 | 6.9 | 5.2 |
+| passive | alternate | 20 | 0 | 0 | 20 | 5.0 | 7.7 |
+| passive | reckless | 20 | 0 | 0 | 20 | 7.7 | 4.7 |
 
 What these show:
 
-- **The baseline is a real competitor.** The original AI never loses on the
-  alternate map, holds out in most standard games, and is clearly stressed
-  by the reckless opponent (9 decisive losses in 20).
-- **Random and passive lose every game decisively.** Random falls in 2-12
-  turns, passive in 5-11.
-- **The suite has room in both directions.** A model can be shown to beat the
-  original AI (wins on `standard`, or fewer decisive losses on `reckless`),
-  to match it, or to fall to the floor. With two live trials per situation,
+- **The baseline is a real competitor.** The original AI, now using its own
+  fleet and trains, wins 17 of 20 on the alternate map. On the standard map
+  it wins 7, holds out in 8 and loses 5. Against the reckless opponent it
+  mostly holds out (12 of 20).
+- **Random and passive lose every game decisively.** Random falls in 2-11
+  turns, passive in 3-10.
+- **The war swings more with fleets and trains.** In the 2026-10-23 run,
+  before they were added, the original AI's standard-map record was 2 wins,
+  17 held out and 1 loss
+  ([results/20261023-baselines/](results/20261023-baselines/table.md),
+  superseded). This is not a controlled comparison: the baseline was also
+  corrected in between (line 2251, second review in `review.md`).
+- **The suite has room in both directions.** A model can be shown to beat
+  the original AI (more wins, or fewer decisive losses on `standard`), to
+  match it, or to fall to the floor. With two live trials per situation,
   only large differences are visible; this is not a statistical test.
 
 ### Cost
@@ -124,7 +131,7 @@ not help, that is a result.
 
 ## Traces
 
-- Baselines, paired seeds: [traces/20261023-baselines/](traces/20261023-baselines/).
+- Baselines, paired seeds: [traces/20261025-baselines/](traces/20261025-baselines/).
   One JSONL per episode. The first line is a header with the result and
   configuration; then each turn's board summary and every action with
   `source` (`scripted`, `model` or `fallback`), `accepted` and the game's
@@ -139,12 +146,15 @@ The original game code was compiled with QB64-PE 4.7.0 and run against
 this engine on the same seeds and commands. The run went through every SUB,
 including SUB victor, and the main-module rule paths copied by line number.
 
-- **36 games and 3,392 commands produced identical full game states after
-  every command.** The original AI, a random player and a passive player
-  played the Union in all three situations.
-- **Covered:** all nine command types, and eight end conditions.
-- **Not reached:** annihilation and a Union strength-ratio win. These two
-  are hand-traced in `tests/test_mechanics.py`.
+- **48 games and 3,637 commands produced identical full game states after
+  every command.** The compared state includes both fleets, the trains and
+  the menus' shared `array()`. The original AI, a random player, a passive
+  player and a naval test driver played the Union in all three situations.
+- **Covered:** all eleven command types, including 416 navy and 212
+  railroad commands, plus the computer's own fleet and trains every turn;
+  nine of the ten end conditions.
+- **Not reached:** annihilation, which is hand-traced in
+  `tests/test_mechanics.py`.
 - **Where:** the recordings are in `tools/qb64-harness/recorded/`, re-checked
   in CI by `tests/test_qb64_recorded.py`.
 
@@ -159,7 +169,7 @@ standard library and no secrets.
 
 | Check kind (brief) | Where |
 |---|---|
-| Rule invariants | `tests/test_interface.py` `Invariants` (every step of 12 whole games, including the two-month calendar); `tests/test_mechanics.py` (hand traces, every victory condition); `tests/test_qb64_recorded.py` (3,428 states against the original) |
+| Rule invariants | `tests/test_interface.py` `Invariants` (every step of 12 whole games, including the two-month calendar); `tests/test_mechanics.py` (hand traces, every victory condition); `tests/test_navy_rail.py` (hand traces of fleets and trains); `tests/test_qb64_recorded.py` (3,685 states against the original) |
 | Legal and illegal actions | `tests/test_interface.py` `LegalAndIllegal`, `InformationBoundary` (two-seed leak test) |
 | A successful path and terminal outcomes | `tests/test_episodes.py` (Union wins on income, takes Richmond, deadline reached); `tests/test_interface.py` (terminal refuses everything) |
 | An observed regression | `tests/test_regressions.py` (three engine bugs found on 2026-10-23); `tests/test_runner.py` `test_batch_stops_when_the_turn_resolves_whatever_the_spelling` (the review's blocking finding) |
@@ -174,8 +184,9 @@ CI run for the submitted commit: **TODO: link the green Actions run.**
 or discard:
 
 - the small sample (two live trials per situation);
-- the exclusions (navies, railroads, events) and that the opponent is
-  slightly richer without navies (QUESTIONS Q10);
+- the remaining exclusions (random events, relieve, capital moves) and the
+  late scope change: navies and railroads were added on 2026-10-25, before
+  any live run;
 - the opponent sees the full state, as in the original, while the players
   see only the screen;
 - the fixed design answers to the retreat and raze prompts;

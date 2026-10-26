@@ -24,7 +24,12 @@ class Prompt(unittest.TestCase):
         ep, obs = episode_obs()
         legal = ep.legal_actions(PLAYER_ID)
         text = render(obs, legal, {"feedback": []}, None)
-        self.assertTrue(text.endswith("\n".join(legal)))
+        # Every legal action appears whole, one per line, and nothing else is under the heading.
+        # (A grouped form, "move 4 <city>, <city> one of: ...", led a live model to answer
+        # "move 4 Paducah, Lexington": traces/dev-20261025/model-history-standard-101.jsonl.)
+        listed = text.split("LEGAL ACTIONS")[1].splitlines()[1:]
+        self.assertEqual(listed, legal)
+        self.assertFalse(any("<" in a or "," in a for a in listed))
         g = ep._game
         for i in range(21, 41):
             if g.armyloc[i]:

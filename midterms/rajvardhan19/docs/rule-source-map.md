@@ -18,7 +18,7 @@ data files are in `data/original/`; Python locations are in `cws/`.
 
 1. **Hand traces.** Each mechanic was ported one at a time from its SUB and
    tested against a result traced by hand with scripted dice
-   (`tests/test_mechanics.py`).
+   (`tests/test_mechanics.py`, `tests/test_navy_rail.py`).
 2. **Differential runs against the original.**
    `tools/qb64-harness/make_harness.py` compiles the original game code with
    QB64-PE 4.7.0.
@@ -26,34 +26,43 @@ data files are in `data/original/`; Python locations are in `cws/`.
      paths copied by line number:
      - start-up 128-217 (including `SUB filer` reading the real data files);
      - END TURN and newmonth through SUB victor (252-278);
-     - the Supply menu (402-425) and the Drill menu (460-467).
+     - the Ships menu (322), the Railroad menu (325-340), the Supply menu
+       (402-425) and the Drill menu (460-467).
    - **Changed:**
      - `TICK` (clock wait), emptied;
      - `menu`, which gives the midterm's design answers (Retreat: ESC;
-       Raze: ESC, i.e. No; End Game: Yes; Options: Quit) and otherwise the
-       scripted menu rows;
-     - `railroad`, out of scope;
+       Raze: ESC, i.e. No; End Game: Yes; Options: Quit, or Attack in a
+       naval battle) and otherwise the scripted menu rows;
      - `maxx`, the hall of fame, which does file and keyboard I/O;
      - the `INKEY$` key waits;
      - one added line in SUB victor that copies the condition number for the
        dump.
-   - **How commands run:** moves go through the original SUB armies and
-     movefrom menus, cancels through SUB cancel's name lookup, and recruits,
-     forts and joins through their SUBs.
+   - **How commands run:**
+     - moves go through the original SUB armies and movefrom menus;
+     - cancels go through SUB cancel's name lookup;
+     - trains go through SUB railroad and newcity;
+     - fleets go through SUB navy's menus;
+     - recruits, forts and joins go through their SUBs.
    - **The comparison:** the harness and the Python engine replay the same
-     commands under the same seed. The full state (every army, city,
-     treasury, VP, the opponent's `aggress!`, and the end-game result) is
-     compared after every command.
-   - **Results:** 36 games and 3,392 commands, every state identical. The
-     original AI, a random player and a passive player played the Union in
-     all three scenarios.
-   - **Coverage:** all nine command types, and eight end conditions through
-     the original SUB victor:
+     commands under the same seed. After every command they compare the full
+     state:
+     - every army and city, the treasuries and VP;
+     - the opponent's `aggress!`;
+     - both fleets, raiding, the trains and `cityp(0)`;
+     - the shared `array()`;
+     - the end-game result.
+   - **Results:** 48 games and 3,637 commands (3,685 states), every state
+     identical. The original AI, a random player and a passive player played
+     the Union, plus a naval test driver that favours Ships and Railroad
+     commands, in all three scenarios.
+   - **Coverage:** all eleven command types, including 416 Ships and 212
+     Railroad commands. Nine end conditions were reached through the
+     original SUB victor:
      - the deadline;
-     - Union city control, income share and capital capture;
+     - Union city control, income share, capital capture and strength ratio;
      - Rebel city control, income share, capital capture and strength ratio.
-   - **Not reached by any recorded game:** annihilation, and a Union
-     strength-ratio win. These have hand-traced tests instead.
+   - **Not reached by any recorded game:** annihilation, which has a
+     hand-traced test instead.
    - `tests/test_qb64_recorded.py` re-checks the recorded hashes in CI.
 3. **The differential run found three porting errors.** Each was fixed and
    has a regression test (see "Regressions found").
@@ -83,8 +92,10 @@ data files are in `data/original/`; Python locations are in `cws/`.
 - the opening order of battle, treasury, capitals and victory conditions (`CWS.INI` / `ALTMAP.INI`);
 - the leaders (`CWSLEAD.DAT` / `ALTLEAD.DAT`);
 - the shipped options (`CWS.CFG`): Balanced difficulty, Realism on, January campaigns allowed, opponent aggression NORMAL;
-- every Union command except those excluded below;
-- the whole monthly resolution: the computer's turn, initiative, movement, battle, retreat, surrender, capture, supply, attrition, the calendar, victory points and all six victory conditions.
+- every Union command except those excluded below, including the Ships and Railroad menus;
+- navies: wooden ships and ironclads, sailing, bombardment, shore batteries, naval battles, blockades, commerce raiding and Union invasions (added 2026-10-25);
+- railroads: one train per side per turn, with its capacity, arriving before the turn's marches (added 2026-10-25);
+- the whole monthly resolution: the computer's turn (including its fleet and trains), initiative, movement, battle, retreat, surrender, capture, supply, attrition, the calendar, victory points and all six victory conditions.
 
 An episode is one war, from the start date to a victory condition. The
 original's own deadline (March 1865 standard, October 1865 alternate) is a
@@ -94,8 +105,6 @@ victory condition, so every episode ends.
 
 | Excluded | Source | Why | Effect on play |
 |---|---|---|---|
-| Navies: ships, blockades, raiding, invasions | SUB navy lines 1471-1887; iterate line 1424; tupdate lines 2603-2633; smarts lines 2256-2297 | A second game of its own (400+ lines) with its own menus. The scope keeps the land war. Fleets are set to zero at start (design). | No blockade supply loss and no commerce raiding. Neither side spends cash on ships, so the computer has more to recruit with (QUESTIONS Q10). |
-| Railroads | SUB railroad lines 1969-2072; tupdate line 2408 | Long-range movement with its own capacity rules. Dropping it keeps one move per army per turn. | Both sides move only to adjacent cities. The computer's rail repositioning (line 2301) is absent. |
 | Random events | SUB events lines 3049-3188 | Turned off with the original's own Utility option (Random Events OFF, line 600). The alternative, the default "Favor Rebels" for a Union player (line 160), adds variance no player controls. | No foreign aid, riots, emancipation or furlough events. |
 | Relieve a commander | Commands menu line 470; SUB relieve lines 3350-3402 | Pool leaders are listed by name only, so the agent could not judge a swap, and listing every army-leader pair would bloat the action list. | The Union cannot replace a poor leader. |
 | Move the capital | lines 428-442 | Costs $500 and gives the enemy 50 VP; it is rarely useful in this scope. | Capitals stay where `CWS.INI` puts them. |
@@ -175,6 +184,47 @@ and rolls no dice (see "Choices for the playing agent").
 | `aggress!` = computer strength / Union strength (tenths summed in slot order, integer each step) | `code` | lines 1437-1440 |
 | VP: `.8*VP + .3*(income + control)`; +50 over 29 cities, +100 more over 34 (the Rebel line adds to the Union's total, as written); `aggress! += .7` when the computer holds under 11 cities | `code` | lines 2641-2648 |
 
+## Navies (SUB navy, lines 1471-1887)
+
+`navyloc` is a city, 0 (no fleet) or 99 (at sea, raiding). `fleet$` lists
+the ships: wooden ships are added at the end, ironclads at the front.
+
+| Rule | Label | Evidence |
+|---|---|---|
+| Opening fleets: Union 4 wooden at Philadelphia, Rebels 1 wooden at Mobile; with Realism every ship before 1862 is wooden (so ALTMAP's "IWWW" starts as "WWWW") | `code`, `observed` | line 1173; lines 151-156; `CWS.INI`, `ALTMAP.INI` |
+| Every call to SUB navy sets `cityp(0) = who`; the computer later reads `cityp(navyloc)` with no fleet (`navyloc = 0`), so this decides whether it builds or saves for ships | `code` (as written) | lines 1483, 2259, 2271 |
+| Build: $100 a wooden ship; the human pays $200 for an ironclad (from March 1862 with Realism, cash >= 200); the computer's ironclad costs $100 (line 1537 doubles the cost only in the human's branch) | `code` | lines 1514-1549 |
+| A builder rolls once even when it cannot matter (`chx = 1 AND RND < .07 * ships`); the computer keeps building until that roll, cash under 100 or 10 ships stops it | `code`, `observed` | line 1523; label ahoy |
+| A first ship starts a fleet in an own seaport without the enemy fleet; the human chooses it, the computer picks at random | `code` | lines 1551-1571 |
+| Ships join an existing fleet only in an own seaport for the human (the computer's fleet adds ships anywhere but at sea) | `code` | lines 1519-1522 |
+| Sail: to any seaport (`matrix(c,7) > 90`, i.e. 99); a fleet meeting the enemy fleet fights | `code` | lines 1629-1690 |
+| Naval battle: each shot hits the enemy with probability .5, ±.1 when one side's last ship is an ironclad and the other's is not; a ship takes 10 hits (20 if ironclad) before sinking; the defeated side gains 10 VP | `code` (as written), `observed` | lines 1739-1821 |
+| The human's "Attack / Retreat" choice in a naval battle is answered Attack | `design` | the computer always attacks (line 1770); a retreat choice would need a mid-battle action. Alternative rejected: an extra action type for one rare prompt. |
+| Attack an enemy port: an occupied city loses `armysize * (.005*ships + .02*RND)` (at least 100 men) and `CINT(.5*ships + 1)` supply | `code` | lines 1590-1597 |
+| An empty fortified port: each round, `RND < .7 + .03*(ships - forts)` damages a fort; otherwise a shore battery sinks a ship (fleet lost: defender +5 VP) | `code` | lines 1598-1620 |
+| An empty unfortified port turns neutral if `RND <= .25 + .07*ships` (never a capital); the attacker gains its value in VP | `code` | lines 1621-1628 |
+| The human's Attack rolls once at line 1582 even though the test is for the computer | `code`, `observed` | line 1582 |
+| The computer's 50% "sail instead" (line 1582) jumps back with `choose` still 2, so it bombards anyway | `code` (as written) | lines 1582, 1511 |
+| Raid: the fleet goes to sea (99); each resolution `RND < .8 + .02*ships` sinks `.05*ships*(1+RND)*enemy income` (at most 30%), which the enemy pays at the next income | `code`, `observed` | lines 1691-1720, 2603-2617, 272 |
+| A failed raid roll loses a ship and, while ships remain at sea, rolls again; losing the last one ends the raid | `code`, hand-traced (`tests/test_navy_rail.py`); no recorded game reached it (16 raid resolutions, all successful on the first roll) | lines 2617-2632 |
+| Blockade: an army in a seaport where the enemy fleet lies loses 1 supply each turn | `code`, `observed` | line 1424 |
+| Invasion (Union only with Realism): a fleet of 2+ ships in a neutral port lands 3,500 men under a free commander, losing one ship; the city is captured | `code`, `observed` | lines 1504, 1721-1731 |
+| One fleet order a turn for the human (sail, attack, raid or invade set `nflag`); builds do not count | `code` | lines 297, 322, 1585, 1656, 1696, 1730 |
+| The main menu also greys out Ships when you have no fleet and less than $100 (line 289). Not ported: cash only falls during your turn, so no navy action is possible then and `legal_actions` lists none; `fleet_acted_this_turn` reports only the order flag above | `code`, `design` | line 289 |
+| The computer's fleet: at sea, it sails on 90% of the time (2268); otherwise it builds a ship if it has the cash and its fleet is in an own port (2271); then from an own or neutral port it sails to a target GOSUB nest picks, and in an enemy port it bombards (or, if the port is occupied, sails 30% of the time). It reaches the sea only through `grudge`: that flag (set when the enemy's raid succeeds, line 2615, and after naval battles, lines 1798 and 1817) turns any order into "sail to the enemy fleet" (1478, 1639). Its own raid order (`chx = 4`, line 1477) is always overridden by that same grudge | `code`, `observed` | lines 2256-2297, 1473-1480, 1846-1866 |
+| `nest` sets `choose = 30` half the time when the Rebel fleet is at Philadelphia. That is a menu row, not a city: no list in scope reaches row 30 (the longest are army lists of up to 20), so `array(30)` is 0 and line 1659 leaves the fleet where it is | `code` (as written), `observed` (16 recorded returns, all reading 0), hand-traced | lines 1865, 1659; `array()` is modelled and compared |
+
+## Railroads (SUB railroad, lines 1969-2072)
+
+| Rule | Label | Evidence |
+|---|---|---|
+| Capacity (hundreds of men): `train(who) + 5*(cities - 11)`, between half and twice `train(who)`; `train` is 600 Union, 300 Rebel (CWS.CFG). The 11 is the human's side's base, used for both sides | `code` | SUB traincapacity lines 4054-4061 |
+| `route`: one point per friendly neighbour, plus one per friendly city beyond it | `code` | lines 2055-2066 |
+| Boarding: an idle army within capacity, `route > 1` where it stands; destination: any own city with `route > 1` (the track between is not checked) | `code` | lines 2004-2019, newcity lines 1906-1946 |
+| One train per side per turn; aboard, the army's city is 0 and its order is the destination | `code` | lines 298, 2020-2032 |
+| Arrival comes first in the resolution, before initiative; the army then rests | `code`, `observed` | lines 2408, 2034-2052 |
+| The computer moves its least-threatened army with rail access to a threatened city it holds, preferring forts and its capital; its capital check uses the last city it looked at | `code` (as written), `observed` | lines 1971-2003 |
+
 ## Victory conditions
 
 SUB victor checks the Union first, then the Rebels. The deadline is checked
@@ -186,11 +236,11 @@ original SUB victor with identical states.
 | Condition | Label | Evidence |
 |---|---|---|
 | Enemy has no army: +300 VP, +100 more, wins | `code` | lines 4397, 4493; hand-traced in `tests/test_mechanics.py` (no recorded game reached it) |
-| Date reached (`year >= vicflag(2)` and `month >= vicflag(1)`): **Confederate technical victory**; both VP x .7 | `code`, `observed` | lines 4399, 4459, 4498; 8 recorded games |
-| Controls `vicflag(3)` cities (32 standard, 28 alternate) | `code`, `observed` | line 4400; Union 1 game, Rebel 16 |
-| Earns `vicflag(4)`% of total income (80 standard, 60 alternate) | `code`, `observed` | line 4401; Union 5 games, Rebel 1 |
-| Holds own capital while the enemy's is taken | `code`, `observed` | line 4402; Union 1 game, Rebel 3 |
-| Total strength more than `vicflag(6)` : 1 (3 standard, 4 alternate) | `code`, `observed` (Rebel) | lines 4404-4412; Rebel 1 game; the Union case is hand-traced |
+| Date reached (`year >= vicflag(2)` and `month >= vicflag(1)`): **Confederate technical victory**; both VP x .7 | `code`, `observed` | lines 4399, 4459, 4498; 6 recorded games |
+| Controls `vicflag(3)` cities (32 standard, 28 alternate) | `code`, `observed` | line 4400; Union 1 game, Rebel 19 |
+| Earns `vicflag(4)`% of total income (80 standard, 60 alternate) | `code`, `observed` | line 4401; Union 5 games, Rebel 4 |
+| Holds own capital while the enemy's is taken | `code`, `observed` | line 4402; Union 1 game, Rebel 10 |
+| Total strength more than `vicflag(6)` : 1 (3 standard, 4 alternate) | `code`, `observed` | lines 4404-4412; Union 1 game, Rebel 1 |
 
 ## The computer opponent (SUB smarts, lines 2212-2365)
 
@@ -205,9 +255,9 @@ original smarts under QB64 against this port.
 | Resupply armies at 0 | `code` | 2221-2222 | |
 | Fortify the occupied capital (fort < 2); then, while `1+RND >= bold+aggress!`, a city under threat (`void > size`) | `code` | 2225-2252 | At NORMAL (bold 3) the second branch never runs, since 1+RND < 3. The extra RNDs at 2251-2252 are always drawn (no short-circuit). |
 | Recruit until cash < 100 unless it already has more than 5+3*RND armies (`enufarmies`, `randsel`) | `code` | 2255-2260, 2354-2364, 2146-2173 | `randsel`'s `x = 0 XOR armysize(x) < 155` is ported as written |
-| Navy branches | `design` (excluded) | 2256-2297 | Out of scope; with no fleets none can fire |
+| Fleet: a first ship for the Union computer; money kept back for ships (`slush`); build, sail, raid or attack | `code` | 2256-2297 | See "Navies" |
 | Combine in one random eligible city | `code` | 2300, 1054 | |
-| Railroad | `design` (excluded) | 2301 | Out of scope |
+| Railroad | `code` | 2301 | See "Railroads" |
 | Each army: hold the capital if threatened; otherwise `evaluate` scores each neighbour and the army marches to the best | `code` | 2304-2339, 2961-3047 | Crossing-move check compares a destination with army size, as written (line 2327) |
 | Drill every idle army that can | `code` | 2340-2351 | |
 
@@ -219,6 +269,8 @@ original smarts under QB64 against this port.
 | Both sides' cash, income and cities | `code` | City Report lines 3495-3497 |
 | Both sides' VP and the Union share | `code` | topbar lines 3973-3981; Army Report line 3437 |
 | Own armies: size, city, leader, experience, supply, order | `code` | Army Report lines 3457-3461 |
+| Both navies: ships, ironclads, where they are (a port, or at sea raiding); who is raiding and the last loss | `code` | Army Report lines 3468-3474 print each side's ships, ironclads and port (nothing for a fleet at sea); a fleet at sea is drawn offshore by SUB ships (line 3805) and the COMMERCE box marks raiding (usa, lines 4357-4362); the raid messages at lines 2611 and 2620 |
+| Railroad capacity, and your own army on the train | `code` | lines 336, 3475 (the enemy's train leaves and arrives inside END TURN, so you never see it in transit) |
 | Enemy armies: number, leader name, size, city | `code` | Army Report line 3459 (`IF who <> side THEN PRINT : GOTO deadeye` stops before leader, experience and supply) |
 | Enemy army out of supply (yes/no) | `code` | placearmy lines 1961-1966 draw an "S" for any army at 0 supply |
 | Last turn's moves, battles, captures, retreats, new armies, fortifications | `code` | Messages the original prints: move line 2440; new armies 1894; reinforcements 2141; forts 2248. Battle panel: final strengths 875 and 921, odds 930, result line 967, losses 1003-1009. |
@@ -234,6 +286,8 @@ original smarts under QB64 against this port.
 | `legal_actions` never rolls dice. It checks for a free army slot directly instead of calling SUB commander, which can roll a generic leader's rating (line 2901). | `design` | Alternative rejected: a "recruit" list that runs the original's menu code, rolling as it lists. Tests: `tests/test_interface.py` two-seed test, and `test_no_die_is_rolled_before_a_roll`, which watches the dice counter. |
 | Retreat menu answered ESC; Raze answered No; End Game answered Yes | `design` | Above |
 | The engine runs in a separate process; the player holds a `PlayerPort` with only `observe`, `legal_actions` and `step` | `design` | Week 3 enforcement plan. In-process objects are reachable from Python, so a prompt is not a boundary. `tests/test_runner.py` ProcessBoundary. |
+| Ships and Railroad vocabulary: `build wooden`, `build ironclad` (or `... at <port>` to start a fleet), `fleet sail <port>`, `fleet attack`, `fleet raid`, `fleet invade`, `rail <army> <city>`; each listed only when the original's menu would act on it | `design` | Each string stands for one path through SUB navy's or SUB railroad's menus (the rows are in `cws/interface.py` `_navy_actions`). Alternative rejected: exposing the menu rows themselves, which mean nothing outside the original's screens. |
+| The model's prompt lists every legal action whole, one per line, exactly as `legal_actions` returns it | `design` | Changed 2026-10-25 on dev seed 101: a grouped form (`move 1 <city>, <city> one of: ...`) led the model to answer "move 4 Paducah, Lexington". The full list is about 90 lines (about 450 tokens). |
 | The model may propose up to 8 actions per call; the runner submits them one at a time and stops at the first rejected one, after `troops` (new information) or at `end turn` | `design` | Over 24 turns, one call per action would be about 300 calls per episode. Batching brings that to about 3 per turn. Each action is still validated by `step` and appears in the trace. |
 | The limits (all enforced by the runner; `tests/test_runner.py`):<br>- steps: 600<br>- model calls: 150<br>- per call: 30 s and one attempt, with a 45 s runner watchdog<br>- per episode: 30 min<br>- per turn: 40 actions, or 3 failures<br>after which the runner submits `end turn` labelled `fallback`. A crashing baseline ends with "player error". | `design` | A model game is about 24 turns of about 3 calls, so 150 calls is twice the need, and 600 steps is about four times the original AI's longest game. The per-turn caps stop a model cycling `move`/`cancel` or repeating a rejected action forever. Alternative rejected: no limits beyond the game's own deadline, under which a looping model never ends an episode. |
 
@@ -254,6 +308,13 @@ These look like bugs, but the reconstruction keeps them because the rule is
 - Line 3031: compares a city owner with a city number.
 - Line 2647: the Rebel's 35-city bonus is computed from the Union's VP.
 - `playb` (lines 2174-2177) adds a difficulty bonus that `newarmy` then overwrites.
+- Line 1483: every SUB navy call sets `cityp(0)`, which later decides whether the computer builds ships.
+- Line 1537: the computer's ironclads cost $100.
+- Line 1582: the computer's "sail instead of bombard" bombards anyway.
+- Lines 1796 and 1815: the side whose fleet is destroyed gains 10 VP.
+- Line 1865: `choose = 30` is a menu row; `array(30)` is always 0 in scope, so the Rebel fleet at Philadelphia stays in port half the time.
+- Lines 1996-1997: the computer's rail capital check runs `route` on the last city it examined, not the capital.
+- Line 4056: train capacity uses the human's side for both sides' base.
 
 ## Regressions found
 

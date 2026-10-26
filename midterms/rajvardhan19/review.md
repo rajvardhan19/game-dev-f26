@@ -176,3 +176,192 @@ Notes:
   lost ..., defender lost ...".
 - **sync --delete: documented.** `midterm/` is the source of truth; the
   script's header says so.
+
+---
+
+## Second review: navies and railroads (change of 2026-10-25, read-only)
+
+Run by the `rules-reviewer` agent in a fresh session. Its report follows unedited.
+
+Rules review: navies and railroads (change of 2026-10-25)
+
+I found no blocking issue. Every navy and railroad rule I compared against CWSTRAT.BAS is ported faithfully. The findings are about weak tests, untested paths, doc claims the code or results do not support, and one prompt defect that a live trace shows causing rejected actions.
+
+**Findings, most serious first**
+
+[should fix] tests/test_navy_rail.py:104-117: the blockade test cannot tell the enemy's fleet from the army's own. Line 1424 tests `navyloc(3 - s)`. The test puts the Union fleet at Mobile, but CWS.INI already has the Rebel fleet at Mobile (line 21 of the test asserts it). So a port that wrongly used `navyloc(s)` still takes supply from 5 to 4 and passes.
+
+[should fix] docs/rule-source-map.md:208: the raid row is labelled `observed` and says "otherwise a ship is lost and the roll repeats". That repeat (lines 2617-2624, `raider = 0`, barnacle, `GOTO allthru`) was never observed and never hand-traced. I replayed all 48 recordings in memory: 16 resolutions with commerce raiding, every one a success on the first roll, no "raiders have lost a ship" event. test_commerce_raiding_amount (test_navy_rail.py:97) scripts only the success path.
+
+[should fix] cws/players/model_player.py:158: `compact()` prints `move 4 <city>, <city> one of: ...`. The literal "<city>, <city>" invites a comma list, and the model did exactly that. In traces/dev-20261025/model-history-standard-101.jsonl line 9, turn 2, the model played "move 4 Paducah, Lexington", which was rejected as an invalid action. tests/test_model_player.py:22-33 only checks that each action can be recovered from the grouped line, not that the format is unambiguous.
+
+[should fix] docs/rule-source-map.md:219: "between a quarter and twice train(who)" is wrong. SUB traincapacity (lines 4058-4060) sets `x = 2 * train(who)` and floors at `x \ 4`, which is half of train(who) (300 for the Union, 150 for the Rebels). The code (railroad.py:21-23) is right; the floor is not tested (test_train_capacity checks the cap and 545 only).
+
+[should fix] docs/rule-source-map.md:213 and QUESTIONS.md:38 (Q30): "it sails to whatever stale city is in array(30)" never happens in scope. The sail list has at most 9 rows (nine 99-ports in CITIES.GRD), and nothing else in scope writes a nonzero array(30). Recruit's loop at line 2086 only zeroes it. In all 48 recordings the highest nonzero array() index is 11. All 16 recorded returns of 30 from line 1865 read array(30) = 0, so line 1659 `IF array(choose) < 1 THEN EXIT SUB` applies. The real effect is that the Rebel fleet at Philadelphia stays put half the time.
+
+[should fix] tests/test_navy_rail.py:84-95: test_ship_against_ship says it covers "an ironclad: 20 hits, and +.1 per shot", but it cannot fail on either. All ten rolls are .1, which is below .4, .5 and .6, so the Union lands every shot and never takes a hit. A port with the ±.1 reversed, or with 10 hits for an ironclad, passes. It also never reaches the attacker-eliminated branch (hitme1, lines 1805-1821) or checks grudge.
+
+[should fix] SUITE.md:12-13: the reasons given for two situations are now contradicted by results/20261025-baselines/table.md.
+- `standard` says "The original AI usually holds out"; it held out in 7 of 20 (5 wins, 8 losses).
+- `alternate` says "always wins"; it won 19 of 20.
+
+[note] README.md:52, EVALUATION.md:151, docs/rule-source-map.md:58: "360 navy and 197 railroad commands" is stale. The 48 recordings contain 416 N and 212 L commands. 360/197 is the count without standard-original-ai-seed10, standard-original-ai-seed56 and reckless-original-ai-seed144, which were added at 17:31, while the "48 games / 3,637 commands" figure next to it includes them.
+
+[note] docs/rule-source-map.md:212: "raid from sea" does not match the code.
+- At sea the computer calls `navy(who, 3)` (Sail via nest) at line 2268 (90%) or line 2283 (50%).
+- Its own raid mode (chx = 4, line 1477) is always overridden by `grudge > 0` (line 1478), because line 2615 sets grudge whenever a Union raid makes raider > 0.
+- No recording has a "Rebel ... sailing to RAID" event. The one Rebel raid came after it won a battle at sea.
+- "Revenge after being raided" also leaves out that grudge is set by lines 1798 and 1817 after naval battles.
+
+[note] Line 289 (`IF cash(side) < 100 AND navyloc(side) = 0 THEN nflag = 1`, at menu0) is in neither the Python engine nor the harness, which copies 322/325-340 but not menu0. So the nflag comparison cannot catch it. I found no rule effect: cash only falls during the human's turn, so no build is possible anyway. But `fleet_acted_this_turn` (interface.py:123) reads false where the original greys out Ships, and rule-source-map.md:211 cites 297/322 but not 289.
+
+[note] cws/interface.py:272-274: `fleet invade` is withheld when no commander slot is free. The original's human branch (lines 1721-1729; the `chx > 0` guard at 1723 does not apply) goes on with `empty = 0`. It runs newarmy and capture on army slot 0, captures the neutral port and loses a ship. This deviation is not recorded in QUESTIONS.md; Q34 covers only the computer, and also leaves out the Rebels' realism = 0 case at line 1505.
+
+[note] cws/players/baselines.py:115 drops line 2251's `navysize(1) < 1`. The Union now starts with 4 ships, so the original never jumps to signup there, but the baseline breaks 50% of the time. At bold 3 this changes only the baseline's own dice stream. The comment at cws/smarts.py:272 ("navysize(1) < 1 ... hold") is now false.
+
+[note] The vocabulary has no "open Ships, then ESC". In the original that still sets `cityp(0) = 1` (line 1483), which stops a fleetless Rebel from saving (2259) or rebuilding (2271). It is state-changing, so it falls under the rule-map's "listed when it would change the game". Kept quirk; worth a line in Q26.
+
+[note] Paths covered by neither hand traces nor recordings:
+- the Type menu's Wooden answer `[1, 1]`;
+- a new wooden fleet `[1, row]` or `[1, 1, row]`.
+
+The recorded row patterns are [1]×48, [1,2]×4, [1,2,row]×2, [2]×191, [3,row]×136, [4]×12, [5]×23. Computer rail choice, `_naval_orders`, nest and invasion have no hand trace; they are covered only by recordings: about 200 Rebel hauls, 207 computer navy calls, 16 line-1865 returns, 23 invasions.
+
+[note] tests/test_navy_rail.py:56, 77: two hand traces cannot catch plausible slips.
+- The bombardment uses 4 ships, so `.5*4 + 1 = 3` is exact and half-even CINT is never exercised (3 or 5 ships would).
+- The shore-battery rolls (.95, .1) give the same result if `navysize - fort` were reversed.
+
+[note] EVALUATION.md:96-98 and QUESTIONS.md:25 (Q17) quote the 2026-10-23 baseline (2 wins, 17 held out, 1 loss). That results directory (results/20261023-baselines, read in review.md:27) is no longer in the repo, so no file backs the "before" numbers.
+
+[note] QUESTIONS.md:9 (Q1) says "all 36 recorded games"; there are 48.
+
+[note] README.md "design choices" list omits the naval battle's Attack answer. Q33 (QUESTIONS.md:41) does not say what it changes: the human cannot break off a battle it started. The original's Retreat (lines 1823-1830) sends the fleet to an own shipyard.
+
+[note] docs/rule-source-map.md:270: the evidence for "at sea" cites the Army Report, but line 3474 prints nothing for navyloc 99. What shows it is SUB ships line 3805 (sea position) and usa's COMMERCE box (line 4360).
+
+[note] cws/players/baselines.py:247-248: the baseline cannot sail to sea for revenge. `dest == AT_SEA` returns, while the original's grudge path (line 1639) sails to 99 and fights. This approximation is not in the class docstring.
+
+[note] cws/smarts.py:5 cites cws/players/original_ai.py, which does not exist (the class is in baselines.py).
+
+**1. Fidelity: what I compared line by line, no mismatch found**
+- Top-of-navy chx changes (1473-1480).
+- ahoy menu choices and invasion test (1482-1510), including `void(navyloc(1))` for both sides.
+- Build: 1523 roll for every builder, Type menu, computer ironclad at $100, add2ship, Port menu with random choice (1551-1571).
+- Attack (1579-1628): 1582's roll for the human and its `GOTO anchor` re-roll; casualties `cint(f32(size*pct!))`; supply `cint(.5n+1)`; shore-battery loop; blast; capital check.
+- Sail and admiral (1629-1690): grudge `array(1)`, nest (1846-1866) with the RND only when the target is the enemy fleet, and line 1865.
+- Raid (1691-1720) and invasion (1721-1731).
+- pirate (1739-1821): hit init, `.5 ± .1` cast to single, VP and grudge on both branches, sail3.
+- barnacle (836), ships (3799).
+- Commerce raiding (2603-2633): loop, the 30% cap compared as single, x/0.
+- Income deduction (272), blockade (1424).
+- smarts signup with slush and cityp(0) (2255-2264), dock and movenavy (2265-2293, the OR at 2288 rolls every time), ships, combine, railroad order (2297-2301).
+- railroad CASE 0 for the computer (1971-2003, including `target` carried into 1997), human path (2004-2019), haul, arrive (2034-2052), route, traincapacity.
+
+`side` is the human everywhere it should be: void, the 1992-1993 cityy preference, 4056, nflag and the Type menu. `who` and `3 - who` match in navy and pirate.
+
+**2. array()**
+
+I checked every array() write in the routines the harness runs: 415, 808+810, 1046+1052, 1305+1309, 1447/1460+bubble, 1553, 1635, 1639, 2078/2086/2092+2100, 2704+2706, 2969/3035 and 3627+3632. newcity, menu, battle, victor, iterate and tupdate write none. I found no missing write, and the sort and no-sort choices match the source.
+
+**3. Information boundary**
+
+No leak found.
+- Navies for both sides: lines 3468-3474, plus SUB ships and usa.
+- Raid "by" and "last_loss": messages at 2611 and 2620.
+- Train capacity: line 336. Own train: line 3475.
+- Every navy and rail event text is printed unconditionally in the original.
+- `legal_actions` rolls no dice: port_list, sail_list, route, can_board and destinations are pure, and test_no_die_is_rolled_before_a_roll passes.
+
+For each listed navy and rail action I traced the rows through SUB navy, movefrom and newcity. None reaches a `GOTO ahoy`/`aboard` loop, a different CASE, or an exhausted menu.
+
+**4. Tests**
+
+I ran tests.test_navy_rail and tests.test_interface (33 tests, OK). I did not run the full 96.
+
+**Files read**
+- source/CWSTRAT.BAS: lines 1-104, 125-480, 797-845, 1038-1190, 1295-1330, 1406-2180, 2212-2460, 2494-2730, 2827-2908, 2943-2990, 3030-3048, 3342-3350, 3404-3480, 3602-3640, 3799-3831, 3992-4064, 4340-4385, 4514-4544, 4668-4850
+- cws/navy.py, cws/railroad.py, cws/engine.py, cws/smarts.py, cws/interface.py, cws/qb.py, cws/data.py, cws/scenarios.py
+- cws/players/baselines.py, cws/players/view.py, cws/players/model_player.py
+- tests/test_navy_rail.py, tests/test_qb64_recorded.py, tests/test_interface.py, tests/test_model_player.py
+- tools/qb64-harness/make_harness.py, tools/qb64-harness/compare.py, tools/qb64-harness/recorded/*.json (replayed in memory)
+- docs/rule-source-map.md, QUESTIONS.md, README.md, SUITE.md, EVALUATION.md, AGENTS.md, CLAUDE.md, AGENT-TEAM.md, .claude/agents/rules-reviewer.md, review.md (searched)
+- data/original/CWS.INI, ALTMAP.INI, CWS.CFG, CITIES.GRD
+- results/20261025-baselines/table.md, table-paired-seeds-1-2.md, results.jsonl
+- results/dev-20261025/results.jsonl, traces/dev-20261025/model-history-standard-101.jsonl
+
+## Response to the second review (implementation agent, same day)
+
+**Done** means changed and tested; **documented** means the behaviour stays
+and the documents now say so. The student accepts or rejects each response
+in AGENT-TEAM.md. Every new or rewritten test was mutation-checked: the
+slip the reviewer describes was applied to a scratch copy and the test failed.
+
+Should fix:
+
+1. **Blockade test: done.** The Rebel fleet is moved to New Orleans, and a
+   second case puts the Rebel fleet at Mobile with the Union fleet away:
+   supply stays 5. A port using `navyloc(s)` now fails.
+2. **Raid failure path: done.** Two hand traces: a failed roll loses a ship
+   and rolls again (3 rolls, raider 90), and losing the last ship ends the
+   raid. The map row is split: success `observed`, failure `code` plus
+   hand trace, "no recorded game reached it".
+3. **Grouped legal actions in the prompt: done.** The prompt now lists
+   every legal action whole, one per line. The test checks the list under
+   the heading equals `legal_actions` exactly and holds no `<` or `,`. Re-run
+   live on dev seeds only (SUITE.md).
+4. **Train capacity floor: done.** The map says "between half and twice";
+   a test with `train = 101` checks the floor `(2*101) \ 4 = 50`.
+5. **array(30): done.** Q30, the map row and the quirk list now say what
+   happens: no list in scope reaches row 30, so the fleet stays in port half
+   the time. Two hand traces of nest cover it (New Orleans with .55, .4;
+   stays with .55, .6), and dropping line 1865 fails them.
+6. **Ship against ship: done.** Replaced by two traces. An ironclad
+   absorbs 15 hits and wins on rolls of .55 (fails with 10 hits or with the
+   ±.1 reversed). A wooden attacker against an ironclad is eliminated
+   (hitme1), gaining 10 VP and clearing grudge. Both check grudge and the
+   roll count.
+7. **SUITE.md reasons: done.** Restated from the current run, and the
+   change log says the old text came from the 2026-10-23 run.
+
+Notes:
+
+- **Command counts: done.** 416 Ships and 212 Railroad commands, recounted
+  from the 48 recordings, in README, EVALUATION and the map.
+- **"Raid from sea": done.** The map row now follows lines 2265-2293: at
+  sea it sails on 90%, it reaches the sea only through `grudge`, and
+  `grudge` (2615, 1798, 1817) overrides the raid order.
+- **Line 289: documented.** A map row says it is not ported and why; no
+  navy action is possible then, and `fleet_acted_this_turn` reports only
+  the order flag.
+- **Invasion without a free commander: documented** as Q36 (`design`).
+  Q34 now also covers the Rebels' Realism-off invasion (line 1505).
+- **Baseline line 2251: done, and it changed results.** The baseline now
+  rolls and jumps only when `navysize(1) < 1`, as the source does; the
+  smarts comment is corrected. `20261025-baselines` was re-run in place:
+  standard 7, 8, 5 (was 5, 7, 8), alternate 17, 0, 3 (was 19, 0, 1),
+  reckless unchanged; random and passive identical. Three episode tests
+  pinned to old baseline games were re-pinned to seeds showing the same
+  paths (capital capture: seed 7; deadline: seed 3; VP counterexample:
+  seed 13). SUITE.md and EVALUATION.md record this.
+- **ESC from Ships: documented** in Q26 as a `design` gap.
+- **Untested build paths: done.** Hand traces of the Type menu's Wooden
+  answer `[1, 1]` and of a new fleet in a chosen shipyard `[1, 1]` with the
+  enemy fleet excluding a port.
+- **Weak bombardment and shore-battery traces: done.** A 3-ship
+  bombardment checks CINT(2.5) = 2. The shore-battery rolls are now .95,
+  .7, which sink another ship if `navysize - fort` is reversed.
+- **2026-10-23 results missing: done.** Restored from the earlier course-
+  repo copy as `results/20261023-baselines/` and
+  `traces/20261023-baselines/`. EVALUATION and Q17 cite it and say it is not
+  a controlled comparison.
+- **Q1 count: done** (48).
+- **Naval Attack answer: done.** In the README's design list. Q33 says
+  what it changes.
+- **"At sea" evidence: done.** It now cites SUB ships line 3805 and the
+  COMMERCE box (lines 4357-4362), and says the Army Report prints no port.
+- **Baseline cannot sail to sea for revenge: documented** in the OriginalAI
+  docstring, with the battle and shore-battery grudge writes it ignores.
+- **smarts.py citation: done.**
+
+Not done: computer rail choice, `_naval_orders` and invasion still have no
+hand trace. They remain covered by the 48 QB64 recordings only.

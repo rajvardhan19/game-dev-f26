@@ -27,7 +27,8 @@ Facts first; the reasons and the rejected alternatives are mine to write.
 | Method: one mechanic at a time, hand-traced with seeded dice; ambiguities in QUESTIONS.md; separate engine process; two-seed leak test | me, Week 3 | | |
 | Live provider: Vertex AI (course credit) | me, 2026-10-23 | Anthropic or OpenAI key | |
 | Build in `Designing-AI-Agents/midterm/`, submit as `midterms/rajvardhan19/` | me, 2026-10-23 | | |
-| Exclude navies, railroads, relieve, capital moves; Random Events OFF | proposed by the implementation agent; accepted / rejected: TODO | the full game | |
+| Exclude relieve, capital moves; Random Events OFF | proposed by the implementation agent; accepted / rejected: TODO | the full game | |
+| Bring navies and railroads into scope | me, 2026-10-25 (they were excluded in the first build) | the land war only | TODO |
 | Verify against the original compiled with QB64, not only hand traces | proposed by the implementation agent; TODO | hand traces only (my Week 3 plan) | |
 | Outcome tiers (win / held out / decisive loss) instead of VP share | proposed after a test showed VP share rewards losing early; TODO | VP share | |
 | Strong baseline = the original's own Union AI on the Union's observation | proposed by the implementation agent; TODO | a hand-written heuristic | |
@@ -56,6 +57,23 @@ Facts for me to reflect on:
      because the harness never called SUB victor.
    Both were fixed, and the harness was rebuilt from verbatim line
    extracts (`review.md`, Response).
+6. **What the second review (navies and railroads) found.** It found no
+   rule mismatch with the original. It did find:
+   - tests that could not fail on the slips they named: the blockade, ship
+     against ship, and the shore battery;
+   - doc claims no evidence backed: an `observed` label on a path never
+     reached, a wrong capacity floor, and an `array(30)` effect that cannot
+     happen;
+   - a baseline that dropped one condition of line 2251. Fixing it changed
+     the baseline's results (standard 5, 7, 8 became 7, 8, 5).
+
+   The QB64 comparison could not catch the baseline slip, because the
+   recordings replay the baseline's commands rather than judge them.
+   Fixed (`review.md`, second response).
+7. **The prompt's grouped action list** (`move 4 <city>, <city> one of:
+   ...`) led the live model to answer "move 4 Paducah, Lexington" on dev
+   seed 101. Caught in the first live trace; the prompt now lists each action
+   whole.
 
 TODO: what this taught me about directing agents, and what I would set up
 differently.

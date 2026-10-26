@@ -15,6 +15,7 @@ dest="$repo/midterms/rajvardhan19"
 mkdir -p "$dest" "$repo/.github/workflows"
 rsync -a --delete \
   --exclude '.venv/' --exclude '__pycache__/' --exclude '.DS_Store' \
+  --exclude '.env' --exclude '.env.*' \
   --exclude 'tools/qb64-harness/harness' --exclude 'tools/qb64-harness/harness_debug' \
   --exclude 'tools/qb64-harness/harness.bas' --exclude 'tools/qb64-harness/harness_debug.bas' \
   --exclude 'tools/qb64-harness/*_start.command' \

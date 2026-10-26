@@ -10,7 +10,6 @@ What is verbatim, and what is not. Each piece is marked in the output.
   - `SUB menu` reads the keyboard. It answers the menus the midterm answers
     by design (Retreat: ESC; Raze: No by ESC; End Game: Yes; Options: Quit)
     and otherwise returns the next scripted menu row.
-  - `SUB railroad`: emptied, because railroads are out of scope.
   - `SUB maxx`, the hall of fame, does file and keyboard I/O and is not a
     rule: reduced to its last statement, `pcode = 1`.
   - `DO WHILE INKEY$ = "": LOOP` key waits: the condition becomes 0.
@@ -21,15 +20,16 @@ What is verbatim, and what is not. Each piece is marked in the output.
     options and cash (151-167), unionplus (204, 749-752), cities (206-217);
   - END TURN (352) and newmonth with SUB victor (252-278, without 277's
     two-player branch);
-  - the Supply menu (402-425) and the Drill menu (460-467), with
-    `GOTO menu0` / `GOTO optmen` turned into `RETURN`;
+  - the Ships menu (322), the Railroad menu (325-340), the Supply menu
+    (402-425) and the Drill menu (460-467), with `GOTO menu0` / `GOTO optmen`
+    turned into `RETURN`;
   - the font DATA (763-769).
 - Harness glue, marked `' harness:`:
-  - argument parsing, and the midterm scope's two settings (Random Events
-    OFF, no fleets);
+  - argument parsing, and the midterm scope's setting (Random Events OFF);
   - `RANDOMIZE seed` for line 219's `RANDOMIZE TIMER`;
   - the command loop, which calls the original SUBs (armies, cancel,
-    recruit, fortify, combine) or the copied blocks;
+    recruit, fortify, combine) or the copied menu blocks (Ships, Railroad,
+    Supply, Drill);
   - the state dump.
 """
 
@@ -47,13 +47,12 @@ REPLACE = {
         "choose = -1: IF hqp < hqn THEN choose = hq(hqp): hqp = hqp + 1\n"
         "END SUB\n"
     ),
-    "railroad": "SUB railroad (who)\n' harness: railroads are out of the midterm scope\nEND SUB\n",
     "maxx": "SUB maxx\n' harness: hall of fame (file and keyboard I/O) skipped; its last statement:\npcode = 1\nEND SUB\n",
 }
 
 GLUE_TOP = r'''
 ' harness: ============ main module: verbatim extracts (marked with their lines) and harness glue ============
-DIM SHARED hq(20), hqn, hqp, harnessj
+DIM SHARED hq(400), hqn, hqp, harnessj   ' harness: newcity can need one answer per city
 SCREEN 12
 ' harness: arguments are DATADIR SEED SCRIPT; DATADIR holds the four files filer(1) and line 207 read
 args$ = COMMAND$: DIM argv$(3): n = 0
@@ -65,9 +64,8 @@ cwsdatapath$ = argv$(0): seed# = VAL(argv$(1))
 '''
 
 GLUE_SCOPE = r'''
-' harness: midterm scope. Random Events OFF (Utility option, line 600); navies out of scope (no fleets)
+' harness: midterm scope. Random Events OFF (Utility option, line 600)
 randbal = 0
-FOR k = 1 TO 2: fleet$(k) = "": navysize(k) = 0: navyloc(k) = 0: NEXT k
 '''
 
 GLUE_LOOP = r'''
@@ -96,6 +94,8 @@ DO WHILE NOT EOF(2)
         CASE "J": x = side: CALL combine(x)
         CASE "S": GOSUB hsupply
         CASE "D": GOSUB hdrill
+        CASE "N": GOSUB hships
+        CASE "L": GOSUB hrail
         CASE "E"
             GOSUB hendturn
             IF thrill = 0 THEN CALL topbar ' harness: back at menu0 unless the game ended
@@ -114,6 +114,10 @@ NEXT i
 FOR i = 1 TO 40
     PRINT "C"; i; cityp(i); fort(i); occupied(i)
 NEXT i
+PRINT "N "; "[" + fleet$(1) + "]"; navysize(1); navyloc(1); "[" + fleet$(2) + "]"; navysize(2); navyloc(2); commerce; raider; grudge; nflag; rr(1); rr(2); rrfrom(1); rrfrom(2); cityp(0)
+PRINT "Y ";
+FOR i = 1 TO 40: PRINT array(i);: NEXT i
+PRINT
 PRINT "END"
 _DEST 0
 RETURN
@@ -174,6 +178,8 @@ def main(path: str, debug: bool = False) -> None:
         + extract(lines, 749, 752)
         + "hendturn: ' harness: END TURN, then newmonth through SUB victor\n"
         + extract(lines, 352, 352) + extract(lines, 252, 276) + extract(lines, 278, 278) + "RETURN\n"
+        + "hships: ' harness: main menu Ships\n" + extract(lines, 322, 322) + "RETURN\n"
+        + "hrail: ' harness: main menu Railroad\n" + extract(lines, 325, 340, returns=True) + "RETURN\n"
         + "hsupply: ' harness: Commands > Supply\n" + extract(lines, 402, 425, returns=True) + "RETURN\n"
         + "hdrill: ' harness: Commands > Army Drill\n" + extract(lines, 460, 467, returns=True) + "RETURN\n"
         + extract(lines, 763, 769)

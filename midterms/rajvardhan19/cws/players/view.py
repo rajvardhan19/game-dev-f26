@@ -31,6 +31,7 @@ class Masked(list):
 class View:
     def __init__(self, obs: dict) -> None:
         n = 41
+        self.array = [0] * n                              # scratch for evaluate; never read back
         self.matrix = [[0] * 8 for _ in range(n)]
         self.cityp, self.cityv, self.fort, self.cityy = [0] * n, [0] * n, [0] * n, [0] * n
         self.city = ["NONE"] + [""] * 40
@@ -41,6 +42,9 @@ class View:
             self.cityv[i], self.fort[i], self.cityy[i] = c["value"], c["fort"], c["y"]
             for j, m in enumerate(c["neighbors"], 1):
                 self.matrix[i][j] = m
+            # Column 7 is 99 for a seaport. River ports (90) act like inland cities in every
+            # rule (tests are = 99, > 90 or < 99), so the observation's flag is enough.
+            self.matrix[i][7] = 99 if c["port"] else 0
         self.armysize, self.armyloc, self.armymove = [0] * n, [0] * n, [0] * n
         lead, exper, supply = [0] * n, [0] * n, [0] * n
         for a in obs["your_armies"]:
@@ -76,6 +80,22 @@ class View:
         self.realism = int(obs["settings"]["realism"])
         self.jancam = int(obs["settings"]["january_campaigns"])
         self.month = obs["month_number"]
+        self.year = int(obs["date"].split()[-1])
+        # Fleets: both sides' size and position are on the Army Report (lines 3468-3474).
+        self.navyloc, self.navysize = [0, 0, 0], [0, 0, 0]
+        for side, k in (("Union", UNION), ("Rebel", REBEL)):
+            fleet = obs["navies"][side]
+            self.navysize[k] = fleet["ships"]
+            at = fleet["at"]
+            self.navyloc[k] = 0 if at is None else 99 if at == "at sea" else self.city.index(at)
+        raid = obs["commerce_raiding"]
+        self.commerce = {"Union": UNION, "Rebel": REBEL}.get(raid["by"], 0)
+        self.raider = raid["last_loss"]
+        self.rail_capacity = obs["railroad"]["capacity_men"] // 100
+        self.train_out = obs["railroad"]["train"] is not None
+        # cityp(0) is whatever side last ran SUB navy (line 1483); the screen never shows it.
+        # The opponent runs it nearly every turn, so the baseline assumes the Rebels.
+        self.cityp[0] = REBEL
 
     def _city_id(self, name: str) -> int:
         return self.city.index(name)

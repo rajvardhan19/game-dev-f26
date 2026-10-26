@@ -70,6 +70,15 @@ def header(obs: dict) -> str:
             f"cities {t['Union']['cities']} | Rebel cities {t['Rebel']['cities']} | VP {vp['Union']}-{vp['Rebel']}")
 
 
+def fleets(obs: dict) -> str:
+    nv, rail = obs["navies"], obs["railroad"]
+    parts = [f"{side} navy {nv[side]['ships']} ship(s) ({nv[side]['ironclads']} ironclad) at {nv[side]['at'] or '-'}"
+             for side in ("Union", "Rebel")]
+    train = f"; train: army {rail['train']['army']} to {rail['train']['to']}" if rail["train"] else ""
+    raid = f" | {obs['commerce_raiding']['by']} raiding commerce" if obs["commerce_raiding"]["by"] else ""
+    return " | ".join(parts) + raid + f" | rail capacity {rail['capacity_men']} men{train}"
+
+
 def armies(obs: dict) -> str:
     rows = ["Your armies:  id leader            men      city        ldr exp sup  order"]
     for a in obs["your_armies"]:
@@ -105,6 +114,7 @@ def human(args) -> None:
     print(ascii_map(obs))
     while ep.outcome()["status"] == "ongoing":
         print("\n" + header(obs))
+        print(fleets(obs))
         print(armies(obs))
         legal = ep.legal_actions(PLAYER_ID)
         for k, a in enumerate(legal, 1):
@@ -152,6 +162,7 @@ def watch(args) -> None:
     def on_turn(obs):
         print("\n" + "=" * 78)
         print(header(obs))
+        print(fleets(obs))
         if obs["last_turn_report"]:
             print("What happened:\n" + report(obs))
         print(ascii_map(obs))

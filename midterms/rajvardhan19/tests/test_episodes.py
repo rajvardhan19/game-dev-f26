@@ -16,18 +16,18 @@ def play(scenario, seed, player):
 
 
 class SuccessfulPaths(unittest.TestCase):
-    def test_union_wins_on_income_alternate_seed_9(self):
-        out = play("alternate", 9, OriginalAI(9))
+    def test_union_wins_on_income_alternate_seed_1(self):
+        out = play("alternate", 1, OriginalAI(1))
         self.assertEqual((out["winner"], out["reason"]), ("Union", "Union victory: share of total income"))
-        self.assertEqual((out["turn"], out["steps"], out["invalid_actions"]), (4, 37, 0))
+        self.assertEqual((out["turn"], out["steps"], out["invalid_actions"]), (4, 38, 0))
 
-    def test_union_takes_richmond_standard_seed_8(self):
-        out = play("standard", 8, OriginalAI(8))
+    def test_union_takes_richmond_standard_seed_7(self):
+        out = play("standard", 7, OriginalAI(7))
         self.assertEqual(out["reason"], "Union victory: capital captured")
-        self.assertEqual(out["turn"], 9)
+        self.assertEqual(out["turn"], 11)
 
     def test_deadline_ends_a_long_game(self):
-        out = play("standard", 1, OriginalAI(1))
+        out = play("standard", 3, OriginalAI(3))
         self.assertEqual(out["reason"], "Rebel victory: time expired")
         self.assertEqual(out["date"], "March 1865")
 
@@ -47,7 +47,8 @@ class Separation(unittest.TestCase):
         # Why the outcome tier is primary: a player conquered in 1862 can end
         # with a higher VP share than one that held out until 1865.
         from cws.evaluate import rank
-        ai, idle = play("standard", 3, OriginalAI(3)), play("standard", 3, PassivePlayer(3))
+        ai, idle = play("standard", 13, OriginalAI(13)), play("standard", 13, PassivePlayer(13))
+        self.assertEqual(ai["reason"], "Rebel victory: time expired")
         self.assertLess(ai["score"], idle["score"])
         self.assertGreater(rank(ai), rank(idle))
 

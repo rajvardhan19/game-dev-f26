@@ -24,11 +24,29 @@ sys.path.insert(0, str(ROOT))
 
 from cws.data import DATA_DIR                                    # noqa: E402
 from cws.engine import Game, UNION, starfin                      # noqa: E402
-from cws.interface import CivilWarEpisode, PLAYER_ID             # noqa: E402
+from cws.interface import CivilWarEpisode, PLAYER_ID, _navy_actions   # noqa: E402
 from cws.players.baselines import OriginalAI, PassivePlayer, RandomPlayer  # noqa: E402
 from cws.scenarios import SCENARIOS                              # noqa: E402
 
-PLAYERS = {"original-ai": OriginalAI, "random": RandomPlayer, "passive": PassivePlayer}
+class NavalDriver:
+    """A test driver, not a player: it prefers navy and rail commands so the harness covers them."""
+
+    PRIORITY = ("fleet invade", "build ironclad", "fleet attack", "rail ", "build wooden", "fleet raid", "fleet sail")
+
+    def __init__(self, seed: float) -> None:
+        import random
+        self.rng = random.Random(f"naval-{seed}")
+
+    def act(self, obs, legal):
+        for prefix in self.PRIORITY:
+            options = [a for a in legal if a.startswith(prefix)]
+            if options and self.rng.random() < 0.7:
+                return self.rng.choice(options)
+        others = [a for a in legal if a != "end turn"]
+        return "end turn" if not others or self.rng.random() < 0.4 else self.rng.choice(others)
+
+
+PLAYERS = {"original-ai": OriginalAI, "random": RandomPlayer, "passive": PassivePlayer, "naval": NavalDriver}
 
 
 def menu_row(entries: list[tuple[str, int]], value: int) -> int:
@@ -89,7 +107,25 @@ def to_command(g: Game, action: str) -> str:
     if verb == "drill":
         army = int(rest)
         return f"D {army} | {' '.join(map(str, movefrom_rows(g, army)))}"
+    if verb in ("build", "fleet"):
+        return f"N | {' '.join(map(str, dict(_navy_actions(g, UNION))[action]))}"
+    if verb == "rail":
+        army, _, dest = rest.partition(" ")
+        army, d = int(army), city[dest.lower()]
+        rows = movefrom_rows(g, army) + newcity_rows(g, g.armyloc[army], d)
+        return f"L {army} {d} | {' '.join(map(str, rows))}"
     raise ValueError(action)
+
+
+def newcity_rows(g: Game, frm: int, dest: int) -> list[int]:
+    """SUB newcity, lines 1906-1946: row 3 steps to the next own city, row 2 selects."""
+    rows, idx = [], frm
+    while idx != dest:
+        idx = idx % 40 + 1
+        while g.cityp[idx] != g.side:
+            idx = idx % 40 + 1
+        rows.append(3)
+    return rows + [2]
 
 
 def script_for(scenario: str, seed: float, player_name: str, max_turns: int) -> list[str]:
@@ -120,6 +156,10 @@ def dump(g: Game) -> list[str]:
                                              g.armylead[i], g.armyexper[i], g.supply[i])))
     for i in range(1, 41):
         out.append(" ".join(str(v) for v in ("C", i, g.cityp[i], g.fort[i], g.occupied[i])))
+    out.append(" ".join(str(v) for v in ("N", f"[{g.fleet[1]}]", g.navysize[1], g.navyloc[1], f"[{g.fleet[2]}]",
+                                         g.navysize[2], g.navyloc[2], g.commerce, g.raider, g.grudge, g.nflag,
+                                         g.rr[1], g.rr[2], g.rrfrom[1], g.rrfrom[2], g.cityp[0])))
+    out.append(" ".join(["Y"] + [str(g.array[i]) for i in range(1, 41)]))
     return out
 
 
@@ -130,26 +170,31 @@ def python_dumps(scenario: str, seed: float, commands: list[str]) -> list[list[s
     g.randomize(seed)
     dumps = [dump(g)]
     for c in commands:
-        op, *args = c.split("|")[0].split()
+        ids, _, rows = c.partition("|")
+        op, *args = ids.split()
         v = [int(a) for a in args]
         if op == "E":
             g.end_turn()                                  # newmonth, SUB victor, then topbar
         elif op == "T":
             g.recruit_open(UNION)
         elif op == "R":
-            g.levy(UNION, v[0])
+            g.human_recruit(v[0])
         elif op == "M":
-            g.order_move(v[0], v[1])
+            g.human_move(v[0], v[1])
         elif op == "X":
-            g.cancel(v[0])
+            g.human_cancel(v[0])
         elif op == "F":
-            g.fortify(UNION, v[0])
+            g.human_fortify(v[0])
         elif op == "J":
-            g.combine(UNION, v[0])
+            g.human_join(v[0])
         elif op == "S":
-            g.resupply(v[0])
+            g.human_supply(v[0])
         elif op == "D":
-            g.drill(v[0])
+            g.human_drill(v[0])
+        elif op == "N":
+            g.human_navy([int(r) for r in rows.split()])
+        elif op == "L":
+            g.human_rail(v[0], v[1])
         dumps.append(dump(g))
     return dumps
 
@@ -206,21 +251,23 @@ def first_difference(a: list[list[str]], b: list[list[str]], commands: list[str]
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--qb64", type=Path, required=True)
+    ap.add_argument("--qb64", type=Path, default=None, help="QB64-PE compiler (not needed with --no-build)")
     ap.add_argument("--bas", type=Path, default=ROOT / "source" / "CWSTRAT.BAS")
     ap.add_argument("--scenario", default="standard")
     ap.add_argument("--player", default="original-ai", choices=sorted(PLAYERS))
     ap.add_argument("--seeds", type=float, nargs="+", default=[1, 2, 3])
     ap.add_argument("--turns", type=int, default=40)
     ap.add_argument("--out", type=Path)
+    ap.add_argument("--no-build", action="store_true", help="reuse the last compiled harness")
     args = ap.parse_args()
 
     here = Path(__file__).resolve().parent
-    bas = here / "harness.bas"
-    with bas.open("w") as f:
-        subprocess.run([sys.executable, str(here / "make_harness.py"), str(args.bas)], stdout=f, check=True)
     exe = here / "harness"
-    subprocess.run([str(args.qb64), "-x", str(bas), "-o", str(exe)], check=True, capture_output=True)
+    if not args.no_build:
+        bas = here / "harness.bas"
+        with bas.open("w") as f:
+            subprocess.run([sys.executable, str(here / "make_harness.py"), str(args.bas)], stdout=f, check=True)
+        subprocess.run([str(args.qb64), "-x", str(bas), "-o", str(exe)], check=True, capture_output=True)
 
     failures = 0
     for seed in args.seeds:

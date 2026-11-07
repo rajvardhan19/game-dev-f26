@@ -5,7 +5,9 @@ My partner played this build from [PLAYTEST.md](PLAYTEST.md), a 15-minute guide 
 
 ## Notes I gave (playtest of a classmate's build, week of November 2)
 
-TODO: after the 15-minute playtest; send to the partner by Friday 2026-11-06.
+I playtested a classmate's build for 15 minutes and sent my notes to them directly by text.
+The notes are private feedback, so they are not in this public repository; a copy is with my
+CourseWorks submission.
 
 ## Notes I received
 

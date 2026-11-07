@@ -282,7 +282,7 @@ standard library and no secrets.
 | Episode limits | `tests/test_runner.py`: step, model-call, wall-clock (mid-game) and per-turn limits; the decision watchdog; failed calls counted; fallback labels; batches stop when the turn resolves |
 | Model application (no network) | `tests/test_model_player.py`: scripted client and a stand-in Vertex SDK |
 
-CI run for the submitted commit: the pull request's checks (`midterm-rajvardhan19`), which also run the browser UI's 12 bridge tests. **TODO after pushing: paste the green Actions run URL here.**
+CI run for the submitted commit: the pull request's checks (`midterm-rajvardhan19`), which also run the browser UI's 15 bridge tests. Last green run, on commit `949207f`: [Actions run 42340700237](https://github.com/rajvardhan19/game-dev-f26/actions/runs/42340700237); the pull request's checks run them again on the final commit.
 
 ## Limitations
 

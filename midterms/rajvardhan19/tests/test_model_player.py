@@ -181,3 +181,29 @@ class VertexAdapterWithFakeSDK(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ExecutionAids(unittest.TestCase):
+    def test_front_summary_uses_only_what_the_screen_shows(self):
+        from cws.players.model_player import front_summary
+        ep, obs = episode_obs(101)
+        text = "\n".join(front_summary(obs))
+        self.assertIn("1 McDowell, 40,000 men at Washington", text)
+        self.assertIn("Manassas (Rebel, no army: can be taken by moving in)", text)
+        g = ep._game
+        for i in range(21, 41):                          # no hidden enemy field appears
+            if g.armyloc[i]:
+                self.assertNotIn(f"rating {g.armylead[i]}", text)
+        legal = ep.legal_actions(PLAYER_ID)
+        self.assertNotIn("FRONT SUMMARY", render(obs, legal, {}, None))
+        self.assertIn("FRONT SUMMARY", render(obs, legal, {}, None, fronts=True))
+
+    def test_plan_then_act_plans_once_a_turn_and_shows_the_plan(self):
+        client = FakeClient([{"plan": "Take Manassas with McDowell."},
+                             {"actions": ["drill 2"], "note": "a"}, {"actions": ["end turn"], "note": "b"},
+                             {"plan": "Hold."}, {"actions": ["end turn"], "note": "c"}])
+        run_episode(ModelPlayer(client, "obs-only", plan=True), "standard", 1, Limits(max_model_calls=3))
+        self.assertEqual(len(client.prompts), 5)          # plan, act, act | plan, act
+        self.assertIn("YOUR PLAN FOR THIS TURN", client.prompts[1])
+        self.assertIn("Take Manassas with McDowell.", client.prompts[2])
+        self.assertNotIn("YOUR PLAN FOR THIS TURN", client.prompts[0])

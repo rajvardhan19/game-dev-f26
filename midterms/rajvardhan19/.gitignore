@@ -10,3 +10,4 @@ tools/qb64-harness/harness.bas
 tools/qb64-harness/harness_debug.bas
 .venv/
 tools/qb64-harness/*_start.command
+*.err

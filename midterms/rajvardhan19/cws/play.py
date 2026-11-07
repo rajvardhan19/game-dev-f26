@@ -157,7 +157,7 @@ def human(args) -> None:
 def watch(args) -> None:
     from .evaluate import make_player
     from .runner import Limits, run_episode
-    player = make_player(args.watch, args.seed, args)
+    player = make_player(args.watch, args.seed, args, args.scenario)
 
     def on_turn(obs):
         print("\n" + "=" * 78)
@@ -179,8 +179,8 @@ def watch(args) -> None:
             print(f"  {mark} [{who}] {e['action']}  -> {e['text'][:90]}")
             time.sleep(args.delay)
 
-    r = run_episode(player, args.scenario, args.seed, Limits(engine_timeout=args.timeout + 30),
-                    on_step=on_step, on_turn=on_turn)
+    limits = Limits(engine_timeout=args.timeout + 30, decision_timeout=max(45.0, args.timeout + 15))
+    r = run_episode(player, args.scenario, args.seed, limits, on_step=on_step, on_turn=on_turn)
     print(f"\nEPISODE OVER: {r.reason} ({r.date}). Steps {r.steps}, invalid {r.invalid_actions}, "
           f"fallbacks {r.fallback_actions}, model calls {r.model_calls} ({r.failed_calls} failed).")
 
@@ -189,9 +189,11 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--scenario", default="standard", choices=["standard", "alternate", "reckless"])
     ap.add_argument("--seed", type=float, help="default 1; 101 (a dev seed) when watching a model")
-    ap.add_argument("--watch", help="original-ai, random, passive, model-history or model-obs-only")
+    ap.add_argument("--watch", help="original-ai, random, passive, model-history, model-obs-only or model-lessons")
+    ap.add_argument("--lessons", help="the frozen notebook for model-lessons (lessons/<name>.json)")
     ap.add_argument("--live", action="store_true", help="confirm paid model calls")
     ap.add_argument("--timeout", type=float, default=30.0)
+    ap.add_argument("--max-output-tokens", type=int, default=2048, help="per model call (thinking models need more)")
     ap.add_argument("--delay", type=float, default=0.15, help="seconds between shown actions")
     args = ap.parse_args()
     if args.seed is None:

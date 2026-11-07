@@ -1,0 +1,2074 @@
+{
+ "format": 1,
+ "name": "gemini-h",
+ "model": "gemini-3.7-flash",
+ "frozen": true,
+ "version": 48,
+ "lessons": [
+  "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+  "Never leave Washington empty; maintain a dedicated garrison and fortify to level 2 early to crush any Confederate offensive.",
+  "Secure neutral border cities (Baltimore, Louisville, Lexington, Paducah) on Turn 1 to maximize early income and establish defensive anchors.",
+  "Fortify Louisville and Washington to level 2; fort defense multipliers shatter superior Rebel doomstacks repeatedly.",
+  "Join field armies into 50,000-120,000 man doomstacks under top commanders (Grant, Sherman, Rosecrans) before striking deep into Confederate territory.",
+  "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 28 cities or 60% income.",
+  "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); eliminate adjacent raiders immediately.",
+  "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+  "Cut off Rebel retreat paths into adjacent friendly cities before attacking to force complete surrenders of trapped enemy forces.",
+  "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov); never march with 0 supply.",
+  "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+  "Maintain continuous fleet commerce raiding from Turn 1, and rebuild sunk ships to ensure ongoing economic attrition against Rebel cash."
+ ],
+ "strategy": "Open by fortifying Washington and Louisville while seizing Baltimore, Lexington, Louisville, and Paducah on Turn 1. Maximize recruitment every single turn using all available cash from the troops list. Maintain fleet commerce raiding continuously to drain Confederate finances. Advance in the West along the Mississippi corridor with Grant and Pope taking lightly defended hubs, bypass Richmond's heavy fortifications, and secure an early economic or 28-city victory.",
+ "versions": [
+  {
+   "version": 0,
+   "lessons": [],
+   "strategy": "",
+   "note": "empty notebook"
+  },
+  {
+   "version": 1,
+   "after_game": {
+    "game": 1,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 3
+   },
+   "diagnosis": "Lost in July 1861 because Washington was left completely unguarded while Jackson was adjacent at Harper's Ferry. McDowell marched to Front Royal and Harper's Ferry rather than covering the capital, allowing Jackson's move into Washington to instantly trigger a Rebel sudden-death victory. In the West, A.S. Johnston bypassed borders to seize Indianapolis and Columbus due to dispersed Union forces.",
+   "lessons": [
+    "Never leave Washington empty while enemy forces are within striking distance; keep a garrison or blocking army in place.",
+    "Do not advance past an active enemy army in Virginia if it leaves an open path to Washington.",
+    "Defend northern border cities like Indianapolis and Cincinnati before pushing deep into Kentucky or Tennessee.",
+    "Concentrate forces with 'join' before attacking enemy commanders holding defensive terrain.",
+    "Do not use fleet raiding early when ships are needed to defend seaports and prevent blockades."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave Washington empty while enemy forces are within striking distance; keep a garrison or blocking army in place.",
+     "why": "Jackson walked straight into an undefended Washington on turn 3, ending the game immediately."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not advance past an active enemy army in Virginia if it leaves an open path to Washington.",
+     "why": "McDowell advanced into Front Royal and Harper's Ferry without screening Washington from Jackson."
+    },
+    {
+     "kind": "added",
+     "lesson": "Defend northern border cities like Indianapolis and Cincinnati before pushing deep into Kentucky or Tennessee.",
+     "why": "A.S. Johnston penetrated into Indiana and Ohio while McClellan and Pope pushed into Lexington/Nashville."
+    },
+    {
+     "kind": "added",
+     "lesson": "Concentrate forces with 'join' before attacking enemy commanders holding defensive terrain.",
+     "why": "Attacking A.S. Johnston piecemeal at Louisville and Indianapolis led to consecutive bloody repulses."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not use fleet raiding early when ships are needed to defend seaports and prevent blockades.",
+     "why": "Commerce raiding achieved negligible financial damage ($5-$34) while losing two ships to attrition."
+    }
+   ],
+   "strategy": "In the opening turns, secure and fortify Washington with a strong garrison to prevent sudden-death defeat. In the West, form a consolidated army under Grant or Buell to defeat Rebel field forces at Louisville before advancing southward. Maintain defensive lines across Ohio, Indiana, and Maryland before launching aggressive deep penetrations."
+  },
+  {
+   "version": 2,
+   "after_game": {
+    "game": 2,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 12
+   },
+   "diagnosis": "The Union lost by city control in March 1863 because of passive early spending, allowing the treasury to hoard over $1000 in 1861 instead of max-recruiting every turn. This let the Confederacy mass 50k+ death stacks and sweep through Strasburg, Harpers Ferry, Baltimore, and Philadelphia while picking off small, unjoined Union garrisons.",
+   "lessons": [
+    "Spend treasury aggressively every turn on recruiting; never hoard excess gold when cities are vulnerable.",
+    "Call 'troops' every turn and recruit in the highest-value core cities to maximize manpower growth.",
+    "Fortify key frontier and border cities (Washington, Cincinnati, Louisville) early to gain defensive multipliers.",
+    "Consolidate small detachments into main armies using 'join' rather than leaving small forces exposed.",
+    "Block the Shenandoah and Baltimore corridors early to stop Confederate raids into Philadelphia and Harrisburg.",
+    "Never make low-odds attacks against entrenched defenders; hold fortified lines and let the enemy attack.",
+    "Rail top commanders (Grant, Sherman) directly to threatened fronts to command unified defense forces.",
+    "Keep Washington strongly garrisoned and fortified at level 2 at all times.",
+    "Maintain supply lines by avoiding overextended advances into enemy territory without secure friendly adjacencies.",
+    "Build ironclads once available in March 1862 to control coastal approaches and eliminate Rebel fleets."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Spend treasury aggressively every turn on recruiting; never hoard excess gold when cities are vulnerable.",
+     "why": "Hoarding cash in 1861 allowed the Rebels to field massive 50k stacks that overwhelmed Union positions."
+    },
+    {
+     "kind": "added",
+     "lesson": "Call 'troops' every turn and recruit in the highest-value core cities to maximize manpower growth.",
+     "why": "Large cities yield significantly more recruits per $100 spent, accelerating troop buildup."
+    },
+    {
+     "kind": "added",
+     "lesson": "Block the Shenandoah and Baltimore corridors early to stop Confederate raids into Philadelphia and Harrisburg.",
+     "why": "Jackson bypassed the frontier, captured Baltimore and Philadelphia, and triggered city-count defeat."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Consolidate small detachments into main armies using 'join' rather than leaving small forces exposed.",
+     "why": "Small outposts like Fremont at Manassas and Pope at Paducah were annihilated in isolation."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Do not use fleet raiding early when ships are needed to defend seaports and prevent blockades.",
+     "why": "Commerce raiding was minor compared to the critical failure of ground recruitment and territorial defense."
+    }
+   ],
+   "strategy": "Maximize army recruitment every turn starting April 1861 in high-yield cities. Fortify Washington, Cincinnati, and Louisville, holding firm defense lines under Grant and Sherman while merging smaller units. Secure the Shenandoah/Baltimore approaches to prevent northern breakthroughs, and counter-attack only when outnumbering the enemy on favorable ground."
+  },
+  {
+   "version": 3,
+   "after_game": {
+    "game": 3,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 7
+   },
+   "diagnosis": "Lost on turn 7 due to an unforced capital loss: McDowell vacated Washington to seize Harper's Ferry, leaving the level 2 fort completely empty and allowing Bragg to capture Washington unopposed. Additionally, McClellan became cut off and supply-starved in Pittsburgh after multiple costly offensive marches against Jackson.",
+   "lessons": [
+    "NEVER vacate Washington: keep a dedicated garrison of at least 15,000 men inside Washington at all times to prevent sudden Rebel capture.",
+    "Upgrade Washington and Baltimore forts to level 2 immediately; fortified garrisons defeat superior Rebel attacks consistently.",
+    "Call 'troops' every turn and spend treasury aggressively on recruiting in high-value, secure core cities.",
+    "Never initiate low-odds attacks against Rebel leaders; hold fortified positions and let Rebels break themselves attacking you.",
+    "Maintain contiguous lines of friendly cities; armies cut off from friendly adjacencies quickly run out of supply and lose half combat power.",
+    "Armies over 40,000 men move late in the turn sequence; keep field strike armies moderately sized (25k-35k) for better initiative.",
+    "Consolidate fragmented garrisons using 'join' rather than leaving small detachments to be destroyed in detail.",
+    "Do not waste naval assets on commerce raiding; fleet raid slowly loses ships for trivial economic damage.",
+    "Use rail movement to instantly reposition reserve armies or key generals to threatened frontier cities before marches resolve.",
+    "Drill idle garrisons to build experience up to leader rating limits when they are not actively required to move or reinforce."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "NEVER vacate Washington: keep a dedicated garrison of at least 15,000 men inside Washington at all times to prevent sudden Rebel capture.",
+     "why": "Ordering McDowell out of Washington left the capital completely undefended, resulting in instant defeat when Bragg walked in."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not waste naval assets on commerce raiding; fleet raid slowly loses ships for trivial economic damage.",
+     "why": "Raiding destroyed all Union ships across several turns while yielding negligible Rebel economic damage."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Maintain contiguous lines of friendly cities; armies cut off from friendly adjacencies quickly run out of supply and lose half combat power.",
+     "why": "McClellan became isolated in Pittsburgh when Rebels took surrounding cities, causing crippling supply failure."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Armies over 40,000 men move late in the turn sequence; keep field strike armies moderately sized (25k-35k) for better initiative.",
+     "why": "McClellan's massive 46,000-man army consistently acted after Confederate armies moved into flanking positions."
+    }
+   ],
+   "strategy": "Establish an unshakeable defensive baseline by fortifying Washington, Baltimore, and Cincinnati to level 2 with permanent garrisons that never vacate their cities. Use regular recruiting and drilling to expand field armies, maintaining secure, contiguous supply lines while letting Confederate forces exhaust themselves against Union fortifications before launching decisive counteroffensives."
+  },
+  {
+   "version": 4,
+   "after_game": {
+    "game": 4,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 17
+   },
+   "diagnosis": "Achieved a decisive economic victory by fortifying critical frontier hubs (Indianapolis, Baltimore, Washington) to level 2, where repeated Rebel assaults led by Lee were shattered at minimal friendly cost. Aggressive recruiting in high-income core cities, timely rail transfers of reinforcements, and methodical counter-offensives against depleted Rebel forces enabled steady expansion across the West and border states to surpass the 60% income victory threshold.",
+   "lessons": [
+    "Never vacate Washington: maintain a dedicated garrison of at least 15,000 men inside the capital at all times to prevent sudden capture.",
+    "Upgrade key bastion forts (Washington, Baltimore, Indianapolis) to level 2 early; level 2 forts allow defenders to repel and destroy superior forces.",
+    "Call 'troops' every turn and spend treasury aggressively on recruiting in high-value, secure core cities.",
+    "Let Rebel field armies break themselves attacking fortified cities before launching counter-offensives against their depleted survivors.",
+    "Maintain contiguous lines of friendly cities; cut-off armies lose supply quickly and fight at half strength.",
+    "Keep field strike armies sized between 25k and 35k men; armies over 40k move late in the turn sequence and risk losing initiative.",
+    "Consolidate fragmented garrisons using 'join' to avoid leaving small detachments vulnerable to defeat in detail.",
+    "Use rail movement every turn possible to instantly reposition reserve armies or top generals to threatened frontier cities.",
+    "Drill idle garrisons to max leader ratings whenever they are not required to move, recruit, or fortify.",
+    "Build ironclads from March 1862 onward to dominate naval combat and protect against Confederate blockade sorties.",
+    "Use 'fleet invade' to seize isolated neutral ports like Jacksonville to safely expand city count and income share.",
+    "Regularly inspect supply levels and manually resupply frontier armies before winter/spring attrition drops combat efficiency."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Upgrade key bastion forts (Washington, Baltimore, Indianapolis) to level 2 early; level 2 forts allow defenders to repel and destroy superior forces.",
+     "why": "Fortifying Indianapolis to level 2 absorbed five consecutive assaults by Lee and Bragg, demonstrating that western chokepoints benefit from max fortifications just as much as eastern capitals."
+    },
+    {
+     "kind": "added",
+     "lesson": "Build ironclads from March 1862 onward to dominate naval combat and protect against Confederate blockade sorties.",
+     "why": "Constructing ironclads secured total naval dominance in Philadelphia and enabled coastal operations without risking fleet elimination."
+    },
+    {
+     "kind": "added",
+     "lesson": "Use 'fleet invade' to seize isolated neutral ports like Jacksonville to safely expand city count and income share.",
+     "why": "Amphibious landings captured undefended coastal ports without tying down major land field armies, accelerating economic victory."
+    },
+    {
+     "kind": "added",
+     "lesson": "Regularly inspect supply levels and manually resupply frontier armies before winter/spring attrition drops combat efficiency.",
+     "why": "McDowell and McClellan suffered supply drops during campaigns; timely supply orders prevented severe combat debuffs."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Do not waste naval assets on commerce raiding; fleet raid slowly loses ships for trivial economic damage.",
+     "why": "Replaced with active naval doctrine (ironclads and amphibious invasions) which proved far more strategically impactful."
+    }
+   ],
+   "strategy": "Pursue an active defense-in-depth and economic expansion strategy: lock down Washington, Baltimore, and key western junction cities with level 2 forts and strong garrisons. Exhaust Confederate offensive stacks against these fortifications while recruiting in core cities, then use mobile field corps (25k-35k) and rail reserves to counter-punch, isolate, and capture border and Mississippi valley cities to trigger the 60% income victory condition."
+  },
+  {
+   "version": 5,
+   "after_game": {
+    "game": 5,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "Passive containment and chasing enemy raiders allowed small Confederate forces (A.S. Johnston, Lee, Pemberton) to sweep through undefended Union interior cities (Indianapolis, Columbus, St. Louis, Springfield, Pittsburg, Philadelphia), achieving a 32-city victory condition by mid-1862. Additionally, McClellan and Buell repeatedly attacked top Confederate leaders defending in cities while under-supplied, taking repeated tactical defeats.",
+   "lessons": [
+    "Never leave interior cities (Cincinnati, Indianapolis, St. Louis, Pittsburg) completely undefended when Rebel armies are nearby; uninhibited raiders capture territory rapidly.",
+    "Do not attack elite Confederate commanders (Lee, A.S. Johnston) entrenched in cities without overwhelming (2:1+) odds; let them attack fortified Union positions instead.",
+    "Always maintain a dedicated garrison of at least 15,000 men inside Washington to prevent sudden decapitation strikes.",
+    "Fortify key frontier bastions (Harper's Ferry, Baltimore) to level 2 early; high fort levels routinely shatter Confederate assaults.",
+    "Use rail movement every turn to immediately shift reinforcements directly ahead of advancing enemy raiders rather than chasing them on foot.",
+    "Call 'troops' every turn and invest funds aggressively into raising new garrisons across threatened northern cities.",
+    "Ensure supply lines remain contiguous; cut-off armies drop to zero supply and fight at half combat effectiveness.",
+    "Keep mobile field strike forces between 25k and 35k men; armies exceeding 40k move late in the turn sequence.",
+    "Consolidate scattered garrison forces using 'join' under the highest-rated general to prevent piecemeal destruction.",
+    "Manually resupply field armies before combat or march orders when supply drops to 1 or below.",
+    "Construct ironclads starting March 1862 to command the coastline and suppress Confederate blockades.",
+    "Deploy fleet raids and amphibious landings to drain Confederate income and secure undefended coastal cities."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave interior cities (Cincinnati, Indianapolis, St. Louis, Pittsburg) completely undefended when Rebel armies are nearby; uninhibited raiders capture territory rapidly.",
+     "why": "Uncontested Rebel advances through empty western and middle states allowed the AI to win on city count by July 1862."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Do not attack elite Confederate commanders (Lee, A.S. Johnston) entrenched in cities without overwhelming (2:1+) odds; let them attack fortified Union positions instead.",
+     "why": "Repeated assaults by McClellan and Buell against Lee and Johnston resulted in consistent defeats and army exhaustion."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Use rail movement every turn to immediately shift reinforcements directly ahead of advancing enemy raiders rather than chasing them on foot.",
+     "why": "Chasing fast enemy leaders across the map on foot left Union forces one step behind and vulnerable to being cut off."
+    }
+   ],
+   "strategy": "Establish fortified defensive anchors in the East (Washington, Harper's Ferry, Baltimore) while actively recruiting garrisons to shield western/interior rail hubs (Cincinnati, Indianapolis, Louisville, St. Louis). Utilize strategic rail redeployment to cut off and trap encroaching Confederate raiding forces rather than pursuing them from behind. Avoid attacking high-rated Confederate generals on defense, forcing them to break themselves against fortified bastions before launching decisive counte"
+  },
+  {
+   "version": 6,
+   "after_game": {
+    "game": 6,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 5
+   },
+   "diagnosis": "Fast 5-turn economic victory achieved by aggressively claiming neutral border cities on turn 1, maintaining high recruitment volume, using rail to plug defensive gaps in Cincinnati, sustaining naval commerce raids, and exploiting an under-garrisoned Richmond for a rapid economic and territorial collapse.",
+   "lessons": [
+    "Grab key neutral border cities (Baltimore, Louisville, Paducah, Manassas) on turn 1 to rapidly expand tax income and secure forward lines.",
+    "Call 'troops' every turn and spend surplus revenue recruiting across available northern and border cities to outpace Rebel manpower.",
+    "Use rail transit every turn to reposition fresh armies directly into threatened border cities ahead of advancing Rebel raiders.",
+    "Maintain a garrison in Washington of at least 15,000 men and upgrade its fort level early to deter sudden Confederate decapitation thrusts.",
+    "Never leave interior frontier hubs (Cincinnati, Indianapolis, St. Louis) empty; hold them defensively where fort multipliers punish attackers.",
+    "Keep mobile field armies between 25k and 35k men so they move early in turn resolution; armies over 40k move late.",
+    "Execute naval commerce raids continuously with available fleets to steadily deplete Confederate treasury and hamper their recruitment.",
+    "Seize Richmond immediately if the enemy leaves it weakly guarded; capturing the capital heavily swings income and supply.",
+    "Do not attack entrenched elite generals in fortified cities without overwhelming local superiority; wear them down defensively first.",
+    "Maintain contiguous supply lines through friendly neighbors; cut-off armies lose supply and fight at half effectiveness.",
+    "Merge scattered garrisons using 'join' under high-rated leaders to build efficient, high-initiative strike forces.",
+    "Manually buy supply for key attacking or defending field armies whenever their supply level falls to 1 or below."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Grab key neutral border cities (Baltimore, Louisville, Paducah, Manassas) on turn 1 to rapidly expand tax income and secure forward lines.",
+     "why": "Immediate turn-1 expansion into neutral border hubs established an overwhelming income advantage that led to a 5-turn win."
+    },
+    {
+     "kind": "added",
+     "lesson": "Seize Richmond immediately if the enemy leaves it weakly guarded; capturing the capital heavily swings income and supply.",
+     "why": "A rapid strike on an exposed Richmond in late 1861 decisively triggered the victory condition."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Construct ironclads starting March 1862 to command the coastline and suppress Confederate blockades.",
+     "why": "Too late-game specific and unnecessary when games can be decided rapidly in 1861 via commerce raiding and land dominance."
+    }
+   ],
+   "strategy": "Aggressively secure neutral border cities on turn 1, maximize turn-by-turn recruitment across northern industrial centers, rail reinforcements to hold defensive lines in the West, continuously raid enemy commerce, and push concentrated field forces into exposed Confederate hubs and Richmond to trigger an early economic or territorial victory."
+  },
+  {
+   "version": 7,
+   "after_game": {
+    "game": 7,
+    "scenario": "standard",
+    "reason": "Union victory: cities controlled",
+    "turns": 22
+   },
+   "diagnosis": "Game 7 succeeded by systematically expanding across the Western and Deep South theatres (Tennessee, Georgia, Alabama, Mississippi, Carolinas) while containing Rebel forces in Virginia. Continuous fleet raiding severely depleted Rebel finances, and reaching 32 cities proved far faster and safer than assaulting the massive Richmond fortress.",
+   "lessons": [
+    "Grab key neutral border cities (Baltimore, Louisville, Paducah, Manassas) on turn 1 to expand tax income and secure forward lines.",
+    "Call 'troops' every turn and spend surplus revenue recruiting across available northern and border cities to outpace Rebel manpower.",
+    "Use rail transit every turn to reposition fresh armies directly into threatened border hubs or forward assembly areas.",
+    "Execute naval commerce raids continuously with available fleets to steadily deplete Confederate treasury and hamper recruitment.",
+    "Win via 32-city control by sweeping lightly defended southern cities rather than assaulting heavily fortified capitals like Richmond.",
+    "Keep mobile field armies between 25k and 35k men so they move early in turn resolution; armies over 40k move late.",
+    "Maintain contiguous supply lines; cut-off armies fight at half effectiveness and rapidly lose strength.",
+    "Never leave interior frontier hubs (Cincinnati, Indianapolis, St. Louis) empty; small garrisons deter or delay enemy raiders.",
+    "Merge scattered garrisons using 'join' under high-rated leaders (Grant, Sherman, Buell) to build decisive strike forces.",
+    "Manually buy supply for key attacking or defending field armies whenever their supply level falls to 1 or below.",
+    "Do not attack entrenched elite generals in level-2 fortified cities without overwhelming local superiority; bypass or starve them.",
+    "Maintain a garrison in Washington of at least 15,000 men and upgrade its fort level early to deter sudden Confederate thrusts."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Win via 32-city control by sweeping lightly defended southern cities rather than assaulting heavily fortified capitals like Richmond.",
+     "why": "Assaulting 77k+ troops in fort-2 Richmond caused heavy casualties; taking open peripheral cities (Savannah, Charleston, Raleigh, Columbia) easily delivered the 32-city win."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Do not attack entrenched elite generals in level-2 fortified cities without overwhelming local superiority; bypass or starve them.",
+     "why": "Frontal attacks against Lee in New Orleans and Johnston in Richmond failed due to high defensive fort multipliers."
+    }
+   ],
+   "strategy": "Open with rapid border city capture (Baltimore, Louisville, Paducah, Manassas) and commence non-stop commerce raiding. Build western offensive columns under Grant and Buell to push down the Mississippi and through Tennessee into Georgia and the Carolinas, while holding Virginia defensively. Achieve strategic victory by reaching 32 controlled cities."
+  },
+  {
+   "version": 8,
+   "after_game": {
+    "game": 8,
+    "scenario": "alternate",
+    "reason": "Rebel victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "The Union suffered a sudden income-share defeat in early 1862 after Stuart and J.E. Johnston bypassed forward units and seized undefended core Northern cities (Philadelphia, Indianapolis, Columbus).",
+   "lessons": [
+    "Grab key neutral border cities (Baltimore, Louisville, Paducah, Manassas) on turn 1 to expand tax income and secure forward lines.",
+    "Call 'troops' every turn and recruit across available northern and border cities to maintain superior overall manpower.",
+    "Use rail transit every turn to reposition fresh armies directly into threatened border hubs or forward assembly areas.",
+    "Execute naval commerce raids continuously with available fleets to steadily deplete Confederate treasury and hamper recruitment.",
+    "Win by seizing 28 cities or establishing income dominance by capturing vulnerable peripheral Confederate cities.",
+    "Keep mobile field armies between 25k and 35k men so they move early in turn resolution; armies over 40k move late.",
+    "Maintain contiguous supply lines; cut-off armies fight at half effectiveness and rapidly lose strength.",
+    "Never leave Northern core and hub cities (Philly, Columbus, Indianapolis, Cincinnati) empty; raiders can cause income defeat.",
+    "Merge scattered garrisons using 'join' under high-rated leaders (Grant, Sherman, Thomas) to build decisive strike forces.",
+    "Manually buy supply for key attacking or defending field armies whenever their supply level falls to 1 or below.",
+    "Do not attack entrenched elite generals in level-2 fortified cities without overwhelming local superiority; bypass or starve them.",
+    "Maintain a garrison in Washington of at least 15,000 men and upgrade its fort level early to deter sudden Confederate thrusts."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Win by seizing 28 cities or establishing income dominance by capturing vulnerable peripheral Confederate cities.",
+     "why": "Corrected the 32-city threshold to the accurate 28-city requirement for alternate maps and emphasized guarding income share."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Never leave Northern core and hub cities (Philly, Columbus, Indianapolis, Cincinnati) empty; raiders can cause income defeat.",
+     "why": "Stuart and Johnston marched directly through empty Northern economic centers to trigger a Confederate income victory."
+    }
+   ],
+   "strategy": "Secure neutral border hubs on turn 1 while leaving screening detachments in key Northern economic hubs to prevent enemy cavalry and armies from penetrating the rear, then leverage combined armies under Grant and Sherman to roll up Confederate frontier cities."
+  },
+  {
+   "version": 9,
+   "after_game": {
+    "game": 9,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 15
+   },
+   "diagnosis": "We overextended into the deep South (capturing Richmond and Norfolk with McDowell) while neglecting northern territorial defense. Confederate raiders and mega-stacks (Jackson and A.S. Johnston) repeatedly took Washington, Philadelphia, Harrisburg, and Columbus, gutting our income and cutting supply lines. Our isolated armies fought repeatedly out of supply and were eliminated in detail.",
+   "lessons": [
+    "Prioritize securing and fortifying Washington and Baltimore on Turn 1; losing Washington forfeits the +100 income bonus and destroys the supply economy.",
+    "Call 'troops' and recruit every turn, concentrating new recruits into core armies rather than leaving scattered understrength detachments.",
+    "Do not advance deep into enemy territory unless your home base and flanks are secure; contiguous friendly connections are required to prevent cut-off attrition.",
+    "Never order an attack with an army at 0 supply; check supply levels and use 'supply' command before moving into combat.",
+    "Form 2-3 concentrated field armies of 30,000 to 40,000 men under top generals (Grant, Thomas, McClellan) rather than maintaining 5+ small, vulnerable forces.",
+    "Defend northern anchor cities (Philadelphia, Harrisburg, Columbus, Cincinnati) with fortified garrisons to block Confederate invasion corridors.",
+    "Use rail transit every turn to rapidly shift reinforcements or retreat threatened garrisons to fortified positions.",
+    "When facing enemy stacks over 30,000 men led by Lee or Jackson, defend behind forts rather than attacking them in the open.",
+    "Consolidate adjacent armies in the same city using 'join' before launching major counter-offensives.",
+    "Do not chase peripheral Confederate ports while the main Rebel army threatens your capital and core income cities.",
+    "Keep fleets raiding commerce to suppress Rebel income, but do not rely on it alone to stop enemy recruitment if Rebels hold 25+ cities.",
+    "Eliminate enemy penetrations into the North immediately to maintain tax income and prevent Rebel victory by city count."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Do not advance deep into enemy territory unless your home base and flanks are secure; contiguous friendly connections are required to prevent cut-off attrition.",
+     "why": "McDowell advanced to Richmond and Norfolk while the Union core collapsed behind him, cutting him off from supply and failing to stop the loss of the game."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Never order an attack with an army at 0 supply; check supply levels and use 'supply' command before moving into combat.",
+     "why": "Multiple armies moved and fought while out of supplies, suffering severe combat penalties and attrition."
+    },
+    {
+     "kind": "added",
+     "lesson": "Eliminate enemy penetrations into the North immediately to maintain tax income and prevent Rebel victory by city count.",
+     "why": "Letting Jackson and Johnston roam Pennsylvania and Ohio gave the Confederacy the 32+ cities needed to win."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Win by seizing 28 cities or establishing income dominance by capturing vulnerable peripheral Confederate cities.",
+     "why": "Going for peripheral captures diverted strength from protecting core high-value northern cities."
+    }
+   ],
+   "strategy": "Next game, maintain a tight, cohesive defensive front protecting Washington, Baltimore, Philadelphia, and the Ohio River line with fortified garrisons. Concentrate offensive manpower into two 35k-40k strike groups led by Grant and McClellan. Defeat Confederate incursions into the North before pushing down the Mississippi or into Virginia along secure, resupplied corridors."
+  },
+  {
+   "version": 10,
+   "after_game": {
+    "game": 10,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "Rapid 6-turn victory via economic dominance. Early border-city captures (Baltimore, Louisville, Manassas) and commerce raiding built an insurmountable income lead. Merging large armies and railing reserves to frontline battles enabled capturing Richmond and crushing Rebel counter-offensives.",
+   "lessons": [
+    "Secure neutral border cities (Baltimore, Manassas, Louisville, Strasburg) on Turn 1 to expand income base and establish defensive buffers.",
+    "Call 'troops' and recruit heavily every turn into frontline cities to build decisive numerical superiority.",
+    "Order 'fleet raid' from Turn 1 onward to bleed Rebel treasury and suppress their recruitment capacity.",
+    "Use 'rail' every turn to rush reinforcements into threatened cities before combat resolves.",
+    "Use 'join' to merge armies in key hubs (Cincinnati, Paducah, Washington) into 30,000+ man strike forces under top generals.",
+    "Defend key hubs (St. Louis, Cincinnati, Indianapolis) with substantial garrisons to repel aggressive Confederate probes.",
+    "Pounce on lightly defended Richmond or isolated Rebel armies whenever a concentrated force is adjacent.",
+    "Rail a large army into newly captured Richmond immediately to secure it against Confederate counter-attacks.",
+    "Check supply status in winter/spring and manually supply combat armies before attacking to avoid half-strength penalties.",
+    "Do not attack across rivers or into fortified cities without overwhelming numbers and full supply.",
+    "Never leave western anchor cities like St. Louis under-garrisoned on Turn 1 against western Confederate pushes.",
+    "Hold Washington continuously to protect the vital +100 income bonus and supply line integrity."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Secure neutral border cities (Baltimore, Manassas, Louisville, Strasburg) on Turn 1 to expand income base and establish defensive buffers.",
+     "why": "Early aggressive expansion into neutral border territory established immediate income dominance and safe operating depth."
+    },
+    {
+     "kind": "added",
+     "lesson": "Rail a large army into newly captured Richmond immediately to secure it against Confederate counter-attacks.",
+     "why": "Railing McDowell's 30k force into Richmond in Jan 1862 cemented the capture and blocked Rebel recapture attempts."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Order 'fleet raid' from Turn 1 onward to bleed Rebel treasury and suppress their recruitment capacity.",
+     "why": "Continuous commerce raiding drained $50-$80 every turn, crippling Rebel recruitment and accelerating economic victory."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Defend northern anchor cities (Philadelphia, Harrisburg, Columbus, Cincinnati) with fortified garrisons to block Confederate invasion corridors.",
+     "why": "Fortifying deep northern cities is too passive; holding the forward border cities and St. Louis/Cincinnati with active field armies is far more effective."
+    }
+   ],
+   "strategy": "Open with rapid border city expansion and Turn 1 commerce raiding. Maximize recruitment into concentrated western and eastern field armies. Use railroads to reinforce threatened sectors and project overwhelming force against Richmond and the Tennessee corridor to trigger an early economic or capital-capture victory."
+  },
+  {
+   "version": 11,
+   "after_game": {
+    "game": 11,
+    "scenario": "standard",
+    "reason": "Union victory: capital captured",
+    "turns": 17
+   },
+   "diagnosis": "Game 11 was won in November 1863 by capturing Richmond with a concentrated 94k+ army under Grant. Continuous fleet raiding deprived the Confederacy of income, while strategic use of rail and join allowed us to amass an overwhelming strike force at Fredericksburg. Fortifying Washington to Level 2 proved vital in repelling desperate late-game Confederate raids on our capital.",
+   "lessons": [
+    "Secure neutral border cities (Baltimore, Manassas, Louisville) on Turn 1 to expand income and establish defensive depth.",
+    "Order 'fleet raid' from Turn 1 onward to continually drain Rebel commerce and cripple their recruiting funds.",
+    "Call 'troops' and recruit heavily each turn in high-yield cities (Baltimore, Pittsburg, Columbus, Washington).",
+    "Fortify Washington to Level 2 early to guarantee capital security and protect the critical +100 income bonus.",
+    "Use 'rail' every turn to concentrate reinforcements into frontline staging hubs like Fredericksburg before marching.",
+    "Use 'join' to build an 80,000+ man mega-army under Grant at Fredericksburg to crush Richmond's garrison.",
+    "Attack fortified capitals with 2:1+ numerical advantage; follow up failed assaults immediately before defenders recover.",
+    "Manually purchase supply for combat armies at 1 or less supply before launching attacks to prevent half-strength penalties.",
+    "Maintain garrisons at key interior rail hubs (Cincinnati, Louisville, St. Louis) to contain mobile Rebel raiders.",
+    "Isolate and eliminate cut-off Rebel armies with converged multi-army attacks to force surrenders.",
+    "Advance aggressively in the West against undefended Confederate cities (Nashville, Chattanooga, Atlanta, Montgomery).",
+    "Keep open rail lines and friendly adjacent cities to all active field armies to prevent winter supply attrition."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Fortify Washington to Level 2 early to guarantee capital security and protect the critical +100 income bonus.",
+     "why": "Fortifying Washington to level 2 easily repelled Stuart's surprise counter-attack without diverting frontline field armies."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Use 'join' to build an 80,000+ man mega-army under Grant at Fredericksburg to crush Richmond's garrison.",
+     "why": "A 30k army is insufficient against level 2 Richmond forts; assembling 80k-100k+ under Grant ensures breakthrough."
+    },
+    {
+     "kind": "added",
+     "lesson": "Attack fortified capitals with 2:1+ numerical advantage; follow up failed assaults immediately before defenders recover.",
+     "why": "Grant failed the first assault against 44k defenders in level 2 forts, but broke through on the second turn once defenders took losses."
+    },
+    {
+     "kind": "added",
+     "lesson": "Advance aggressively in the West against undefended Confederate cities (Nashville, Chattanooga, Atlanta, Montgomery).",
+     "why": "Buell's unchecked sweep through Tennessee and Georgia stretched Confederate armies and boosted Union income."
+    }
+   ],
+   "strategy": "Execute a dual-track strategy: in the East, fortify Washington to Level 2, use rail and join at Fredericksburg to create an 80,000+ man army under Grant, and capture Richmond in 1863; in the West, deploy mobile garrisons to contain raiders while advancing deep into undefended Confederate interior cities; maintain fleet raiding every turn to starve the Rebel war economy."
+  },
+  {
+   "version": 12,
+   "after_game": {
+    "game": 12,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 4
+   },
+   "diagnosis": "A swift 4-turn victory by capturing key Confederate production centers. Seizing neutral border cities on Turn 1 boosted early income and allowed Turn 1 defense of St. Louis. Grant's rapid unopposed march down the Mississippi (Paducah-Memphis-Vicksburg-Jackson) combined with an early strike to capture weakly garrisoned Richmond pushed Union income over the 60% threshold by October 1861.",
+   "lessons": [
+    "Secure neutral border cities (Baltimore, Strasburg, Manassas, Louisville, Paducah) on Turn 1 to expand income and secure frontlines.",
+    "Order 'fleet raid' from Turn 1 onward to continually drain Rebel commerce and restrict their recruitment.",
+    "Recruit at St. Louis on Turn 1 to easily repel A.S. Johnston's early Missouri incursions.",
+    "Advance rapidly down the Mississippi with Grant (Paducah to Memphis to Vicksburg) to grab high-value, lightly guarded Rebel cities.",
+    "Exploit lightly garrisoned enemy capitals; capture Richmond immediately if Stuart or Lee leaves it under-defended.",
+    "Use 'rail' every turn to reposition reinforcements or counter Rebel raiders threatening interior hubs like Columbus or Cincinnati.",
+    "Fortify Washington and Richmond after capture to protect capital income bonuses and defend against counterattacks.",
+    "Use 'join' in frontline hubs to combine fragmented units under 4-5 star commanders before major battles.",
+    "Check city recruit yields with 'troops' and spend excess income reinforcing high-capacity northern industrial cities.",
+    "Buy supply manually whenever an active combat army drops to 1 supply to prevent fighting at half strength.",
+    "Pursue multi-pronged advances in the East and West simultaneously to divide Confederate defense forces.",
+    "Keep supply corridors and rail links connected behind advancing columns to prevent winter supply decay."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Advance rapidly down the Mississippi with Grant (Paducah to Memphis to Vicksburg) to grab high-value, lightly guarded Rebel cities.",
+     "why": "Grant is positioned in the West at start; driving him down the Mississippi seizes huge chunks of Rebel income faster than staging him east."
+    },
+    {
+     "kind": "added",
+     "lesson": "Recruit at St. Louis on Turn 1 to easily repel A.S. Johnston's early Missouri incursions.",
+     "why": "Reinforcing Pope in St. Louis immediately on Turn 1 reliably defeats A.S. Johnston's scripted opening attack."
+    },
+    {
+     "kind": "added",
+     "lesson": "Exploit lightly garrisoned enemy capitals; capture Richmond immediately if Stuart or Lee leaves it under-defended.",
+     "why": "Richmond was defended by only 1,200 men in August 1861, enabling McClellan to seize it easily and trigger a rapid income win."
+    }
+   ],
+   "strategy": "Execute a high-tempo two-front blitz: expand across neutral border cities on Turn 1 while reinforcing St. Louis and launching naval raids. In the West, drive Grant aggressively down the Mississippi corridor to take Memphis, Vicksburg, and Jackson. In the East, push McClellan and Fremont through northern Virginia to assault Richmond as soon as an opening appears, using rail to reinforce threatened interior points."
+  },
+  {
+   "version": 13,
+   "after_game": {
+    "game": 13,
+    "scenario": "standard",
+    "reason": "Union victory: capital captured",
+    "turns": 15
+   },
+   "diagnosis": "The Union achieved a decisive capital-capture victory in July 1863 by massing a 123,000-man strike force under Grant at Manassas and overwhelming Jackson's level-2 fort at Richmond. Consistent commerce raiding starved the Confederacy of funds, while tactical use of rail allowed rapid shifting of reserves to contain Rebel deep raids across Ohio, Pennsylvania, and Missouri.",
+   "lessons": [
+    "Secure neutral border cities (Baltimore, Manassas, Louisville, Paducah) on Turn 1 to establish defensive perimeters and expand income.",
+    "Keep Union fleet continuously on 'fleet raid' to systematically deplete Rebel treasury and curb their recruitment capacity.",
+    "Assemble a 100k+ mega-army under Grant using 'join' at Manassas/Washington to decisively storm fortified Richmond for a swift capital win.",
+    "Trap and cut off overextended Rebel raiders so defeated forces surrender entirely rather than retreating.",
+    "Use 'rail' every turn to transport recruits and high-rated generals directly into threatened sectors or staging hubs.",
+    "Avoid deep westward or southern solo advances without maintaining contiguous friendly cities to prevent chronic out-of-supply penalties.",
+    "Do not attack fortified enemy armies without overwhelming numerical superiority (odds 45%+); mass troops before attacking.",
+    "Use 'join' in frontline staging cities to combine fragmented brigades under 4-5 star commanders before launching major assaults.",
+    "Check recruit pools with 'troops' each turn and invest treasury into high-yield northern cities like Washington, Baltimore, and Cincinnati.",
+    "Buy supply manually whenever combat armies drop to 1 supply to prevent fighting at half strength or suffering winter attrition.",
+    "Keep garrisons in Washington and key border junctions to deflect counter-offensives from high-rated Rebel commanders.",
+    "When rebuilding the fleet or adding ironclads, ensure syntax matches active fleet status (use 'build ironclad' once a fleet exists)."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Assemble a 100k+ mega-army under Grant using 'join' at Manassas/Washington to decisively storm fortified Richmond for a swift capital win.",
+     "why": "Massing over 120k men under Grant successfully broke through Richmond's level-2 forts despite Jackson defending, securing immediate victory."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Avoid deep westward or southern solo advances without maintaining contiguous friendly cities to prevent chronic out-of-supply penalties.",
+     "why": "McClellan's deep push down the Mississippi frequently ran out of supplies and suffered attrition without securing continuous lines."
+    },
+    {
+     "kind": "added",
+     "lesson": "Trap and cut off overextended Rebel raiders so defeated forces surrender entirely rather than retreating.",
+     "why": "Surrounding Pemberton in Louisville and Ashby in Lexington forced full surrenders, eliminating thousands of Rebel troops permanently."
+    },
+    {
+     "kind": "added",
+     "lesson": "When rebuilding the fleet or adding ironclads, ensure syntax matches active fleet status (use 'build ironclad' once a fleet exists).",
+     "why": "Eliminated illegal fleet order refusals by respecting naval command constraints."
+    }
+   ],
+   "strategy": "Open by seizing border hubs (Baltimore, Manassas, Louisville, Paducah) and initiating non-stop fleet commerce raiding. Contain Confederate border incursions using rail mobility and local superiority, then concentrate Northern manpower into an unstoppable 100,000+ man strike corps under Grant to storm Richmond for a capital-capture victory."
+  },
+  {
+   "version": 14,
+   "after_game": {
+    "game": 14,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "Over-focusing on building a massive army in Washington left the Midwest and Ohio Valley wide open. Unchecked Rebel generals captured St Louis, Springfield, Indianapolis, Louisville, Cincinnati, and Baltimore, triggering an early 28-city Confederate victory.",
+   "lessons": [
+    "Secure neutral border cities (Baltimore, Manassas, Louisville, Paducah) on Turn 1 to establish defensive perimeters and expand income.",
+    "Defend Ohio Valley and Midwest hubs (Cincinnati, Indianapolis, St Louis); never let Rebel raiders sweep empty cities toward a 28-city win.",
+    "Keep Union fleet continuously on 'fleet raid' to systematically deplete Rebel treasury and curb their recruitment capacity.",
+    "Assemble a 70k-100k army under Grant to strike Richmond quickly before Rebels can expand across the western map.",
+    "Trap and cut off overextended Rebel raiders so defeated forces surrender entirely rather than retreating.",
+    "Use 'rail' every turn to transport recruits and high-rated generals directly into threatened sectors or staging hubs.",
+    "Avoid deep westward or southern solo advances without maintaining contiguous friendly cities to prevent chronic out-of-supply penalties.",
+    "Do not attack fortified enemy armies without overwhelming numerical superiority (odds 45%+); mass troops before attacking.",
+    "Use 'join' in frontline staging cities to combine fragmented brigades under 4-5 star commanders before launching major assaults.",
+    "Check recruit pools with 'troops' each turn and invest treasury into high-yield northern cities like Washington, Baltimore, and Cincinnati.",
+    "Buy supply manually whenever combat armies drop to 1 supply to prevent fighting at half strength or suffering winter attrition.",
+    "Keep active garrisons in Washington and key border junctions to deflect counter-offensives from high-rated Rebel commanders."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Defend Ohio Valley and Midwest hubs (Cincinnati, Indianapolis, St Louis); never let Rebel raiders sweep empty cities toward a 28-city win.",
+     "why": "Rebels won on Turn 5 by reaching 28 cities because the entire western and midwestern theater was left undefended."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Assemble a 70k-100k army under Grant to strike Richmond quickly before Rebels can expand across the western map.",
+     "why": "Waiting too many turns to build a 100k+ mega-army delays the capital strike and cedes map control."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When rebuilding the fleet or adding ironclads, ensure syntax matches active fleet status (use 'build ironclad' once a fleet exists).",
+     "why": "Syntax nuances are secondary to vital operational defense against Confederate rapid territorial expansion."
+    }
+   ],
+   "strategy": "Execute a dual-front strategy: quickly assemble a 70k+ strike force under Grant to assault Richmond within 3-4 turns, while actively recruiting and garrisoning in the Midwest (Cincinnati, Columbus, St Louis) to prevent rapid Rebel city-control victories."
+  },
+  {
+   "version": 15,
+   "after_game": {
+    "game": 15,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 14
+   },
+   "diagnosis": "Lost in May 1863 due to leaving Washington entirely undefended while Beauregard was adjacent in Harper's Ferry, allowing an immediate Rebel capital capture. Additionally, launching sequential uncombined attacks into Baltimore chewed up Union divisions, and Buell's isolated western moves ended in surrender.",
+   "lessons": [
+    "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Baltimore; maintain a dedicated garrison.",
+    "Merge forces using 'join' into a single massive stack before attacking a concentrated enemy; never send multiple separate armies sequentially.",
+    "Secure neutral border cities (Baltimore, Manassas, Louisville, Paducah) on Turn 1 to expand income and establish defensive buffers.",
+    "Defend Ohio Valley hubs (Cincinnati, Indianapolis, Columbus); never allow Rebel raiders to sweep empty northern cities.",
+    "Keep Union fleet continuously on 'fleet raid' to deplete Rebel treasury and suppress enemy reinforcement rates.",
+    "Buy supply manually whenever an active army drops to 1 supply to avoid half-strength combat penalties and winter attrition.",
+    "Avoid deep solo advances down the Mississippi without contiguous friendly supply lines to prevent army isolation and surrender.",
+    "Do not attack fortified or concentrated defenders without overwhelming numbers and favorable odds (at least 50%+).",
+    "Use 'rail' every turn to rapidly reposition high-rated commanders and reinforcements directly to threatened sectors.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Trap and cut off retreat routes of overextended Rebel raiders so defeated forces surrender completely.",
+    "Consolidate frontline commands under 4-5 star generals (Grant, McClellan) rather than operating fragmented weak corps."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Baltimore; maintain a dedicated garrison.",
+     "why": "Game 15 was lost instantly when Washington was left empty and Beauregard walked in unopposed from Harper's Ferry."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Merge forces using 'join' into a single massive stack before attacking a concentrated enemy; never send multiple separate armies sequentially.",
+     "why": "Attacking Baltimore sequentially with three separate corps resulted in three low-odds defeats in July 1862 instead of one decisive victory."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Avoid deep solo advances down the Mississippi without contiguous friendly supply lines to prevent army isolation and surrender.",
+     "why": "Buell's isolated movements deep in the West left him cut off, out of supply, and eventually forced him to surrender."
+    }
+   ],
+   "strategy": "Lock down Washington and key border junctions with fortified garrisons while raiding Confederate trade by sea. Methodically consolidate northern recruits into a 60k-80k army under Grant, maintaining strict supply links and merging forces before launching high-odds assaults on Rebel strongpoints."
+  },
+  {
+   "version": 16,
+   "after_game": {
+    "game": 16,
+    "scenario": "alternate",
+    "reason": "Rebel victory: share of total income",
+    "turns": 7
+   },
+   "diagnosis": "Lost on Rebel income threshold (60% income/27 cities) in May 1862 despite having a 2:1 troop advantage. J.E. Johnston and Beauregard slipped behind Union lines into un-garrisoned northern and eastern cities (Harper's Ferry, Baltimore, Philadelphia, Cincinnati), capturing high-income territory unopposed while Union armies drilled and consolidated away from threats.",
+   "lessons": [
+    "Never leave rear northern cities (Philadelphia, Harrisburg, Baltimore, Columbus) ungarrisoned; Rebel raiders will capture them and trigger an early income loss.",
+    "Prioritize intercepting and destroying deep enemy raiders over offensive pushes into Confederate interior territory.",
+    "Reinforce St. Louis with recruits or rail reinforcements immediately; fortifying a depleted garrison under 2,000 men cannot hold against 10,000+ attackers.",
+    "Secure neutral border cities (Baltimore, Manassas, Louisville, Paducah) on Turn 1 to expand income and establish defensive buffers.",
+    "Defend Ohio Valley hubs (Cincinnati, Indianapolis, Columbus); never allow Rebel raiders to sweep empty northern cities.",
+    "Merge forces using 'join' into a single stack before attacking concentrated enemies; never attack with piecemeal detachments.",
+    "Keep Union fleet continuously on 'fleet raid' to deplete Rebel treasury and suppress enemy reinforcement rates.",
+    "Buy supply manually whenever an active army drops to 1 supply to avoid half-strength combat penalties and winter attrition.",
+    "Do not attack fortified or concentrated defenders without overwhelming numbers and favorable odds (at least 50%+).",
+    "Use 'rail' every turn to rapidly reposition high-rated commanders and reinforcements directly to threatened sectors.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Baltimore; maintain a dedicated garrison."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave rear northern cities (Philadelphia, Harrisburg, Baltimore, Columbus) ungarrisoned; Rebel raiders will capture them and trigger an early income loss.",
+     "why": "J.E. Johnston took Harper's Ferry, Baltimore, and Philadelphia uncontested, giving the Confederacy the 60% income victory in early 1862."
+    },
+    {
+     "kind": "added",
+     "lesson": "Prioritize intercepting and destroying deep enemy raiders over offensive pushes into Confederate interior territory.",
+     "why": "Pushing into Nashville and Fort Donelson while raiders rampaged through Maryland, Pennsylvania, and Ohio caused rapid territorial collapse."
+    },
+    {
+     "kind": "added",
+     "lesson": "Reinforce St. Louis with recruits or rail reinforcements immediately; fortifying a depleted garrison under 2,000 men cannot hold against 10,000+ attackers.",
+     "why": "St. Louis held three attacks at level 2 forts but was annihilated when Jackson arrived with 14k against Pope's 500 men."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Avoid deep solo advances down the Mississippi without contiguous friendly supply lines to prevent army isolation and surrender.",
+     "why": "Replaced with higher-priority defensive lessons preventing immediate economic defeat from Rebel raiders."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Trap and cut off retreat routes of overextended Rebel raiders so defeated forces surrender completely.",
+     "why": "Replaced by direct raider interception and homeland security imperatives."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Consolidate frontline commands under 4-5 star generals (Grant, McClellan) rather than operating fragmented weak corps.",
+     "why": "Redundant with existing consolidation and rail repositioning guidelines."
+    }
+   ],
+   "strategy": "In the next game, maintain tight territorial defense across Maryland, Pennsylvania, and the Ohio Valley. Rapidly intercept any Confederate units crossing the border before executing southern offensive operations, ensuring Union income dominance is protected."
+  },
+  {
+   "version": 17,
+   "after_game": {
+    "game": 17,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "In Game 17, the Union survived all 24 turns but lost on time because constant Rebel raiders ping-ponging across Pennsylvania and Ohio kept major Union field armies bogged down in defensive recovery. Isolated deep-south raids by small forces (McDowell) were eventually encircled and destroyed, while key attacks were launched with unsupplied armies fighting at half strength.",
+   "lessons": [
+    "Never attack with an army at 0 supply; unsupplied armies fight at half strength and suffer disastrous combat odds.",
+    "Prioritize intercepting and trapping enemy raiders in the Northeast and Ohio before launching deep southern pushes.",
+    "Do not push small, isolated raiding detachments into the deep South without secure supply lines and retreat paths.",
+    "Maintain permanent garrisons in critical northern border hubs (Washington, Baltimore, Cincinnati, Columbus).",
+    "Consolidate field armies using 'join' before attacking fortified or concentrated enemy positions.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 for income and forward staging.",
+    "Keep Union fleet continuously on 'fleet raid' to sap Confederate treasury and throttle their reinforcement rate.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter attrition.",
+    "Do not attack defenders with low odds (under 50%); maneuver to cut off retreat or wait for concentrated strength.",
+    "Use 'rail' every turn to reposition high-rated commanders and reinforcements directly to threatened sectors.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Fredericksburg."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never attack with an army at 0 supply; unsupplied armies fight at half strength and suffer disastrous combat odds.",
+     "why": "McClellan repeatedly attacked Pemberton while out of supply, drastically reducing combat effectiveness and failing to dislodge him."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not push small, isolated raiding detachments into the deep South without secure supply lines and retreat paths.",
+     "why": "McDowell marched deep into Mississippi and Georgia with under 7,000 men and was cut off, out of supply, and destroyed at Atlanta."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Maintain permanent garrisons in critical northern border hubs (Washington, Baltimore, Cincinnati, Columbus).",
+     "why": "Pemberton and Jackson repeatedly captured unguarded northern hubs, forcing massive diversions of Union main armies."
+    }
+   ],
+   "strategy": "Lock down the northern perimeter with dedicated garrisons and fortresses, use concentrated, fully-supplied field armies under top generals to rapidly trap and destroy Rebel incursions, and advance southward methodically along railroad corridors rather than sending isolated raiders."
+  },
+  {
+   "version": 18,
+   "after_game": {
+    "game": 18,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 13
+   },
+   "diagnosis": "Game 18 was won decisively in May 1863 by economic dominance (income share) and strategic encirclement. Continuous commerce raiding stripped Rebel funds while steady recruitment built overwhelming field stacks in Washington, the Midwest, and the Mississippi corridor. Aggressive Rebel raiding incursions into Pennsylvania and Ohio were trapped against borders and destroyed with complete surrenders, enabling a final multi-pronged drive that seized Richmond and Vicksburg.",
+   "lessons": [
+    "Never attack with an army at 0 supply; unsupplied armies fight at half strength and suffer severe combat penalties.",
+    "Prioritize intercepting and trapping enemy raiders in the Northeast and Midwest; cut off their retreat routes to force complete surrender.",
+    "Do not push small, isolated raiding detachments into the deep South without secure supply lines and retreat paths.",
+    "Maintain strong garrisons in critical northern border hubs (Washington, Baltimore, Cincinnati, Columbus).",
+    "Consolidate field armies using 'join' into 30,000-50,000 man corps before attacking major enemy concentrations.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 for income and forward staging.",
+    "Keep the Union fleet on 'fleet raid' every turn to drain Rebel revenue and severely restrict their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter attrition.",
+    "Do not attack defenders with low odds (under 50%); maneuver to cut off retreat or wait for concentrated strength.",
+    "Use 'rail' every turn to reposition high-rated commanders and reinforcements directly to threatened sectors.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Fredericksburg."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Prioritize intercepting and trapping enemy raiders in the Northeast and Midwest; cut off their retreat routes to force complete surrender.",
+     "why": "Trapping deep Rebel incursions into Harrisburg and Cincinnati eliminated entire enemy field armies instantly through surrender without retreat paths."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Consolidate field armies using 'join' into 30,000-50,000 man corps before attacking major enemy concentrations.",
+     "why": "Concentrated 40k+ corps led by high-rated generals (McClellan, Hooker, Sherman) easily overpowered Confederate defenders at Richmond, Memphis, and Harrisburg."
+    }
+   ],
+   "strategy": "Open by seizing neutral border hubs and putting the navy on continuous raid. Funnel revenue into high-yield northern recruit cities and rail reinforcements to maintain solid defense lines across Washington, Ohio, and the Mississippi. Isolate and eliminate any Rebel incursions into northern territory by cutting off their retreat paths. Once the North is completely pacified and massive 40,000+ corps are consolidated under top commanders, launch coordinated simultaneous advances on Richmond, Tennes"
+  },
+  {
+   "version": 19,
+   "after_game": {
+    "game": 19,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "The Confederacy achieved a swift 32-city victory in 5 turns by slipping raiders (A.S. Johnston, Jackson, J.E. Johnston) past the frontier into undefended Northern hubs (Indianapolis, Columbus, Pittsburgh, Philadelphia, Springfield). Failed low-odds attacks on Turn 1 and chasing peripheral targets like Harper's Ferry left our interior completely open to rapid capture.",
+   "lessons": [
+    "Never attack with an army at 0 supply; unsupplied armies fight at half strength and suffer severe combat penalties.",
+    "Prioritize intercepting and trapping enemy raiders in the Northeast and Midwest; cut off their retreat routes to force complete surrender.",
+    "Never leave interior Northern cities (Columbus, Pittsburgh, Philadelphia, Indianapolis) unguarded when enemy raiders breach the frontier.",
+    "Maintain strong garrisons in critical border hubs (Washington, Baltimore, Cincinnati, Columbus) to prevent breakthrough raids.",
+    "Consolidate field armies using 'join' into 30,000-50,000 man corps before attacking major enemy concentrations.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 for income and forward staging.",
+    "Keep the Union fleet on 'fleet raid' every turn to drain Rebel revenue and severely restrict their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter attrition.",
+    "Do not attack defenders with low odds (under 50%); maneuver to cut off retreat or wait for concentrated strength.",
+    "Use 'rail' proactively every turn to reposition forces directly in the path of penetrating enemy armies.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Never leave Washington unoccupied if an enemy army occupies Harper's Ferry, Manassas, or Fredericksburg."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave interior Northern cities (Columbus, Pittsburgh, Philadelphia, Indianapolis) unguarded when enemy raiders breach the frontier.",
+     "why": "Rebel raiders exploited gaps to capture Columbus, Pittsburgh, Philadelphia, and Springfield unopposed, triggering a 32-city sudden victory."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Use 'rail' proactively every turn to reposition forces directly in the path of penetrating enemy armies.",
+     "why": "Failing to rail reinforcements to block deep raiders allowed enemy commanders to sweep through the Ohio Valley and Pennsylvania."
+    }
+   ],
+   "strategy": "Establish an airtight defensive perimeter across the Potomac and Ohio rivers on Turn 1. Consolidate northern recruits into massive corps under top generals (Grant, McDowell) and aggressively use railroad movement to immediately block, corner, and eliminate any Confederate forces that attempt to raid north."
+  },
+  {
+   "version": 20,
+   "after_game": {
+    "game": 20,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 13
+   },
+   "diagnosis": "A steady income-share victory achieved by keeping the fleet on continuous commerce raiding, defending Washington and Cincinnati stubbornly against repeated assaults, consolidating 30,000+ man field armies to crush isolated Rebel forces in Paducah and Vicksburg, and aggressively capturing high-value western cities like Memphis, Jackson, and Baton Rouge.",
+   "lessons": [
+    "Never attack with an army at 0 supply; unsupplied armies fight at half strength and suffer severe combat penalties.",
+    "Prioritize intercepting and trapping enemy raiders in the Northeast and Midwest; cut off their retreat routes to force complete surrender.",
+    "Never leave interior Northern cities (Columbus, Pittsburgh, Philadelphia, Indianapolis) unguarded when enemy raiders breach the frontier.",
+    "Maintain strong garrisons in critical border hubs (Washington, Baltimore, Cincinnati, Columbus) to prevent breakthrough raids.",
+    "Consolidate field armies using 'join' into 30,000-50,000 man corps before attacking major enemy concentrations.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 for income and forward staging.",
+    "Keep the Union fleet on 'fleet raid' every turn to drain Rebel revenue and severely restrict their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter attrition.",
+    "Do not attack defenders with low odds (under 50%); maneuver to cut off retreat or wait for concentrated strength.",
+    "Use 'rail' proactively every turn to reposition forces directly in the path of penetrating enemy armies.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, and Cincinnati.",
+    "Exploit western openings (Memphis, Jackson, Vicksburg, Baton Rouge) to rapidly drive Confederate income below 40%."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Exploit western openings (Memphis, Jackson, Vicksburg, Baton Rouge) to rapidly drive Confederate income below 40%.",
+     "why": "Replaced the redundant Washington defense reminder (already covered by border hub garrisoning) with active exploitation of the western theater to trigger economic victory."
+    }
+   ],
+   "strategy": "Open by seizing neutral border hubs and putting the navy on permanent commerce raiding. Anchor the Eastern theater defensively at Washington and Fredericksburg with fortified garrisons while building 30k+ corps via rail and join to systematically roll up the Mississippi Valley, capturing western cities to win by economic strangulation."
+  },
+  {
+   "version": 21,
+   "after_game": {
+    "game": 21,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 14
+   },
+   "diagnosis": "Piecemeal, sequential attacks by multiple separate armies against concentrated Rebel forces (like Johnston in Baltimore) caused repeated defeats. Simultaneously, overextending Grant deep south with small forces against Lee's 40k doomstack and leaving the Midwest completely open to Pemberton's raids collapsed both flanks.",
+   "lessons": [
+    "Never launch multiple separate attacks into the same city on one turn; always merge armies using 'join' first so they fight as one unified force.",
+    "Do not attack enemy defenders when combat odds are under 50%; maneuver to cut off retreat, defend fortified positions, or wait for reinforcements.",
+    "Never attack or move with an army at 0 supply; unsupplied armies fight at half strength and suffer severe attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and destroy Midwest raiders.",
+    "Do not overextend isolated detachments into deep Southern cities (Nashville, Chattanooga) against superior Confederate field armies.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 to expand income and create defensive barriers.",
+    "Keep the Union fleet on 'fleet raid' every turn to steadily drain Confederate treasury and limit their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter supply loss.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, Columbus, and Cincinnati.",
+    "When an enemy raider is isolated deep in Northern territory, cut all adjacent friendly rail and march paths to force full surrender on defeat.",
+    "Fortify key chokepoint cities when facing superior enemy numbers; fort levels double or triple defensive combat power."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never launch multiple separate attacks into the same city on one turn; always merge armies using 'join' first so they fight as one unified force.",
+     "why": "Attacking Baltimore with three separate armies in one turn resulted in three consecutive lost battles rather than one overwhelming victory."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not overextend isolated detachments into deep Southern cities (Nashville, Chattanooga) against superior Confederate field armies.",
+     "why": "Grant was repeatedly crushed and eventually destroyed because he held Nashville and Lexington with only 7k-12k men against Lee's 45k."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and destroy Midwest raiders.",
+     "why": "Pemberton marched unopposed through Louisville, Cincinnati, Columbus, and Indianapolis because forces were concentrated entirely in the East."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Exploit western openings (Memphis, Jackson, Vicksburg, Baton Rouge) to rapidly drive Confederate income below 40%.",
+     "why": "Premature western advances dilute Union force concentration and leave Northern home territory vulnerable to collapse."
+    }
+   ],
+   "strategy": "Open by securing neutral border cities and establishing strong defensive anchors at Washington, Baltimore, and Cincinnati. Merge field armies into 40k+ doomstacks with 'join' before engaging main Rebel concentrations, keeping the fleet raiding to throttle Confederate funds while maintaining a mobile reserve to crush raiders in the Midwest."
+  },
+  {
+   "version": 22,
+   "after_game": {
+    "game": 22,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 7
+   },
+   "diagnosis": "Achieved a rapid 7-turn income victory by securing critical border cities early, massing a large strike force under Buell in the West to crush Johnston, fortifying Fredericksburg to break Lee's 32k-man assault, and relentlessly raiding Rebel commerce.",
+   "lessons": [
+    "Never launch multiple separate attacks into the same city on one turn; always merge armies using 'join' first so they fight as one unified force.",
+    "Do not attack enemy defenders when combat odds are under 50%; maneuver to cut off retreat, defend fortified positions, or wait for reinforcements.",
+    "Never attack or move with an army at 0 supply; unsupplied armies fight at half strength and suffer severe attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and destroy Midwest raiders.",
+    "Fortify frontline chokepoint cities (like Fredericksburg) when facing superior enemy death stacks; fort multipliers easily defeat massive attacks.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 to expand income and create defensive barriers.",
+    "Keep the Union fleet on 'fleet raid' every turn to steadily drain Confederate treasury and limit their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter supply loss.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, Columbus, and Cincinnati.",
+    "When an enemy raider is isolated deep in Northern territory, cut all adjacent friendly rail and march paths to force full surrender on defeat.",
+    "Push aggressively down the Mississippi and Tennessee rivers (Paducah, Memphis, Vicksburg, Decatur) to rapidly collapse Rebel income."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Fortify frontline chokepoint cities (like Fredericksburg) when facing superior enemy death stacks; fort multipliers easily defeat massive attacks.",
+     "why": "Fortifying Fredericksburg allowed 10k defenders to decisively defeat Lee's 32,700-man assault, exhausting his army and protecting Washington."
+    },
+    {
+     "kind": "added",
+     "lesson": "Push aggressively down the Mississippi and Tennessee rivers (Paducah, Memphis, Vicksburg, Decatur) to rapidly collapse Rebel income.",
+     "why": "Rapid western advances combined with commerce raiding quickly pushed Union income above the 60% threshold for an early automatic victory."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Do not overextend isolated detachments into deep Southern cities (Nashville, Chattanooga) against superior Confederate field armies.",
+     "why": "Subsumed by combat odds rules and offensive western momentum guidelines."
+    }
+   ],
+   "strategy": "Lock down eastern approaches by garrisoning and fortifying Fredericksburg and Strasburg, keep the fleet on raid, and concentrate overwhelming mass in the West to sweep the Mississippi and Tennessee valleys for a rapid income or total conquest victory."
+  },
+  {
+   "version": 23,
+   "after_game": {
+    "game": 23,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 3
+   },
+   "diagnosis": "Catastrophic defeat in 3 turns caused by evacuating Washington (moving McDowell to Manassas), leaving the capital completely empty. Jackson walked in from Harpers Ferry before garrison moves resolved, triggering an immediate instant-loss capital capture.",
+   "lessons": [
+    "Never leave Washington undefended; always maintain a solid garrison or ensure adjacent enemy threats like Jackson at Harpers Ferry or Manassas are neutralized first.",
+    "Never launch multiple separate attacks into the same city on one turn; always merge armies using 'join' first so they fight as one unified force.",
+    "Do not attack enemy defenders when combat odds are under 50%; maneuver to cut off retreat, defend fortified positions, or wait for reinforcements.",
+    "Never attack or move with an army at 0 supply; unsupplied armies fight at half strength and suffer severe attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and destroy Midwest raiders.",
+    "Fortify frontline chokepoint cities when facing superior enemy stacks; fort multipliers easily defeat massive attacks.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah) on Turn 1 to expand income and create defensive barriers.",
+    "Keep the Union fleet on 'fleet raid' every turn to steadily drain Confederate treasury and limit their recruitment.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent combat penalties and winter supply loss.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield cities like Washington, Baltimore, Columbus, and Cincinnati.",
+    "Push aggressively down the Mississippi and Tennessee rivers (Paducah, Memphis, Vicksburg, Decatur) to rapidly collapse Rebel income."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave Washington undefended; always maintain a solid garrison or ensure adjacent enemy threats like Jackson at Harpers Ferry or Manassas are neutralized first.",
+     "why": "Evacuating McDowell to Manassas left Washington completely empty, allowing Jackson to walk in on Turn 3 for an instant Rebel victory."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When an enemy raider is isolated deep in Northern territory, cut all adjacent friendly rail and march paths to force full surrender on defeat.",
+     "why": "Dropped to make room for the critical capital defense rule; general positioning and field armies already contain raiders."
+    }
+   ],
+   "strategy": "Never vacate Washington while Confederate forces threaten Harpers Ferry or Manassas. Open by securing Baltimore, Paducah, and Louisville, maintaining fleet raids, recruiting heavily in primary industrial hubs, and advancing steadily in the West while maintaining an unshakeable defense around the capital."
+  },
+  {
+   "version": 24,
+   "after_game": {
+    "game": 24,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 13
+   },
+   "diagnosis": "A decisive 13-turn economic victory was achieved by securing border neutrals early, building a massive western doomstack under Grant, using rail to counter rebel incursions into the Ohio Valley, and maintaining constant naval commerce raiding to choke Rebel finances.",
+   "lessons": [
+    "Never leave Washington undefended; always maintain a solid garrison or ensure adjacent enemy threats at Harpers Ferry, Manassas, or Fredericksburg are neutralized.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Do not attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Fortify frontline chokepoint cities when facing superior enemy stacks; fort multipliers easily defeat massive Confederate assaults.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent attrition and offensive combat debuffs.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield recruit centers like Washington, Baltimore, Columbus, and Cincinnati.",
+    "Push aggressively down the Mississippi and Tennessee rivers (Paducah, Memphis, Vicksburg, Decatur) to rapidly collapse Rebel income."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington undefended; always maintain a solid garrison or ensure adjacent enemy threats at Harpers Ferry, Manassas, or Fredericksburg are neutralized.",
+     "why": "Added Fredericksburg to the threat list after seeing repeated AI attempts to threaten Washington from Virginia neutrals."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+     "why": "Included Lexington explicitly as an essential Turn 1 neutral capture to secure Kentucky."
+    }
+   ],
+   "strategy": "Open by seizing vital border neutrals (Baltimore, Louisville, Lexington) and putting the fleet on commerce raid. Build a massive central field army under top generals (Grant/Rosecrans) via recruitment and 'join', use railroad transport to block and destroy enemy raiding thrusts in the Ohio Valley, and execute a steady drive down the Mississippi and Tennessee river corridors to starve the Confederacy of income and secure a swift victory."
+  },
+  {
+   "version": 25,
+   "after_game": {
+    "game": 25,
+    "scenario": "standard",
+    "reason": "Union victory: capital captured",
+    "turns": 3
+   },
+   "diagnosis": "Securing Manassas and fortifying Washington on Turn 1 created an impenetrable defense, while capitalizing on Confederate redeployment away from Richmond enabled McDowell to rush and capture the Rebel capital on Turn 3 for an instant victory.",
+   "lessons": [
+    "Never leave Washington undefended; fortify it to level 2 early so a moderate garrison can easily repel Confederate counterattacks.",
+    "Strike Richmond immediately via Manassas if the Confederate AI vacates or leaves its capital lightly garrisoned.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Do not attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Fortify frontline chokepoint cities when facing superior enemy stacks; fort multipliers easily defeat massive Confederate assaults.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent attrition and offensive combat debuffs.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield recruit centers like Washington, Baltimore, Columbus, and Cincinnati."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington undefended; fortify it to level 2 early so a moderate garrison can easily repel Confederate counterattacks.",
+     "why": "Fortifying Washington to level 2 proved critical, allowing Fremont to effortlessly repel Jackson's 17k assault with 20% combat odds."
+    },
+    {
+     "kind": "added",
+     "lesson": "Strike Richmond immediately via Manassas if the Confederate AI vacates or leaves its capital lightly garrisoned.",
+     "why": "Capitalizing on J.E. Johnston railing out of Richmond allowed McDowell to take Manassas and capture Richmond on Turn 3 for a quick decisive victory."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Push aggressively down the Mississippi and Tennessee rivers (Paducah, Memphis, Vicksburg, Decatur) to rapidly collapse Rebel income.",
+     "why": "Dropped to make room for capital snipe rules, as an immediate eastern push on Richmond can win games much faster than slow western river campaigns."
+    }
+   ],
+   "strategy": "Fortify Washington and secure border states on Turn 1, advance to Manassas, and immediately seize Richmond if left vulnerable while containing Confederate raiders in the West."
+  },
+  {
+   "version": 26,
+   "after_game": {
+    "game": 26,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 18
+   },
+   "diagnosis": "Securing key neutral border cities on Turn 1 and taking Richmond early established a strong economic lead. Fortifying Richmond and Washington to level 2 allowed modest garrisons to shatter massive Confederate counterattacks by Stonewall Jackson and J.E. Johnston. Continuous naval raiding bled the Rebel economy while targeted rail movements and mass recruitment in northern hubs contained western incursions and secured an income threshold victory.",
+   "lessons": [
+    "Never leave Washington undefended; fortify it to level 2 early so a moderate garrison can easily repel Confederate counterattacks.",
+    "Strike Richmond immediately via Manassas if the Confederate AI vacates or leaves its capital lightly garrisoned.",
+    "Fortify captured high-value forward cities like Richmond to level 2; fort multipliers easily smash massive Confederate counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent attrition and offensive combat debuffs.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs.",
+    "Check recruit options with 'troops' every turn and invest in high-yield recruit centers like Washington, Baltimore, Columbus, and Cincinnati."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Fortify captured high-value forward cities like Richmond to level 2; fort multipliers easily smash massive Confederate counteroffensives.",
+     "why": "Fortifying Richmond to level 2 allowed a 12k garrison to repeatedly crush 40,000+ Rebel stacks under Stonewall Jackson."
+    }
+   ],
+   "strategy": "Open by seizing border neutrals (Baltimore, Louisville, Paducah, Lexington) and capturing Richmond immediately if lightly held. Fortify key anchor cities (Washington, Richmond, Philadelphia) to level 2 to decimate Rebel offensives on defense. Drain Confederate finances with continuous fleet raids, use interior rail lines to intercept deep enemy raiders, and recruit heavily in high-value hubs to build decisive numerical superiority for an economic or territory victory."
+  },
+  {
+   "version": 27,
+   "after_game": {
+    "game": 27,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 4
+   },
+   "diagnosis": "In May 1861, McDowell marched out of Washington to take Harper's Ferry, leaving the capital completely vacated. Although Washington had level 2 forts, forts offer zero defense without a garrison. When R.E. Lee railed to Fredericksburg and marched into Washington, his high leader rating gave him earlier turn resolution than Fremont's inbound move from Baltimore, handing the Confederacy an immediate capital-capture victory.",
+   "lessons": [
+    "Never leave Washington without an active garrison; empty forts provide zero defense, and top Rebel generals like Lee will move first and seize it.",
+    "Fortify Washington to level 2 early and keep at least 15,000 men stationed inside whenever Confederate forces hold Manassas or Fredericksburg.",
+    "Strike Richmond immediately via Manassas if the Confederate AI vacates or leaves its capital lightly garrisoned.",
+    "Fortify captured high-value forward cities like Richmond to level 2; fort multipliers easily smash massive Confederate counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity.",
+    "Buy supply manually whenever an active army drops to 1 supply to prevent attrition and offensive combat debuffs.",
+    "Use 'rail' immediately to reposition large armies directly in front of penetrating enemy spearheads before they capture interior hubs."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington without an active garrison; empty forts provide zero defense, and top Rebel generals like Lee will move first and seize it.",
+     "why": "McDowell vacated Washington to capture Harper's Ferry, allowing Lee to walk into an empty capital before incoming reinforcements could resolve movement."
+    },
+    {
+     "kind": "added",
+     "lesson": "Fortify Washington to level 2 early and keep at least 15,000 men stationed inside whenever Confederate forces hold Manassas or Fredericksburg.",
+     "why": "Ensures Washington maintains a dedicated garrison at all times rather than relying on dynamic moves that resolve after Confederate marches."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Check recruit options with 'troops' every turn and invest in high-yield recruit centers like Washington, Baltimore, Columbus, and Cincinnati.",
+     "why": "Dropped to make room for the mandatory Washington garrison rule; recruiting is already standard operational practice."
+    }
+   ],
+   "strategy": "On Turn 1, fortify Washington and keep a permanent garrison in place while grabbing neutral border cities (Baltimore, Louisville, Paducah). Use the Western armies under McClellan and Grant to pressure Tennessee, keep the fleet on raid to starve Rebel finances, and never strip Washington of troops when Confederate armies occupy northern Virginia."
+  },
+  {
+   "version": 28,
+   "after_game": {
+    "game": 28,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "A single Confederate army (A.S. Johnston) penetrated deep into the undefended Midwest, capturing St. Louis, Springfield, Indianapolis, Columbus, and Pittsburgh unopposed. Meanwhile, the Union hoarded treasury instead of recruiting blockers, launched low-odds piecemeal attacks against Richmond, and allowed the Confederacy to hit the 28-city instant victory threshold by December 1861.",
+   "lessons": [
+    "Never leave Washington without an active garrison; empty forts provide zero defense, and top Rebel generals like Lee will move first and seize it.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg) to level 2 to stop enemy counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+     "why": "Sitting on over $600-$700 in late 1861 without recruiting left northern cities completely bare."
+    },
+    {
+     "kind": "added",
+     "lesson": "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+     "why": "Lost the game in only 5 turns because the Confederacy reached the 28-city threshold."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+     "why": "Repeated attacks on Richmond were repulsed and crushed when the AI recruited 15,000+ men there in a single turn."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Buy supply manually whenever an active army drops to 1 supply to prevent attrition and offensive combat debuffs.",
+     "why": "Replaced to make room for vital city threshold and recruitment spending rules."
+    }
+   ],
+   "strategy": "On Turn 1, secure neutral border cities and fortify Washington. Spend all available income on recruiting across available cities each turn. Position strong field armies to block and destroy western Confederate incursions in the Ohio Valley and Midwest before attempting concentrated multi-corps offensives in the East."
+  },
+  {
+   "version": 29,
+   "after_game": {
+    "game": 29,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 3
+   },
+   "diagnosis": "In Turn 3, Jackson attacked Washington from adjacent Harper's Ferry with 26,600 men against Grant's tiny garrison of 4,800 men, capturing the capital and causing an instant defeat. Moving McDowell out to Manassas without heavily garrisoning Washington left the capital fatally exposed to adjacent Rebel strike forces.",
+   "lessons": [
+    "Washington must maintain a heavy garrison (15k+ men) whenever Rebel armies are at Harper's Ferry or Manassas; token garrisons will be overrun instantly.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg, Washington) to stop enemy counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Washington must maintain a heavy garrison (15k+ men) whenever Rebel armies are at Harper's Ferry or Manassas; token garrisons will be overrun instantly.",
+     "why": "A small token garrison of 4,800 men under Grant was easily overrun by Jackson's 26,600 men attacking from Harper's Ferry, losing the game instantly."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg, Washington) to stop enemy counteroffensives.",
+     "why": "Added Washington explicitly to key fortification priorities to ensure defensive multipliers against Confederate early thrusts."
+    }
+   ],
+   "strategy": "Secure neutral border cities on Turn 1 while reinforcing and fortifying Washington with a robust multi-brigade garrison. Hold defensive chokepoints along the Ohio and Potomac rivers, use fleet raiding to constrict Confederate finances, and assemble decisive offensive stacks before counter-attacking into Virginia and the West."
+  },
+  {
+   "version": 30,
+   "after_game": {
+    "game": 30,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "Game 30 was a swift 6-turn economic victory. Turn 1 expansion secured high-income border cities, while maximum recruitment each turn rapidly built overwhelming manpower. Constant fleet raiding starved Confederate finances, Grant swept the Mississippi corridor uncontested, and railing a major force to Cincinnati decisively crushed the Confederate Ohio Valley counteroffensive.",
+   "lessons": [
+    "Washington must maintain a heavy garrison (15k+ men) whenever Rebel armies are at Harper's Ferry or Manassas; token garrisons will be overrun instantly.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg, Washington) to stop enemy counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+     "why": "Repeated failed attacks on Jefferson City at 28% odds showed that waiting for the enemy to run out of supply converts bad assaults into overwhelming 80% victories."
+    }
+   ],
+   "strategy": "Open by seizing border neutrals to build an early income lead while putting the fleet on permanent raiding duty. Reinvest all income into recruitment across available cities every turn. Advance along the Western river corridors with concentrated forces while keeping the East fortified and railing reinforcements to intercept Midwest incursions."
+  },
+  {
+   "version": 31,
+   "after_game": {
+    "game": 31,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 19
+   },
+   "diagnosis": "Game 31 was lost on Turn 19 when Washington was left completely empty while J.E.B. Stuart was adjacent in Harper's Ferry, allowing an immediate Rebel capture of the capital. Additionally, McClellan overextended deep into the Gulf states with a massive army, isolating critical manpower while Rebel raiders systematically rolled up the Ohio Valley and Mid-Atlantic.",
+   "lessons": [
+    "Never leave Washington ungarrisoned or move its garrison away if enemy forces occupy Harper's Ferry, Manassas, or Fredericksburg; an empty capital causes instant defeat.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg, Washington) to stop enemy counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never launch multiple separate attacks into the same city on one turn; merge armies using 'join' first so they fight as a single unified force.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to maximize income and form defensive buffer zones.",
+    "Do not overextend main field armies deep into the Deep South (New Orleans, Mobile) until the Northern border and Mid-Atlantic corridors are fully secured."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington ungarrisoned or move its garrison away if enemy forces occupy Harper's Ferry, Manassas, or Fredericksburg; an empty capital causes instant defeat.",
+     "why": "Grant moved out of Washington toward Baltimore and Philadelphia while Stuart was adjacent at Harper's Ferry, resulting in Washington being walked into and instant defeat."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Keep the Union fleet on 'fleet raid' every turn to continuously drain Confederate treasury and suppress their recruitment capacity.",
+     "why": "Rebel fleets frequently contest raids and sink Union ships, making automatic blind raiding inefficient compared to territorial defense and securing theater armies."
+    },
+    {
+     "kind": "added",
+     "lesson": "Do not overextend main field armies deep into the Deep South (New Orleans, Mobile) until the Northern border and Mid-Atlantic corridors are fully secured.",
+     "why": "McClellan's deep push down the Mississippi/Gulf isolated a massive 50k force, leaving the Midwest and Mid-Atlantic underdefended against multiple Rebel incursions."
+    }
+   ],
+   "strategy": "On Turn 1, secure neutral border hubs (Baltimore, Louisville, Paducah, Lexington) and fortify Washington to Level 2. Maintain a strict permanent garrison in Washington whenever enemies are nearby. Keep primary field armies consolidated along the Ohio Valley and Virginia front to crush Rebel raiders before launching any coordinated offensive southward."
+  },
+  {
+   "version": 32,
+   "after_game": {
+    "game": 32,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "Rapid Union expansion into key neutral buffer cities on Turn 1 established strong early income. Heavy continuous recruitment and decisive Western offensives under Grant and Burnside steadily dismantled Rebel positions in Missouri and along the Tennessee/Mississippi rivers, quickly pushing Union income past the 60% victory threshold by January 1862.",
+   "lessons": [
+    "Never leave Washington ungarrisoned or move its garrison away if enemy forces occupy Harper's Ferry, Manassas, or Fredericksburg; an empty capital causes instant defeat.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Louisville, Manassas, Fredericksburg, Washington) to stop enemy counteroffensives.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never attack with weak, unreinforced detachments (under 3,000 men); merge or reinforce them before attacking to prevent armies being wiped out.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize income and build buffer zones.",
+    "Do not overextend main field armies deep into the Deep South (New Orleans, Mobile) until the Northern border and Mid-Atlantic corridors are fully secured."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never attack with weak, unreinforced detachments (under 3,000 men); merge or reinforce them before attacking to prevent armies being wiped out.",
+     "why": "Pope's 800-man remnant attacked Beauregard in Fort Donelson and was completely wiped out with 12% odds; weak detached attacks waste men and leaders."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize income and build buffer zones.",
+     "why": "Taking Manassas alongside the other border cities secures the Virginia perimeter immediately while denying Confederate forward momentum."
+    }
+   ],
+   "strategy": "Execute immediate Turn 1 moves into neutral border cities (Baltimore, Manassas, Lexington, Louisville, Paducah) to maximize income. Reinvest all income into maximum recruitment each turn, maintain secure garrisons at Washington and Ohio hubs, and push unified Western armies along the Mississippi and Cumberland axes to trigger an income or city threshold victory."
+  },
+  {
+   "version": 33,
+   "after_game": {
+    "game": 33,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 7
+   },
+   "diagnosis": "Lost in March 1862 due to instant capital loss. While Union forces overextended deep into the South (capturing Atlanta and Montgomery), Stonewall Jackson swept through Baltimore and Philadelphia and stormed an understrength, unfortified Washington (12,100 defenders vs 35,400 attackers). Capital security and Eastern corridor containment were neglected.",
+   "lessons": [
+    "Heavily garrison and fortify Washington to level 2 whenever enemy armies occupy adjacent cities (Manassas, Harper's Ferry, Baltimore, Fredericksburg); capital loss causes instant defeat.",
+    "Spend treasury aggressively on recruits every turn; hoarding cash allows the Confederacy to outbuild and overrun the map.",
+    "Monitor total city counts constantly; preventing the Rebels from reaching 28 cities is critical to avoiding an instant defeat.",
+    "Rail or move field armies directly into the path of deep Confederate raiders to prevent them from capturing undefended interior hubs.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers, as the AI heavily reinforces threatened capitals.",
+    "Fortify key frontier and transit cities (Washington, Louisville, Manassas, Fredericksburg) early to hold choke points against counterattacks.",
+    "Never attack enemy defenders when combat odds are below 50%; wait for reinforcements, fortify defensively, or cut off their lines of supply.",
+    "Never attack or move with an army at 0 supply; unsupplied armies suffer 50% combat penalties and severe winter attrition.",
+    "Maintain an active field army in the Ohio Valley (Cincinnati, Columbus, Louisville) to intercept and crush Confederate Midwest raiders.",
+    "Never attack with weak, unreinforced detachments (under 3,000 men); merge or reinforce them before attacking to prevent armies being wiped out.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize income and build buffer zones.",
+    "Prioritize securing the DC/PA/MD corridor before launching deep Southern offensives into Georgia or Alabama."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Heavily garrison and fortify Washington to level 2 whenever enemy armies occupy adjacent cities (Manassas, Harper's Ferry, Baltimore, Fredericksburg); capital loss causes instant defeat.",
+     "why": "Washington fell because it was unfortified and undermanned when Jackson advanced from Baltimore."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Prioritize securing the DC/PA/MD corridor before launching deep Southern offensives into Georgia or Alabama.",
+     "why": "Advancing Grant and Pope into Atlanta and Montgomery while Jackson and Johnston raided Maryland and Pennsylvania left the home front critically vulnerable."
+    }
+   ],
+   "strategy": "Lock down Washington immediately with fort level 2 and a robust garrison. Secure the border neutrals on Turn 1, eliminate Rebel incursions into MD, PA, and the Ohio Valley with superior concentrated forces, and only advance into the Deep South after the Northern and Mid-Atlantic theaters are completely secure."
+  },
+  {
+   "version": 34,
+   "after_game": {
+    "game": 34,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "In Game 34, cash was hoarded during the first three turns rather than spent on mass recruitment, allowing the Confederacy to amass massive western field armies (Johnston and Bragg). The AI swept through St. Louis, Springfield, Louisville, Indianapolis, and Columbus, triggering a 28-city sudden-death victory by May 1862 while Union forces launched desperate low-odds counterattacks.",
+   "lessons": [
+    "Recruit aggressively from Turn 1 with all available funds; never hoard cash above $300 while cities offer recruits.",
+    "Monitor total Confederate city count every turn; when Rebels reach 25+ cities, shift all priorities to reclaiming lost territory.",
+    "Hold the Western line (St. Louis, Springfield, Louisville, Cincinnati) with substantial garrisons to deny rapid Rebel expansion.",
+    "Never attack enemy positions when combat odds are below 50%; reinforce, merge, or cut supply lines instead.",
+    "Rail large, concentrated field armies directly to threatened front-line hubs rather than feeding small isolated detachments.",
+    "Heavily garrison and fortify Washington to level 2 whenever Confederate armies occupy adjacent cities.",
+    "Never attack Richmond or heavily garrisoned capitals without overwhelming numbers (at least 3:1 odds).",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize income.",
+    "Join and concentrate armies in key transit hubs under 8-star or best available generals before engaging major Rebel stacks.",
+    "Never attack or march with unsupplied armies (0 supply) due to severe 50% combat penalties and heavy winter attrition.",
+    "Maintain active naval commerce raiding only after ground recruiting needs and front-line garrisons are fully funded.",
+    "Fortify key frontier choke points (Louisville, Cincinnati, Washington) early to blunt Confederate offensive momentum."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Recruit aggressively from Turn 1 with all available funds; never hoard cash above $300 while cities offer recruits.",
+     "why": "Hoarding over $1000 in late 1861 allowed the Confederacy to vastly outproduce Union forces and overwhelm the western theatre."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Hold the Western line (St. Louis, Springfield, Louisville, Cincinnati) with substantial garrisons to deny rapid Rebel expansion.",
+     "why": "Neglecting western hub defense permitted Confederate armies to chain-capture western cities and hit the 28-city threshold."
+    },
+    {
+     "kind": "added",
+     "lesson": "Join and concentrate armies in key transit hubs under 8-star or best available generals before engaging major Rebel stacks.",
+     "why": "Fragmented Union forces were defeated piecemeal by concentrated Rebel stacks under J.E. Johnston and Bragg."
+    }
+   ],
+   "strategy": "Maximize recruit spending from the opening turn to match Confederate army generation, immediately secure neutral border cities, fortify crucial Western and Eastern transit hubs, and concentrate large field armies under top generals to block Rebel territorial expansion toward the 28-city victory limit."
+  },
+  {
+   "version": 35,
+   "after_game": {
+    "game": 35,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "The Union built a commanding numerical and territorial advantage (272k men, 24 cities), but suffered a timeout loss in March 1865 because operations devolved into an endless city-trading cycle in the deep South and Midwest. Failure to decisively hunt down and destroy major Rebel field armies (Bragg, Beauregard) allowed the AI to constantly retake border hubs (Louisville, Paducah, St. Louis), keeping the city count below the 32-city victory threshold.",
+   "lessons": [
+    "Recruit aggressively from Turn 1 with all available funds; never hoard cash above $300 while cities offer recruits.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize early revenue.",
+    "Hold Midwest border hubs (St. Louis, Louisville, Cincinnati) with fortified garrisons to prevent Rebel raiders from rolling up rear supply lines.",
+    "Never attack enemy positions when combat odds are below 50%; reinforce, merge, or cut supply lines instead.",
+    "Join and concentrate field armies under 8-star generals (Grant, Sherman) into 40k+ death stacks to hunt and crush Confederate field armies.",
+    "Rail large, concentrated field armies directly to threatened front-line hubs rather than feeding small isolated detachments.",
+    "Heavily garrison and fortify Washington to level 2 whenever Confederate armies occupy adjacent cities.",
+    "Never attack Richmond or heavily fortified capitals without overwhelming numbers (at least 3:1 odds).",
+    "Never attack or march with unsupplied armies (0 supply) due to severe 50% combat penalties and heavy winter attrition.",
+    "Maintain active naval commerce raiding only after ground recruiting needs and front-line garrisons are fully funded.",
+    "To avoid timeout defeats by 1865, actively eliminate enemy armies and push past 30 cities rather than passively swapping deep South territory.",
+    "Always resupply frontline corps immediately when supply falls to 1, avoiding unsupplied status in winter attrition months."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "To avoid timeout defeats by 1865, actively eliminate enemy armies and push past 30 cities rather than passively swapping deep South territory.",
+     "why": "Game 35 was lost on time expiration at 24 cities despite huge manpower supremacy because operations traded cities rather than forcing a decisive conclusion."
+    },
+    {
+     "kind": "added",
+     "lesson": "Always resupply frontline corps immediately when supply falls to 1, avoiding unsupplied status in winter attrition months.",
+     "why": "McDowell and McClellan suffered multiple turns out of supply, drastically lowering combat effectiveness and suffering attrition."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Hold Midwest border hubs (St. Louis, Louisville, Cincinnati) with fortified garrisons to prevent Rebel raiders from rolling up rear supply lines.",
+     "why": "Bragg and Beauregard repeatedly captured unfortified Midwest hubs (St. Louis, Indianapolis, Cincinnati), forcing repeated retreats."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Monitor total Confederate city count every turn; when Rebels reach 25+ cities, shift all priorities to reclaiming lost territory.",
+     "why": "Rebels rarely held 25+ cities once Union expanded; the primary danger is stagnating in the low 20s and running out the clock."
+    }
+   ],
+   "strategy": "Execute a rapid Turn 1 expansion into border neutrals (Baltimore, Louisville, Paducah, Manassas), fortifying key frontier pivots. Mass two dominant Western and Eastern army groups under top-tier generals (Grant, Sherman) to systematically destroy mobile Confederate field armies and secure the Mississippi and Tennessee corridors. Once Confederate field forces are eliminated, drive decisively past the 32-city victory threshold or assault Richmond with 3:1 numerical superiority before 1865."
+  },
+  {
+   "version": 36,
+   "after_game": {
+    "game": 36,
+    "scenario": "alternate",
+    "reason": "Rebel victory: capital captured",
+    "turns": 7
+   },
+   "diagnosis": "Despite holding Richmond, Norfolk, and Raleigh and outnumbering the Rebels 2:1, Washington was left completely undefended when Beauregard occupied adjacent Harper's Ferry, allowing an instant sudden-death capture.",
+   "lessons": [
+    "Recruit aggressively from Turn 1 with all available funds; never hoard cash above $300 while cities offer recruits.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize early revenue.",
+    "Never leave Washington unoccupied when Confederate armies hold or enter adjacent cities (Harper's Ferry, Manassas, Baltimore, Fredericksburg); garrison it immediately.",
+    "Fortify Washington to level 2 and maintain at least 15,000 defenders whenever enemy corps operate in Northern Virginia or Maryland.",
+    "Hold Midwest border hubs (St. Louis, Louisville, Cincinnati) with fortified garrisons to prevent Rebel raiders from rolling up rear supply lines.",
+    "Never attack enemy positions when combat odds are below 50%; reinforce, merge, or cut supply lines instead.",
+    "Join and concentrate field armies under 8-star generals (Grant, Sherman) into 40k+ death stacks to hunt and crush Confederate field armies.",
+    "Rail large, concentrated field armies directly to threatened front-line hubs rather than feeding small isolated detachments.",
+    "Never attack Richmond or heavily fortified capitals without overwhelming numbers (at least 3:1 odds).",
+    "Never attack or march with unsupplied armies (0 supply) due to severe 50% combat penalties and heavy winter attrition.",
+    "Maintain active naval commerce raiding only after ground recruiting needs and front-line garrisons are fully funded.",
+    "Always resupply frontline corps immediately when supply falls to 1, avoiding unsupplied status in winter attrition months."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never leave Washington unoccupied when Confederate armies hold or enter adjacent cities (Harper's Ferry, Manassas, Baltimore, Fredericksburg); garrison it immediately.",
+     "why": "Washington was left empty while enemy armies occupied adjacent Harper's Ferry, resulting in an immediate capital loss defeat."
+    },
+    {
+     "kind": "added",
+     "lesson": "Fortify Washington to level 2 and maintain at least 15,000 defenders whenever enemy corps operate in Northern Virginia or Maryland.",
+     "why": "Guarantees Washington cannot be taken in a sudden single-turn dash by flanking Rebel forces."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "To avoid timeout defeats by 1865, actively eliminate enemy armies and push past 30 cities rather than passively swapping deep South territory.",
+     "why": "Replaced by urgent capital preservation rules to prevent sudden defeat while winning on the scoreboard."
+    }
+   ],
+   "strategy": "Expand rapidly into border cities on Turn 1, prioritize Washington's garrison and fortifications whenever Virginia/Maryland borders are contested, mass 40k+ stacks under Grant and Sherman to systematically crush Confederate field armies, and capture Confederate capitals only with secured lines."
+  },
+  {
+   "version": 37,
+   "after_game": {
+    "game": 37,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "In Game 37, we built a strong military and captured Deep South cities, but Lee and Beauregard repeatedly raided behind our lines into Pennsylvania and Ohio (taking Philadelphia, Harrisburg, Pittsburgh, and Columbus). Chasing these incursions scattered our forces and delayed territorial consolidation, resulting in a time-limit expiration loss at 24 cities instead of achieving the 32-city victory condition or striking Richmond.",
+   "lessons": [
+    "Recruit aggressively every turn with all available funds; never hoard cash above $200 while cities offer recruits.",
+    "Secure high-value neutral border cities (Baltimore, Louisville, Paducah, Lexington, Manassas) on Turn 1 to maximize early income.",
+    "Never leave Washington unoccupied when Confederate armies hold or enter adjacent cities; fortify Washington to level 2 early.",
+    "Hold Midwest and Mid-Atlantic hubs (Cincinnati, Columbus, Harrisburg, Louisville) with adequate garrisons to block Rebel raiders.",
+    "Never attack enemy positions when combat odds are below 50%; reinforce, merge, or cut supply lines instead.",
+    "Join and concentrate field armies under 8-star generals (Grant, Sherman) into 50k+ death stacks to hunt and crush Confederate field armies.",
+    "Rail large, concentrated strike armies directly to threatened front-line sectors to rapidly eliminate breakthrough forces like Lee.",
+    "Prevent isolated small detachments from advancing deep into the South without mutual support or garrison coverage.",
+    "Never attack Richmond or heavily fortified capitals without overwhelming numbers (at least 3:1 odds) and full supply.",
+    "Never attack or march with unsupplied armies (0 supply) due to severe 50% combat penalties and winter attrition.",
+    "Always resupply frontline corps immediately when supply falls to 1, especially before winter attrition months (Jan, Mar, May, Nov).",
+    "Drive aggressively toward the 32-city victory threshold before 1865 rather than engaging in endless city-trading in the rear."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Hold Midwest and Mid-Atlantic hubs (Cincinnati, Columbus, Harrisburg, Louisville) with adequate garrisons to block Rebel raiders.",
+     "why": "Lee and Beauregard repeatedly captured Pennsylvania and Ohio cities from the rear because our northern hubs were left empty."
+    },
+    {
+     "kind": "added",
+     "lesson": "Prevent isolated small detachments from advancing deep into the South without mutual support or garrison coverage.",
+     "why": "Buell and Sherman took southern cities that were repeatedly recaptured by Van Dorn and Stuart because garrisons were absent."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Drive aggressively toward the 32-city victory threshold before 1865 rather than engaging in endless city-trading in the rear.",
+     "why": "The game timed out in March 1865 with Union holding 24 cities despite huge troop superiority; we must actively close out the win condition."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Maintain active naval commerce raiding only after ground recruiting needs and front-line garrisons are fully funded.",
+     "why": "Naval raiding provided marginal returns compared to maintaining solid ground garrisons and pushing for the 32-city victory condition."
+    }
+   ],
+   "strategy": "In the next game, secure the border neutrals on Turn 1 and establish fortified anchor points at Washington, Baltimore, Cincinnati, and Louisville. Rapidly form a massive 50k+ army under Grant to crush Rebel field armies, while systematically clearing and holding sectors to push past the 32-city threshold before the March 1865 time limit."
+  },
+  {
+   "version": 38,
+   "after_game": {
+    "game": 38,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 10
+   },
+   "diagnosis": "Decisive victory via 60% income share in November 1862. Sherman swept the Mississippi Valley to capture Memphis, Vicksburg, and New Orleans, while ironclad commerce raiding throttled Confederate finances. Meanwhile, a fortified Washington repelled repeated assaults by Stuart, and defensive rail maneuvers blunted Jackson's deep Midwest raids.",
+   "lessons": [
+    "Recruit aggressively every turn across all offered hubs; never hoard cash above $200 when recruitment is available.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington) immediately on Turn 1 to build early income dominance.",
+    "Fortify Washington to level 2 early and maintain a 30k+ garrison; defender fort multipliers inflict devastating losses on Rebel attackers.",
+    "Drive a strong western army (Sherman/Grant) down the Mississippi corridor to take Memphis, Vicksburg, and New Orleans, gutting Rebel income.",
+    "Build ironclads and maintain continuous commerce raiding; sinking $50-$100 Rebel cash per turn accelerates income victory.",
+    "Rail reserve corps directly to intercept or pin breakthrough Rebel raiders threatening rear hubs like Harrisburg or Columbus.",
+    "Never initiate attacks with odds below 50%; merge forces, cut Rebel supply, or force them to attack fortified positions.",
+    "Join and concentrate field armies under 7-8 star generals (Grant, Sherman, McClellan) rather than scattering small corps.",
+    "Never advance or attack with 0-supply armies; resupply immediately when supply drops to 1, especially before winter attrition months.",
+    "Garrison or retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus) to prevent enemy isolation plays.",
+    "Avoid costly direct assaults on heavily fortified enemy capitals like Richmond; win via income share, encirclement, or collapse.",
+    "Surround retreating enemy forces without friendly adjacent retreat paths to force complete surrenders."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Drive a strong western army (Sherman/Grant) down the Mississippi corridor to take Memphis, Vicksburg, and New Orleans, gutting Rebel income.",
+     "why": "Targeting the Mississippi Valley captures high-value ports, cuts Confederate connections, and reliably triggers an early income victory."
+    },
+    {
+     "kind": "added",
+     "lesson": "Build ironclads and maintain continuous commerce raiding; sinking $50-$100 Rebel cash per turn accelerates income victory.",
+     "why": "Ironclad fleet raids drained Rebel treasury every turn without risking land attrition, accelerating the 60% income threshold."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Avoid costly direct assaults on heavily fortified enemy capitals like Richmond; win via income share, encirclement, or collapse.",
+     "why": "Replaced the old 32-city rule with income share and encirclement focus, which proved much faster and safer."
+    }
+   ],
+   "strategy": "Maximize early economic expansion by securing border neutrals on Turn 1 while building a level 2 fort at Washington. Concentrate eastern forces to defend the capital and rail interceptors against Rebel incursions. Simultaneously push Sherman down the Mississippi to capture Memphis, Vicksburg, and New Orleans, supported by ironclad naval raids to achieve a swift 60% income victory."
+  },
+  {
+   "version": 39,
+   "after_game": {
+    "game": 39,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "The game was lost on time because deep, uncoordinated thrusts into Georgia and Florida overextended Union corps, leading to the destruction of Buell and Banks while Rebel raiders gutted our Midwest rear. In the late game, massive cash reserves were hoarded instead of being converted into recruits, and multiple futile assaults against level-2 fortified Richmond wasted critical armies and momentum.",
+   "lessons": [
+    "Recruit aggressively every turn across all offered hubs; never hoard cash above $200 when recruitment is available.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington) immediately on Turn 1 to build early income dominance.",
+    "Fortify Washington to level 2 early and maintain a 30k+ garrison; defender fort multipliers inflict devastating losses on Rebel attackers.",
+    "Join field armies into 50k-80k doomstacks under 7-8 star generals (Grant, McClellan, Sherman) before launching major offensives.",
+    "Never send isolated corps deep into the Deep South (Atlanta, Savannah, Jacksonville) without securing adjacent supply lines and rear hubs.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Never assault level-2 fortified enemy capitals (Richmond) head-on; win via income share, encirclement, or peripheral conquest.",
+    "Never initiate attacks with odds below 50%; merge forces, cut Rebel supply, or force them to attack fortified positions.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov) to prevent strength loss.",
+    "Rail reserve corps directly to intercept or pin breakthrough Rebel raiders threatening rear hubs like Harrisburg or Columbus.",
+    "Build ironclads and maintain continuous commerce raiding; sinking $50-$100 Rebel cash per turn accelerates economic collapse.",
+    "Surround retreating enemy forces without friendly adjacent retreat paths to force complete surrenders."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never send isolated corps deep into the Deep South (Atlanta, Savannah, Jacksonville) without securing adjacent supply lines and rear hubs.",
+     "why": "Buell and Banks were repeatedly isolated and crushed in Jacksonville and Montgomery after advancing without rear support."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Never assault level-2 fortified enemy capitals (Richmond) head-on; win via income share, encirclement, or peripheral conquest.",
+     "why": "Repeated assaults against Beauregard in fortified Richmond failed at 23-35% odds, burning men and turns at the end."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Join field armies into 50k-80k doomstacks under 7-8 star generals (Grant, McClellan, Sherman) before launching major offensives.",
+     "why": "Consolidated large armies commanded by Grant and McClellan consistently won field battles and forced surrenders."
+    }
+   ],
+   "strategy": "Open by fortifying Washington and securing neutral border cities on Turn 1. Build and maintain commerce raiding fleets to drain Confederate income. Form two primary doomstacks in the East and West under Grant and McClellan while keeping regional defensive corps to protect Midwest rail hubs from Rebel raiders. Advance along a contiguous territorial front rather than plunging isolated corps into the deep South, and win through economic and city dominance without suiciding armies against fortified "
+  },
+  {
+   "version": 40,
+   "after_game": {
+    "game": 40,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 11
+   },
+   "diagnosis": "Decisive Union victory in November 1862 via 60% income dominance after 11 turns. The Turn 1 neutral city grab immediately established an overwhelming income advantage ($410+). Washington was fortified to level 2 and reinforced via rail with Meade, easily shattering three massive assaults by Stuart's 30k doomstack with fort-multiplied defense. In the West, Grant, Banks, and Rosecrans methodically captured St. Louis, Springfield, Fort Donelson, Memphis, Decatur, and Vicksburg while commerce raiding continuously drained Rebel funds.",
+   "lessons": [
+    "Recruit aggressively every turn across all offered hubs; never hoard cash above $200 when recruitment is available.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington, Fredericksburg) on Turn 1 to build immediate income dominance.",
+    "Fortify Washington to level 2 early and maintain a strong garrison; defender fort multipliers inflict devastating losses on Rebel attackers.",
+    "Join field armies into 40k-80k doomstacks under top-tier generals (Grant, Sherman, Meade) before launching major offensives.",
+    "Never send isolated corps deep into the Deep South without securing adjacent supply lines and neighboring rear hubs.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Never assault level-2 fortified enemy capitals head-on; win via income share (60%), peripheral encirclement, or attrition.",
+    "Never initiate attacks with odds below 50%; merge forces, cut Rebel supply, or force enemy stacks to attack fortified positions.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov), to prevent strength loss.",
+    "Rail reserve corps directly to reinforce threatened hubs or intercept breakthrough Rebel raiders before they capture key cities.",
+    "Maintain continuous fleet commerce raiding from Turn 1; sinking Rebel cash each turn accelerates Confederate economic collapse.",
+    "Cut off enemy retreat routes to adjacent friendly cities before attacking to force complete surrenders of trapped Rebel armies."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington, Fredericksburg) on Turn 1 to build immediate income dominance.",
+     "why": "Fredericksburg provides critical buffer and income on Turn 1 alongside the other border neutrals."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Join field armies into 40k-80k doomstacks under top-tier generals (Grant, Sherman, Meade) before launching major offensives.",
+     "why": "Meade proved to be an elite defensive and offensive general when reinforced into high-strength stacks."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Rail reserve corps directly to reinforce threatened hubs or intercept breakthrough Rebel raiders before they capture key cities.",
+     "why": "Railing Meade directly into Washington immediately before Stuart attacked saved the capital and inflicted massive casualties."
+    }
+   ],
+   "strategy": "On Turn 1, capture all accessible neutral border cities and initiate commerce raiding to establish an early cash and income lead. Fortify Washington to level 2 and maintain a dedicated garrison to absorb eastern Rebel attacks. Maximize recruitment each turn across all offered hubs, combine Western forces under Grant and Banks to systematically take Mississippi and Tennessee valley hubs, and win by reaching the 60% total income threshold."
+  },
+  {
+   "version": 41,
+   "after_game": {
+    "game": 41,
+    "scenario": "standard",
+    "reason": "Union victory: capital captured",
+    "turns": 23
+   },
+   "diagnosis": "Union achieved a capital capture victory in November 1864 after 23 turns. Harper's Ferry level 2 fortification blunted early Virginia offensives, while Midwest counter-offensives trapped and destroyed several isolated Rebel forces (Johnston, Stuart, Beauregard). Once the Midwest and West were stabilized, Buell massed a 118,000-man grand army at Fredericksburg and stormed Richmond to seal the victory.",
+   "lessons": [
+    "Recruit aggressively every turn across all offered hubs; never hoard cash above $200 when recruitment is available.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington, Fredericksburg) on Turn 1 to build immediate income dominance.",
+    "Fortify Washington and critical border hubs (like Harper's Ferry) to level 2; fort defense multipliers decimate attacking Rebel stacks.",
+    "Join field armies into 50,000-120,000 man doomstacks under top generals before launching major offensives or capital assaults.",
+    "Never send isolated corps deep into Rebel territory without securing adjacent supply lines and neighboring rear hubs.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Assault fortified capitals directly once you assemble a 100k+ super-stack, or win via peripheral encirclement and economic collapse.",
+    "Cut off enemy retreat routes to adjacent friendly cities before attacking to force complete surrenders of trapped Rebel armies.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov), to prevent strength loss.",
+    "Rail reserve corps directly to reinforce threatened hubs or intercept breakthrough Rebel raiders before they capture key cities.",
+    "Maintain continuous fleet commerce raiding from Turn 1; sinking Rebel cash each turn accelerates Confederate economic collapse.",
+    "Never initiate open field attacks with poor odds; let enemy raiders attack fortified hubs or surround them before striking."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Fortify Washington and critical border hubs (like Harper's Ferry) to level 2; fort defense multipliers decimate attacking Rebel stacks.",
+     "why": "Harper's Ferry level-2 fort repeatedly repelled Jackson's 20,000-man army with minimal Union losses, neutralizing the Shenandoah threat entirely."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Assault fortified capitals directly once you assemble a 100k+ super-stack, or win via peripheral encirclement and economic collapse.",
+     "why": "Buell's 108k-118k doomstack successfully captured Richmond against Jackson's 58k garrison across two consecutive assaults."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Join field armies into 50,000-120,000 man doomstacks under top generals before launching major offensives or capital assaults.",
+     "why": "Forming 100k+ stacks under capable commanders provides the raw combat weight needed to overcome fortified capitals and large Rebel concentrations."
+    }
+   ],
+   "strategy": "Maximize Turn 1 recruitment and secure neutral border hubs. Fortify Washington and Harper's Ferry to level 2 to absorb Confederate Eastern attacks. Use Grant, Sherman, and McDowell in the West and Midwest to isolate and eliminate deep Rebel incursions. Simultaneously maintain fleet commerce raiding to erode Rebel income, and assemble a 100k+ grand army in Virginia to decisively seize Richmond."
+  },
+  {
+   "version": 42,
+   "after_game": {
+    "game": 42,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 10
+   },
+   "diagnosis": "Lost on turn 10 to Rebel 28-city territorial conquest. We completely stopped recruiting after early turns despite having $400-$800 in treasury, allowing manpower to stagnate while the Rebels raised massive stacks. Furthermore, leaving the Northeast corridor unguarded allowed J.E. Johnston to blitz Harper's Ferry, Baltimore, and Philadelphia uncontested.",
+   "lessons": [
+    "Call troops and recruit every turn without exception when cash is available; never skip recruitment to hoard money or focus purely on drills.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington, Fredericksburg) on Turn 1 to build immediate income dominance.",
+    "Fortify Washington and Louisville to level 2; fort defense multipliers decimate attacking Rebel stacks even when heavily outnumbered.",
+    "Join field armies into 50,000-120,000 man doomstacks under top generals before launching major offensives or capital assaults.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); never leave them completely empty for enemy raiders.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Assault fortified capitals directly once you assemble a 100k+ super-stack, or win via peripheral encirclement and economic collapse.",
+    "Cut off enemy retreat routes to adjacent friendly cities before attacking to force complete surrenders of trapped Rebel armies.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov), to prevent strength loss.",
+    "Rail reserve corps directly to intercept breakthrough Rebel raiders before they capture vital northern industrial hubs.",
+    "Maintain continuous fleet commerce raiding from Turn 1; sinking Rebel cash each turn accelerates Confederate economic collapse.",
+    "Track the 28-city threshold constantly; recapture lost peripheral hubs promptly to prevent sudden Confederate territorial victory."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Call troops and recruit every turn without exception when cash is available; never skip recruitment to hoard money or focus purely on drills.",
+     "why": "We skipped recruitment across five turns despite having over $600 in the treasury, letting our troop count stagnate while the Rebels out-produced us."
+    },
+    {
+     "kind": "added",
+     "lesson": "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); never leave them completely empty for enemy raiders.",
+     "why": "J.E. Johnston marched unopposed through Harper's Ferry to Baltimore and Philadelphia, pushing the Rebels over the 28-city victory limit."
+    },
+    {
+     "kind": "added",
+     "lesson": "Track the 28-city threshold constantly; recapture lost peripheral hubs promptly to prevent sudden Confederate territorial victory.",
+     "why": "The game ended instantly in late 1862 because the Rebels quietly reached 29 cities while we focused narrowly on Richmond."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Never initiate open field attacks with poor odds; let enemy raiders attack fortified hubs or surround them before striking.",
+     "why": "Replaced by more critical defensive and strategic recruitment imperatives."
+    }
+   ],
+   "strategy": "Execute early Turn 1 expansion into border cities, fortify Washington and Louisville, and recruit continuously every single turn without skipping. Form two 50k+ doomstacks under Grant and McClellan to crush invading Rebel armies in the Midwest and East while using rail defense to safeguard Philadelphia, Baltimore, and Cincinnati from flanking maneuvers."
+  },
+  {
+   "version": 43,
+   "after_game": {
+    "game": 43,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 2
+   },
+   "diagnosis": "Catastrophic Turn 2 defeat caused by completely vacating Washington. McDowell moved to Fredericksburg on Turn 1 and Manassas on Turn 2 while Jackson took Harper's Ferry. With no garrison in Washington, Jackson walked in unopposed for an instant Rebel capital capture victory.",
+   "lessons": [
+    "Call troops and recruit every turn without exception when cash is available; never skip recruitment to hoard money or focus purely on drills.",
+    "Never leave Washington empty under any circumstances; keep a dedicated garrison or fortify it immediately if enemy forces hold Harper's Ferry or Manassas.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to expand income while keeping capital defenses secure.",
+    "Fortify Washington and Louisville to level 2; fort defense multipliers decimate attacking Rebel stacks even when heavily outnumbered.",
+    "Join field armies into 50,000-120,000 man doomstacks under top generals before launching major offensives or capital assaults.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); never leave them open to adjacent enemy raiders.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Assault fortified capitals directly once you assemble a 100k+ super-stack, or win via peripheral encirclement and economic collapse.",
+    "Cut off enemy retreat routes to adjacent friendly cities before attacking to force complete surrenders of trapped Rebel armies.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov), to prevent strength loss.",
+    "Rail reserve corps directly to intercept breakthrough Rebel raiders before they capture vital northern industrial hubs.",
+    "Maintain continuous fleet commerce raiding from Turn 1; sinking Rebel cash each turn accelerates Confederate economic collapse."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave Washington empty under any circumstances; keep a dedicated garrison or fortify it immediately if enemy forces hold Harper's Ferry or Manassas.",
+     "why": "Game 43 was instantly lost on Turn 2 because Washington was left completely empty while Jackson was adjacent in Harper's Ferry."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to expand income while keeping capital defenses secure.",
+     "why": "Removed Fredericksburg as an automatic Turn 1 target since marching McDowell out of Washington left the capital undefended."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "Track the 28-city threshold constantly; recapture lost peripheral hubs promptly to prevent sudden Confederate territorial victory.",
+     "why": "Dropped to make room for mandatory capital defense rule; city count monitoring is secondary to survival."
+    }
+   ],
+   "strategy": "Ensure Washington is permanently garrisoned and fortified from Turn 1. Secure neutral border cities (Louisville, Baltimore, Paducah) without vacating capital defense, rail reinforcements to hot sectors, build overwhelming doomstacks, and execute commerce raiding until Richmond can be safely besieged."
+  },
+  {
+   "version": 44,
+   "after_game": {
+    "game": 44,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 10
+   },
+   "diagnosis": "Game 44 was a clean 10-turn economic victory on the alternate map. Early seizure of neutral border hubs and fortifying Louisville allowed us to repel repeated Confederate attacks in the West while massing McDowell in Virginia. Taking Richmond in January 1862 and rolling through North Carolina coastal ports, combined with relentless commerce raiding and disciplined recruitment, pushed Union income past the 60% threshold.",
+   "lessons": [
+    "Call troops and recruit every turn without exception when cash is available; never skip recruitment to hoard money or focus purely on drills.",
+    "Never leave Washington empty under any circumstances; keep a dedicated garrison or fortify it immediately if enemy forces hold Harper's Ferry or Manassas.",
+    "Secure neutral border cities (Baltimore, Louisville, Paducah, Lexington) on Turn 1 to expand income while keeping capital defenses secure.",
+    "Fortify Washington and Louisville to level 2; fort defense multipliers decimate attacking Rebel stacks even when heavily outnumbered.",
+    "Join field armies into 50,000-120,000 man doomstacks under top generals before launching major offensives or capital assaults.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); never leave them open to adjacent enemy raiders.",
+    "Guard and retake Midwest rail and recruitment centers (Cincinnati, Indianapolis, Columbus, St. Louis) immediately to prevent rear collapse.",
+    "Exploit weakly defended capitals or push coastal peripheries (Norfolk, Raleigh, Wilmington) to rapidly secure the 60% income victory threshold.",
+    "Cut off enemy retreat routes to adjacent friendly cities before attacking to force complete surrenders of trapped Rebel armies.",
+    "Resupply armies when supply drops to 1, especially before winter attrition months (Jan, Mar, May, Nov), to prevent strength loss.",
+    "Rail reserve corps directly to intercept breakthrough Rebel raiders before they capture vital northern industrial hubs.",
+    "Maintain continuous fleet commerce raiding from Turn 1; sinking Rebel cash each turn accelerates Confederate economic collapse."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Exploit weakly defended capitals or push coastal peripheries (Norfolk, Raleigh, Wilmington) to rapidly secure the 60% income victory threshold.",
+     "why": "Game 44 demonstrated that capturing Richmond early and mopping up Atlantic seaports guarantees an income-share win without requiring massive bloody attritional assaults in the deep interior."
+    }
+   ],
+   "strategy": "Execute Turn 1 neutral city captures and fortify Louisville and Washington. Maintain continuous naval commerce raiding. Spend all available cash each turn recruiting in major depots. Mass eastern forces under McDowell to take Richmond and North Carolina ports, while using fortified western hubs to absorb Confederate thrusts, achieving a rapid economic or territorial victory."
+  },
+  {
+   "version": 45,
+   "after_game": {
+    "game": 46,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 10
+   },
+   "diagnosis": "The Union achieved an early 60% income victory in November 1862 by executing a disciplined dual-theater strategy. In the West, Louisville was held and fortified while Grant and Rosecrans systematically liberated Missouri and pushed down the Mississippi corridor to take Memphis, Vicksburg, and Jackson. In the East, fortifying Washington and railing reinforcements directly to the capital easily smashed Lee's massive counteroffensive, while Sherman seized an undefended Richmond. Continuous naval commerce raiding drained Rebel treasuries throughout the war.",
+   "lessons": [
+    "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+    "Never leave Washington empty; maintain a dedicated garrison and fortify to level 2 early to crush any Confederate offensive.",
+    "Secure neutral border cities (Baltimore, Louisville, Lexington, Paducah) on Turn 1 to maximize early income and establish defensive anchors.",
+    "Fortify Louisville and Washington to level 2; fort defense multipliers shatter superior Rebel doomstacks repeatedly.",
+    "Join field armies into 50,000-120,000 man doomstacks under top commanders (Grant, Sherman, Rosecrans) before striking deep into Confederate territory.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); eliminate adjacent raiders immediately.",
+    "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+    "Exploit weakly garrisoned Confederate hubs and capitals (Richmond, Memphis, Vicksburg) to rapidly push over the 60% income victory threshold.",
+    "Cut off Rebel retreat paths into adjacent friendly cities before attacking to force complete surrenders of trapped enemy forces.",
+    "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov).",
+    "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+    "Maintain continuous fleet commerce raiding from Turn 1; steadily sinking Rebel cash starves their recruitment and supply."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+     "why": "Clarified that recruitment commands must strictly match the offered cities list to avoid illegal orders."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+     "why": "Railing reserves to Louisville and Washington effectively turned the tide against repeated Johnston and Lee offensives."
+    }
+   ],
+   "strategy": "Open by seizing vital neutral border cities and initiating round-the-clock naval commerce raiding. Upgrade fortifications at Washington and Louisville to level 2 to create impassable defensive bastions. Maximize recruitment every turn across available hubs, merge western and eastern forces into decisive doomstacks under Grant, Sherman, and Rosecrans, and advance methodically down the Mississippi and toward Richmond to capture Confederate income hubs."
+  },
+  {
+   "version": 46,
+   "after_game": {
+    "game": 47,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "The game was lost on time (March 1865) despite holding 27 cities and overwhelming economic superiority because massive armies were repeatedly thrown into a meat grinder against J.E. Johnston in level-2 fortified Richmond (defend 20 cap) rather than seizing the remaining 5 vulnerable peripheral cities (Wilmington, Norfolk, Charleston SC, Mobile) needed for the 32-city / 80% income victory condition.",
+   "lessons": [
+    "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+    "Never leave Washington empty; maintain a dedicated garrison and fortify to level 2 early to crush any Confederate offensive.",
+    "Secure neutral border cities (Baltimore, Louisville, Lexington, Paducah) on Turn 1 to maximize early income and establish defensive anchors.",
+    "Fortify Louisville and Washington to level 2; fort defense multipliers shatter superior Rebel doomstacks repeatedly.",
+    "Join field armies into 50,000-120,000 man doomstacks under top commanders (Grant, Sherman, Rosecrans) before striking deep into Confederate territory.",
+    "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 32 cities or 80% income.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); eliminate adjacent raiders immediately.",
+    "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+    "Cut off Rebel retreat paths into adjacent friendly cities before attacking to force complete surrenders of trapped enemy forces.",
+    "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov); never march with 0 supply.",
+    "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+    "Maintain continuous fleet commerce raiding from Turn 1, and rebuild sunk ships to ensure ongoing economic attrition against Rebel cash."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 32 cities or 80% income.",
+     "why": "Repeated failed assaults on Richmond's level-2 forts with 60k+ stacks cost massive casualties and wasted turns that could have secured an easy 32-city victory."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov); never march with 0 supply.",
+     "why": "McClellan attacked repeatedly while out of supply, halving his combat power and causing disastrous retreats."
+    },
+    {
+     "kind": "revised",
+     "lesson": "Maintain continuous fleet commerce raiding from Turn 1, and rebuild sunk ships to ensure ongoing economic attrition against Rebel cash.",
+     "why": "Raiding fleet lost all ships by 1864 and was not replaced, allowing Rebel income to rebound late-game."
+    }
+   ],
+   "strategy": "Open by fortifying Washington, securing border neutrals (Baltimore, Louisville, Paducah), and raiding with the fleet. Consolidate Western armies under Grant to sweep the Mississippi Valley and Deep South (Nashville, Atlanta, New Orleans, Jackson, Mobile). In the East, hold Washington and Pennsylvania with fortified chokepoints while sweeping exterior coastal cities (Norfolk, Wilmington, Charleston) to trigger a decisive 32-city victory without throwing stacks into Richmond's forts."
+  },
+  {
+   "version": 47,
+   "after_game": {
+    "game": 48,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 7
+   },
+   "diagnosis": "Fast 7-turn victory achieved through early expansion into neutral border cities, relentless recruitment, fortifying Washington and Louisville, continuous naval commerce raiding, and bypassing Richmond to rapidly secure peripheral cities for an overwhelming 60% income majority.",
+   "lessons": [
+    "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+    "Never leave Washington empty; maintain a dedicated garrison and fortify to level 2 early to crush any Confederate offensive.",
+    "Secure neutral border cities (Baltimore, Louisville, Lexington, Paducah) on Turn 1 to maximize early income and establish defensive anchors.",
+    "Fortify Louisville and Washington to level 2; fort defense multipliers shatter superior Rebel doomstacks repeatedly.",
+    "Join field armies into 50,000-120,000 man doomstacks under top commanders (Grant, Sherman, Rosecrans) before striking deep into Confederate territory.",
+    "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 28 cities or 60% income.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); eliminate adjacent raiders immediately.",
+    "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+    "Cut off Rebel retreat paths into adjacent friendly cities before attacking to force complete surrenders of trapped enemy forces.",
+    "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov); never march with 0 supply.",
+    "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+    "Maintain continuous fleet commerce raiding from Turn 1, and rebuild sunk ships to ensure ongoing economic attrition against Rebel cash."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 28 cities or 60% income.",
+     "why": "Corrected the victory condition thresholds from 32 cities / 80% income to the exact game rules of 28 cities / 60% income, aligning strategic targets with victory triggers."
+    }
+   ],
+   "strategy": "Open by claiming neutral border cities and commencing continuous naval raiding. Maximize per-turn recruitments, fortify key bastions (Washington, Louisville) to level 2, rail reserves to intercept Rebel thrusts, and expand swiftly across peripheral objectives (Missouri, Tennessee, Virginia periphery) to win by income or city count without risking costly assaults on Richmond."
+  },
+  {
+   "version": 48,
+   "after_game": {
+    "game": 50,
+    "scenario": "alternate",
+    "reason": "Union victory: share of total income",
+    "turns": 7
+   },
+   "diagnosis": "Game 50 on the alternate map was a swift, decisive 7-turn victory via 60% income share. Securing neutral border hubs on Turn 1 and fortifying Louisville and Washington blunted early Rebel drives. When A.S. Johnston launched a deep raid across the Midwest into Pennsylvania, Grant systematically liberated lost cities from behind while local recruitment in Harrisburg trapped and annihilated Johnston upon his suicidal assault. In the West, Pope swept down the Mississippi capturing Fort Donelson, Memphis, Vicksburg, and Jackson uncontested, while fleet commerce raiding continuously squeezed Rebel c",
+   "lessons": [
+    "Call troops and recruit strictly from the offered list every turn when cash allows; never skip recruitment to hoard money or drill idle units.",
+    "Never leave Washington empty; maintain a dedicated garrison and fortify to level 2 early to crush any Confederate offensive.",
+    "Secure neutral border cities (Baltimore, Louisville, Lexington, Paducah) on Turn 1 to maximize early income and establish defensive anchors.",
+    "Fortify Louisville and Washington to level 2; fort defense multipliers shatter superior Rebel doomstacks repeatedly.",
+    "Join field armies into 50,000-120,000 man doomstacks under top commanders (Grant, Sherman, Rosecrans) before striking deep into Confederate territory.",
+    "Never attack heavily garrisoned level-2 fortified capitals (Richmond); bypass them to capture exterior cities and win via 28 cities or 60% income.",
+    "Protect the Northeast corridor (Philadelphia, Baltimore, Washington, Harper's Ferry); eliminate adjacent raiders immediately.",
+    "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+    "Cut off Rebel retreat paths into adjacent friendly cities before attacking to force complete surrenders of trapped enemy forces.",
+    "Resupply armies whenever supply drops to 1, particularly prior to seasonal attrition turns (Jan, Mar, May, Nov); never march with 0 supply.",
+    "Rail reserve corps directly to threatened border bastions (Louisville, Washington) to intercept incoming Rebel thrusts.",
+    "Maintain continuous fleet commerce raiding from Turn 1, and rebuild sunk ships to ensure ongoing economic attrition against Rebel cash."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Guard and immediately recapture Midwest rail hubs (St. Louis, Indianapolis, Cincinnati, Columbus) to maintain vital reinforcement networks.",
+     "why": "Rebel raiders frequently bypass border fortresses into the Midwest; trailing them with a main army while recruiting ahead in Keystone cities traps and destroys them without derailing the overall campaign."
+    }
+   ],
+   "strategy": "Open by fortifying Washington and Louisville while seizing Baltimore, Lexington, Louisville, and Paducah on Turn 1. Maximize recruitment every single turn using all available cash from the troops list. Maintain fleet commerce raiding continuously to drain Confederate finances. Advance in the West along the Mississippi corridor with Grant and Pope taking lightly defended hubs, bypass Richmond's heavy fortifications, and secure an early economic or 28-city victory."
+  }
+ ],
+ "seeds": [
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309,
+  310,
+  311,
+  312,
+  313,
+  314,
+  315,
+  316,
+  317,
+  318,
+  319,
+  320,
+  321,
+  322,
+  323,
+  324,
+  325,
+  326,
+  327,
+  328,
+  329,
+  330,
+  331,
+  332,
+  333,
+  334,
+  335,
+  336,
+  337,
+  338,
+  339,
+  340,
+  341,
+  342,
+  343,
+  344,
+  345,
+  346,
+  347,
+  348,
+  349,
+  350
+ ],
+ "method": {},
+ "frozen_sha": "bdae8c3e0ff35eeb"
+}

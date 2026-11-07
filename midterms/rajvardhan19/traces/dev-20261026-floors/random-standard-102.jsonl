@@ -1,0 +1,58 @@
+{"header": {"player": "random", "scenario": "standard", "seed": 102, "status": "terminal", "reason": "Rebel victory: capital captured", "winner": "Rebel", "score": 35, "turns": 7, "date": "May 1862", "cities_union": 8, "steps": 50, "invalid_actions": 0, "model_calls": 0, "failed_calls": 0, "fallback_actions": 0, "input_tokens": 0, "output_tokens": 0, "model_latency_total": 0.0, "wall_seconds": 0.05, "config": {"limits": {"max_steps": 600, "max_model_calls": 150, "max_wall_seconds": 1800.0, "max_actions_per_turn": 40, "max_failures_per_turn": 3, "max_batch": 8, "engine_timeout": 60.0, "decision_timeout": 45.0}, "player": {}}}}
+{"turn_start": 1, "board": {"date": "March 1861", "cash": 525, "vp": [190, 241], "owners": "RNRRRUURURRRUUURRNNNNRRRRRRRNUURRRUURRUR", "forts": "0000200001001000000000120021000010000212", "union": [[1, 39, 40000], [2, 7, 28000], [3, 13, 7500], [4, 36, 10000], [5, 9, 12500]], "rebel": [[21, 33, 30000], [22, 12, 20000], [23, 26, 14000], [24, 38, 7500]]}, "t": 0.025}
+{"turn": 1, "action": "move 2 Ind'naplis", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Cincinnati to Ind'naplis", "t": 0.025}
+{"turn": 1, "action": "fortify Harper Fy", "source": "scripted", "accepted": true, "text": "Harper Fy fortifications increased to 2", "t": 0.026}
+{"turn": 1, "action": "rail 4 Chrlstn WV", "source": "scripted", "accepted": true, "text": "Buell is taking the train from St. Louis to Chrlstn WV", "t": 0.026}
+{"turn": 1, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1861.", "t": 0.027}
+{"turn_start": 2, "board": {"date": "May 1861", "cash": 420, "vp": [246, 227], "owners": "RNRRRUURURRRUUURRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200001002000000000120021000020000212", "union": [[1, 39, 40000], [2, 15, 28000], [3, 13, 6900], [4, 6, 10000], [5, 9, 12500]], "rebel": [[21, 33, 30000], [22, 12, 18500], [23, 21, 14000], [24, 38, 7500]]}, "t": 0.028}
+{"turn": 2, "action": "rail 2 Pittsburg", "source": "scripted", "accepted": true, "text": "McClellan is taking the train from Ind'naplis to Pittsburg", "t": 0.028}
+{"turn": 2, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 2", "t": 0.028}
+{"turn": 2, "action": "fleet sail Chrlstn SC", "source": "scripted", "accepted": true, "text": "Union fleet of 2 ship(s) is sailing from Phildelpha to Chrlstn SC", "t": 0.029}
+{"turn": 2, "action": "fortify Washington", "source": "scripted", "accepted": true, "text": "Washington fortifications increased to 2", "t": 0.029}
+{"turn": 2, "action": "move 3 Harrisburg", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Harrisburg", "t": 0.03}
+{"turn": 2, "action": "move 5 Ind'naplis", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Ind'naplis", "t": 0.03}
+{"turn": 2, "action": "move 4 Cincinnati", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Chrlstn WV to Cincinnati", "t": 0.03}
+{"turn": 2, "action": "cancel 5", "source": "scripted", "accepted": true, "text": "Pope has cancelled move to Ind'naplis", "t": 0.031}
+{"turn": 2, "action": "move 5 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Pittsburg", "t": 0.031}
+{"turn": 2, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Columbus, St. Louis", "t": 0.032}
+{"turn": 2, "action": "fortify Columbus", "source": "scripted", "accepted": true, "text": "Columbus fortifications increased to 1", "t": 0.032}
+{"turn": 2, "action": "cancel 4", "source": "scripted", "accepted": true, "text": "Buell has cancelled move to Cincinnati", "t": 0.033}
+{"turn": 2, "action": "cancel 3", "source": "scripted", "accepted": true, "text": "Fremont has cancelled move to Harrisburg", "t": 0.033}
+{"turn": 2, "action": "drill 3", "source": "scripted", "accepted": true, "text": "Fremont has drilled to reach experience level 2", "t": 0.033}
+{"turn": 2, "action": "move 4 Cincinnati", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Chrlstn WV to Cincinnati", "t": 0.034}
+{"turn": 2, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now July 1861.", "t": 0.034}
+{"turn_start": 3, "board": {"date": "July 1861", "cash": 299, "vp": [289, 293], "owners": "RNRRRUURURRRUUURRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200011002000000000120021000020000222", "union": [[1, 39, 40000], [2, 31, 28000], [3, 13, 5400], [4, 7, 8500], [5, 9, 12500]], "rebel": [[21, 33, 30000], [22, 12, 16600], [23, 21, 12700], [24, 38, 7500], [25, 34, 6300], [26, 32, 4800], [27, 5, 6300]]}, "t": 0.035}
+{"turn": 3, "action": "rail 2 Phildelpha", "source": "scripted", "accepted": true, "text": "McClellan is taking the train from Pittsburg to Phildelpha", "t": 0.035}
+{"turn": 3, "action": "move 1 Fredr'kbrg", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Washington to Fredr'kbrg", "t": 0.035}
+{"turn": 3, "action": "fleet sail Mobile", "source": "scripted", "accepted": true, "text": "Union fleet of 2 ship(s) is sailing from Chrlstn SC to Mobile", "t": 0.036}
+{"turn": 3, "action": "move 4 Ind'naplis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Cincinnati to Ind'naplis", "t": 0.036}
+{"turn": 3, "action": "move 5 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Pittsburg", "t": 0.037}
+{"turn": 3, "action": "move 3 Harrisburg", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Harrisburg", "t": 0.037}
+{"turn": 3, "action": "cancel 5", "source": "scripted", "accepted": true, "text": "Pope has cancelled move to Pittsburg", "t": 0.038}
+{"turn": 3, "action": "move 5 Ind'naplis", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Ind'naplis", "t": 0.038}
+{"turn": 3, "action": "cancel 3", "source": "scripted", "accepted": true, "text": "Fremont has cancelled move to Harrisburg", "t": 0.038}
+{"turn": 3, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now September 1861.", "t": 0.039}
+{"turn_start": 4, "board": {"date": "September 1861", "cash": 410, "vp": [326, 351], "owners": "RNRRRUURURURUURRRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200011002000000000120021000020000222", "union": [[1, 11, 40000], [2, 30, 28000], [3, 13, 4800], [4, 7, 6500], [5, 9, 10200]], "rebel": [[21, 33, 30000], [22, 12, 15200], [23, 15, 10100], [24, 26, 7500], [25, 16, 6300], [26, 40, 4800], [27, 34, 6300]]}, "t": 0.039}
+{"turn": 4, "action": "rail 1 Chrlstn WV", "source": "scripted", "accepted": true, "text": "McDowell is taking the train from Fredr'kbrg to Chrlstn WV", "t": 0.04}
+{"turn": 4, "action": "fleet sail Wilmington", "source": "scripted", "accepted": true, "text": "Union fleet of 2 ship(s) is sailing from Mobile to Wilmington", "t": 0.04}
+{"turn": 4, "action": "fortify Columbus", "source": "scripted", "accepted": true, "text": "Columbus fortifications increased to 2", "t": 0.041}
+{"turn": 4, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now November 1861.", "t": 0.041}
+{"turn_start": 5, "board": {"date": "November 1861", "cash": 324, "vp": [353, 392], "owners": "RNRRRUURURURUURRRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200021002000000000120021000020000222", "union": [[1, 6, 40000], [2, 30, 28000], [3, 13, 4000], [4, 7, 6500], [5, 9, 9400]], "rebel": [[21, 33, 30000], [22, 12, 13900], [23, 15, 7900], [24, 21, 11500], [25, 22, 9300], [26, 40, 4800], [27, 1, 6300], [28, 32, 10800]]}, "t": 0.041}
+{"turn": 5, "action": "rail 5 Pittsburg", "source": "scripted", "accepted": true, "text": "Pope is taking the train from Columbus to Pittsburg", "t": 0.042}
+{"turn": 5, "action": "move 4 Chrlstn WV", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Cincinnati to Chrlstn WV", "t": 0.042}
+{"turn": 5, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 3", "t": 0.043}
+{"turn": 5, "action": "fleet sail Baltimore", "source": "scripted", "accepted": true, "text": "Union fleet of 2 ship(s) is sailing from Wilmington to Baltimore", "t": 0.043}
+{"turn": 5, "action": "move 2 Baltimore", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Phildelpha to Baltimore", "t": 0.043}
+{"turn": 5, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now January 1862.", "t": 0.044}
+{"turn_start": 6, "board": {"date": "January 1862", "cash": 533, "vp": [406, 457], "owners": "RURRRURRRRURRURRRNNNRRRRRRRRNUURRRUURRUR", "forts": "0000200021001000000000120021000020000222", "union": [[1, 6, 40000], [2, 2, 28000], [3, 39, 3000], [4, 6, 6500], [5, 31, 9400]], "rebel": [[21, 33, 30000], [22, 13, 13200], [23, 9, 7900], [24, 7, 11500], [25, 22, 8400], [26, 26, 4800], [27, 4, 6300], [28, 40, 10800]]}, "t": 0.044}
+{"turn": 6, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now March 1862.", "t": 0.045}
+{"turn_start": 7, "board": {"date": "March 1862", "cash": 744, "vp": [416, 497], "owners": "RURRRURRRRURRURRRNRRRRRRRRRRNUURRRUURRUR", "forts": "0000200021001000000000120021000020000222", "union": [[1, 6, 36000], [2, 2, 28000], [3, 39, 2100], [4, 6, 6500], [5, 31, 9400]], "rebel": [[21, 33, 30000], [22, 13, 12500], [23, 9, 7900], [24, 20, 11500], [25, 22, 8000], [26, 21, 4800], [27, 19, 6300], [28, 32, 10800]]}, "t": 0.045}
+{"turn": 7, "action": "fleet raid", "source": "scripted", "accepted": true, "text": "Union fleet of 2 ship(s) is sailing to RAID Rebel COMMERCE !", "t": 0.045}
+{"turn": 7, "action": "rail 5 Harrisburg", "source": "scripted", "accepted": true, "text": "Pope is taking the train from Pittsburg to Harrisburg", "t": 0.046}
+{"turn": 7, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Washington to Baltimore", "t": 0.046}
+{"turn": 7, "action": "fortify Baltimore", "source": "scripted", "accepted": true, "text": "Baltimore fortifications increased to 1", "t": 0.047}
+{"turn": 7, "action": "move 4 Cincinnati", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Chrlstn WV to Cincinnati", "t": 0.047}
+{"turn": 7, "action": "fortify Chrlstn WV", "source": "scripted", "accepted": true, "text": "Chrlstn WV fortifications increased to 1", "t": 0.048}
+{"turn": 7, "action": "fortify Baltimore", "source": "scripted", "accepted": true, "text": "Baltimore fortifications increased to 2", "t": 0.048}
+{"turn": 7, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Baltimore, Chrlstn WV, St. Louis", "t": 0.049}
+{"turn": 7, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1862.", "t": 0.049}

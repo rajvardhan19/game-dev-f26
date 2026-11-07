@@ -112,13 +112,22 @@ def _same_action(a: str, b: str) -> bool:
     return " ".join(str(a).lower().split()) == b
 
 
+def _visible(obs: dict) -> dict:
+    """The turn's report and your leaders, as the player saw them (for behaviour analysis)."""
+    return {"report": obs["last_turn_report"], "leaders": [a["name"] for a in obs["your_armies"]]}
+
+
 def run_episode(player, scenario: str, seed: float, limits: Limits | None = None,
-                trace_path: Path | None = None, on_step=None, on_turn=None) -> EpisodeResult:
+                trace_path: Path | None = None, on_step=None, on_turn=None, on_end=None,
+                on_observation=None) -> EpisodeResult:
+    """Play one episode. `on_end(memory, final_obs)` receives what the player saw, once the game is over.
+    `on_observation(obs)` receives the player's view after every step, for live displays; it is not traced."""
     limits = limits or Limits()
     result = EpisodeResult(getattr(player, "name", type(player).__name__), scenario, seed,
                            config={"limits": asdict(limits), "player": getattr(player, "config", {})})
     trace: list[dict] = []
     memory = {"turns": [], "this_turn": [], "feedback": []}
+    final_obs = None
     started = time.monotonic()
 
     def record(entry: dict) -> None:
@@ -126,6 +135,10 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
         trace.append(entry)
         if on_step:
             on_step(entry)
+
+    def seen(obs: dict) -> None:
+        if on_observation:
+            on_observation(obs)
 
     with EngineProcess(limits.engine_timeout) as engine:
         try:
@@ -136,6 +149,12 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
                 out = engine.outcome()
                 if out["status"] == "terminal":
                     result.reason = out["reason"]
+                    final_obs = port.observe()
+                    if turn is not None:
+                        memory["turns"].append({"turn": turn, "date": prev_date, "actions": memory["this_turn"],
+                                                "report": final_obs["last_turn_report"]})
+                    record({"game_end": final_obs["turn"], "board": board_summary(final_obs), **_visible(final_obs)})
+                    seen(final_obs)
                     break
                 if time.monotonic() - started > limits.max_wall_seconds:
                     result.reason = "timeout: episode wall clock"
@@ -147,7 +166,8 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
                                                 "report": obs["last_turn_report"]})
                     turn, prev_date, per_turn, failures = obs["turn"], obs["date"], 0, 0
                     memory["this_turn"], memory["feedback"] = [], []
-                    record({"turn_start": turn, "board": board_summary(obs)})
+                    record({"turn_start": turn, "board": board_summary(obs), **_visible(obs)})
+                    seen(obs)
                     if on_turn:
                         on_turn(obs)
                 if per_turn >= limits.max_actions_per_turn or failures >= limits.max_failures_per_turn:
@@ -157,6 +177,7 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
                     per_turn += 1
                     record({"turn": turn, "action": "end turn", "source": "fallback", "why": why,
                             "accepted": res["accepted"], "text": res["text"]})
+                    seen(res["observation"])
                     continue
                 uses_model = getattr(player, "uses_model", False)
                 if uses_model and result.model_calls >= limits.max_model_calls:
@@ -186,6 +207,7 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
                     per_turn += 1
                     record({"turn": turn, "action": action, "source": decision.source,
                             "accepted": res["accepted"], "text": res["text"]})
+                    seen(res["observation"])
                     memory["this_turn"].append({"action": action, "accepted": res["accepted"], "text": res["text"]})
                     if not res["accepted"]:
                         memory["feedback"] = [f"'{action}' was rejected: not in the legal list at that moment."]
@@ -213,6 +235,8 @@ def run_episode(player, scenario: str, seed: float, limits: Limits | None = None
         result.steps = out.get("steps", 0)
         result.invalid_actions = out.get("invalid_actions", 0)
     result.wall_seconds = round(time.monotonic() - started, 2)
+    if on_end and final_obs is not None:
+        on_end(memory, final_obs)
     if trace_path:
         trace_path.parent.mkdir(parents=True, exist_ok=True)
         with trace_path.open("w") as f:

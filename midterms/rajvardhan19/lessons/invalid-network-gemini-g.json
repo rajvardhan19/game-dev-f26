@@ -1,0 +1,589 @@
+{
+ "format": 1,
+ "name": "gemini-g",
+ "model": "gemini-3.5-flash-lite",
+ "frozen": true,
+ "version": 16,
+ "lessons": [
+  "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+  "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+  "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+  "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+  "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+  "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+  "When our army outnumbers the adjacent enemy city garrison by at least 2:1 and is fully supplied, use move to attack and capture the city.",
+  "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+ ],
+ "strategy": "In the next game, I will balance recruiting and drilling with aggressive movement and attacks. Rather than letting armies sit and drill indefinitely, I will use superior numbers to capture enemy cities, maintain supply lines, and prevent the Confederacy from dominating the map.",
+ "versions": [
+  {
+   "version": 0,
+   "lessons": [],
+   "strategy": "",
+   "note": "empty notebook"
+  },
+  {
+   "version": 1,
+   "after_game": {
+    "game": 1,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 2
+   },
+   "diagnosis": "We lost quickly because we scattered our forces with random moves instead of recruiting new troops to build strong armies, and we failed to defend Washington or attack enemy forces effectively.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army has no enemy adjacent and needs experience, use drill to raise its combat rating.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+     "why": "We made zero recruits in the training game, falling far behind the computer and losing our starting strength."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+     "why": "Armies need constant supply to fight at full capacity and avoid attrition during marches."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army has no enemy adjacent and needs experience, use drill to raise its combat rating.",
+     "why": "Drilling improves leader experience and army strength for upcoming battles."
+    },
+    {
+     "kind": "added",
+     "lesson": "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+     "why": "Fortifications are essential to withstand Confederate attacks and hold our territory."
+    }
+   ],
+   "strategy": "Next game, we will focus heavily on recruiting new troops, keeping our armies supplied and drilled, fortifying vital locations, and preventing the enemy from capturing Washington."
+  },
+  {
+   "version": 2,
+   "after_game": {
+    "game": 2,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 6
+   },
+   "diagnosis": "We focused heavily on recruiting and drilling inside our own secure cities instead of aggressively capturing enemy territory. While our army grew large, the Confederate forces methodically captured surrounding cities, out-maneuvering us and achieving victory through city control while we remained passive.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When an army has no enemy adjacent and needs experience, use drill to raise its combat rating.",
+     "why": "Drilling constantly caused us to neglect city capture and offensive operations, leading to a loss by enemy city control."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+     "why": "We must actively capture enemy territory to prevent the Confederacy from winning the city count victory condition."
+    }
+   ],
+   "strategy": "We will continue to maintain our troop numbers and supply lines, but we must shift from endless drilling to active movement and capturing enemy cities to deny the Confederacy their territorial victory."
+  },
+  {
+   "version": 3,
+   "after_game": {
+    "game": 3,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 18
+   },
+   "diagnosis": "This game was lost because we failed to capture and hold enemy territory while constantly neglecting defensive fortifications and allowing our armies to run out of supply, leading to attrition, defeats, and the gradual loss of our cities to Confederate counterattacks.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+     "why": "Maintained from previous notebook as recruiting is essential for maintaining force strength."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+     "why": "Retained because starving armies repeatedly lost battles and disbanded during campaigns."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+     "why": "Kept to ensure we actively expand territory rather than remaining stagnant."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+     "why": "Kept to correct our complete lack of fortify orders in this game, which invited enemy breakthroughs."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+     "why": "Added because we drilled frequently but lacked a disciplined rule for when to prioritize it over supplying or moving."
+    }
+   ],
+   "strategy": "In the next game, we will combine aggressive recruitment and strategic movement to capture enemy cities, while strictly maintaining supply lines and utilizing fortify to hold key positions against Confederate counteroffensives."
+  },
+  {
+   "version": 4,
+   "after_game": {
+    "game": 4,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 17
+   },
+   "diagnosis": "We focused almost exclusively on recruiting and drilling while remaining passive. By refusing to attack or capture enemy cities, we allowed the Confederacy to concentrate forces, outmaneuver us, and slowly overwhelm our isolated garrisons until we lost control of the map.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+     "why": "Maintained from previous notebook as it helps maintain army size, though we need to combine and use these forces actively rather than letting them sit."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+     "why": "Retained to prevent crippling supply attrition on our core field armies."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+     "why": "Retained because our extreme passivity in this game directly caused the defeat; we must take empty cities to win."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+     "why": "Retained to ensure our defensive positions withstand enemy attacks."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+     "why": "Retained from previous notebook to ensure our forces are combat-effective."
+    }
+   ],
+   "strategy": "Next game, we will continue steady recruitment and supply management, but we will aggressively use our armies to capture adjacent neutral and enemy cities rather than remaining completely idle on defense."
+  },
+  {
+   "version": 5,
+   "after_game": {
+    "game": 5,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 11
+   },
+   "diagnosis": "We focused heavily on recruiting and drilling while leaving our armies passive and out of supply, allowing the Confederate armies to concentrate, march unopposed, and eventually capture Washington. We failed to use our offensive power or fortify critical cities against enemy advances.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When an enemy army threatens Washington or key supply centers, use move to intercept or fortify the city immediately."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When an enemy army threatens Washington or key supply centers, use move to intercept or fortify the city immediately.",
+     "why": "We lost the game because the capital was left undefended against an advancing Confederate corps."
+    }
+   ],
+   "strategy": "We will continue to build up our forces through recruitment and maintain supply lines, but we will actively move armies to block Confederate advances, protect our capital, and capture vulnerable enemy cities instead of remaining idle."
+  },
+  {
+   "version": 6,
+   "after_game": {
+    "game": 6,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 13
+   },
+   "diagnosis": "We built a large army through constant recruitment and kept our cash stable, but we failed to attack and capture enemy cities or use naval and rail options. Excessive drilling while the enemy maneuvered and captured our territory allowed the Confederates to surround us, blockade Philadelphia, and eventually overwhelm our isolated and unsupplied garrisons.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When an enemy army threatens Washington or key supply centers, use move to intercept or fortify the city immediately.",
+     "why": "It was redundant with broader defensive and movement rules and had a limited single-game track record."
+    },
+    {
+     "kind": "added",
+     "lesson": "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+     "why": "We suffered heavy blockade attrition and loss of territory in Philadelphia and along borders because we ignored fleet and active offensive/defensive movement."
+    }
+   ],
+   "strategy": "We will continue our steady recruitment and supply management, but we will aggressively use move commands to take enemy territory, break blockades, and engage Confederate armies rather than passively drilling while the enemy surrounds and overwhelms us."
+  },
+  {
+   "version": 7,
+   "after_game": {
+    "game": 7,
+    "scenario": "standard",
+    "reason": "Rebel victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "We focused excessively on drilling and reinforcing scattered small armies while neglecting offensive movement, fortifying core positions, and protecting our capital. The Rebels outmaneuvered us, captured our vital cities, and eventually seized Washington, ending the game.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+     "why": "We must aggressively counter enemy movements toward our capital and core cities rather than remaining static and drilling."
+    }
+   ],
+   "strategy": "We will aggressively recruit, maintain army supply, fortify threatened border cities, and actively move to capture enemy territory and counter Rebel incursions while defending our capital."
+  },
+  {
+   "version": 8,
+   "after_game": {
+    "game": 8,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 9
+   },
+   "diagnosis": "We focused heavily on recruiting and drilling while neglecting aggressive territorial expansion and capturing enemy cities. The Rebel computer aggressively maneuvered and captured cities while we remained passive, leading to a loss of ground and income.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately."
+   ],
+   "changes": [],
+   "strategy": "We will maintain our focus on steady recruitment and supply management while increasing our offensive movements to capture enemy cities and actively counter Rebel incursions instead of over-drilling."
+  },
+  {
+   "version": 9,
+   "after_game": {
+    "game": 9,
+    "scenario": "standard",
+    "reason": "Rebel victory: time expired",
+    "turns": 24
+   },
+   "diagnosis": "We survived the full 24 turns by continuously recruiting and supplying our core armies, but we failed to attack or expand our territory, ending with only 8 cities and letting the Rebels achieve time-expired victory control. We must aggressively capture enemy territory and fight battles rather than just drilling and waiting.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When an army is large and well-supplied adjacent to a weaker enemy-held city, use move to attack and capture enemy territory."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When an army is large and well-supplied adjacent to a weaker enemy-held city, use move to attack and capture enemy territory.",
+     "why": "We made zero attacks in this game and lost on time because we did not capture enough cities to prevent a Rebel victory."
+    }
+   ],
+   "strategy": "Next game we will maintain our strong recruitment and supply habits while actively moving our armies out of passive defense to attack adjacent enemy cities, capture territory, and contest the Rebel victory conditions before time expires."
+  },
+  {
+   "version": 10,
+   "after_game": {
+    "game": 10,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 13
+   },
+   "diagnosis": "We raised a large number of troops and drilled constantly, but we barely moved or attacked enemy positions. This left the initiative to the Confederates, who systematically destroyed our isolated armies, seized our territory, and eventually captured our capital.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When an army is large and well-supplied adjacent to a weaker enemy-held city, use move to attack and capture enemy territory."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an army is large and well-supplied adjacent to a weaker enemy-held city, use move to attack and capture enemy territory.",
+     "why": "We failed to press our numerical advantage with offensive moves, allowing the computer to dictate the pace and overwhelm us."
+    }
+   ],
+   "strategy": "We must combine steady recruitment and supply management with aggressive tactical movement. Instead of endlessly drilling while enemy forces concentrate against us, we will use our numerical strength to capture enemy cities and protect our capital."
+  },
+  {
+   "version": 11,
+   "after_game": {
+    "game": 11,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 4
+   },
+   "diagnosis": "We collapsed quickly because we left Washington completely undefended while launching deep offensives, allowing R.E. Lee to march straight in and capture our capital in September 1861. We also failed to secure our core border positions with fortifications and neglected supply lines.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When Washington or the capital is vulnerable to nearby enemy forces, use move to position a defending army inside it immediately.",
+    "When an enemy army occupies a core adjacent city threatening our capital, use move to attack and clear it."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When Washington or the capital is vulnerable to nearby enemy forces, use move to position a defending army inside it immediately.",
+     "why": "We lost the game in turn 4 because the capital was left completely open to R.E. Lee's march."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an enemy army occupies a core adjacent city threatening our capital, use move to attack and clear it.",
+     "why": "We failed to stop advancing Confederate columns near our core territory, leading directly to the loss of Washington."
+    }
+   ],
+   "strategy": "Next game we will aggressively recruit and drill our forces while strictly keeping a strong defensive army stationed in or immediately adjacent to Washington to prevent a capital capture, while slowly pushing out to secure border cities."
+  },
+  {
+   "version": 12,
+   "after_game": {
+    "game": 12,
+    "scenario": "alternate",
+    "reason": "Rebel victory: time expired",
+    "turns": 28
+   },
+   "diagnosis": "In Training Game 12, we heavily prioritized recruiting and drilling while practically abandoning offensive movement (only 14 moves all game compared to the computer's 5.7 per turn). Although we successfully built a massive army of over 440,000 men and survived until the time expired by turtling, we failed to capture enemy territory or win battles, allowing the Confederacy to hold 27 cities and achieve a technical victory. We also spent 26 turns executing fleet attacks on Mobile without landing an invasion or moving out to capture surrounding ports.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When our army outnumbers the adjacent enemy city garrison and is fully supplied, use move to attack and capture the city.",
+    "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When Washington or the capital is vulnerable to nearby enemy forces, use move to position a defending army inside it immediately.",
+     "why": "This was too narrow and redundant with general defensive and movement instructions."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When an enemy army occupies a core adjacent city threatening our capital, use move to attack and clear it.",
+     "why": "Covered more comprehensively by broader offensive and tactical attack instructions."
+    },
+    {
+     "kind": "added",
+     "lesson": "When our army outnumbers the adjacent enemy city garrison and is fully supplied, use move to attack and capture the city.",
+     "why": "We failed to attack enemy-held cities in this game, leading to time expiring while the enemy held too many cities for victory."
+    },
+    {
+     "kind": "added",
+     "lesson": "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it.",
+     "why": "We spent dozens of turns bombarding Mobile with fleet attack without ever following up with fleet invade to capture the port."
+    }
+   ],
+   "strategy": "In the next game, we will continue our strong habits of recruiting and keeping armies supplied, but we will dramatically increase our offensive output. Instead of idling our massive armies and endlessly drilling or bombarding ports without following up, we will use move orders to capture empty enemy cities and launch coordinated attacks against outnumbered enemy garrisons to seize territory and deny the Confederacy a time-expired victory."
+  },
+  {
+   "version": 13,
+   "after_game": {
+    "game": 13,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "We focused heavily on recruiting and drilling while ignoring offensive operations and city capture. The Rebel computer aggressively expanded, captured our capital, and controlled enough cities to win by turn 7.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When our army outnumbers the adjacent enemy city garrison and is fully supplied, use move to attack and capture the city.",
+    "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+     "why": "Maintained from previous notebook as it helps maintain army sizes."
+    }
+   ],
+   "strategy": "Next game, we will balance our recruitment and drilling with aggressive movement and attacks to capture enemy cities and prevent the Confederacy from seizing our capital."
+  },
+  {
+   "version": 14,
+   "after_game": {
+    "game": 14,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "We focused heavily on recruiting and drilling while ignoring offensive operations and fortification of key points. The Rebels outmaneuvered us, captured cities rapidly, and achieved a decisive victory within 5 turns.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When our army outnumbers the adjacent enemy city garrison and is fully supplied, use move to attack and capture the city.",
+    "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+     "why": "Drilling too frequently without pursuing attacks left us passive while the enemy claimed victory conditions."
+    }
+   ],
+   "strategy": "Next game we will maintain steady recruitment and supply management, but aggressively use move orders to capture enemy cities and confront rebel forces directly instead of over-drilling."
+  },
+  {
+   "version": 15,
+   "after_game": {
+    "game": 15,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "We focused excessively on drilling and isolated recruitment while neglecting supply lines and coordinated offensives. Our armies ran out of supplies and suffered attrition, allowing the Confederate computer to steadily capture our core cities and overwhelm our positions.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When our army outnumbers the adjacent enemy city garrison by at least 2:1 and is fully supplied, use move to attack and capture the city.",
+    "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When our army outnumbers the adjacent enemy city garrison by at least 2:1 and is fully supplied, use move to attack and capture the city.",
+     "why": "We launched attacks with inadequate odds and inferior supply in past games, leading to heavy losses. Requiring a 2:1 advantage and full supply will ensure successful captures."
+    }
+   ],
+   "strategy": "Next game, we will maintain rigorous supply management for all active armies, restrict attacks to high-odds situations with superior numbers, and balance recruitment with defensive fortifications to hold our core cities against Rebel counterattacks."
+  },
+  {
+   "version": 16,
+   "after_game": {
+    "game": 16,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 12
+   },
+   "diagnosis": "This game was lost because we over-relied on drilling while neglecting offensive maneuvers and city capture. Although we built up a large army of over 200,000 men, we rarely attacked or moved to take enemy territory, allowing the Confederacy to control the map, build up forces, and eventually crush our isolated and starving garrisons.",
+   "lessons": [
+    "When a city offers recruits, use recruit to strengthen existing armies or raise new ones every turn.",
+    "When an army's supply is 1 or less, use supply to keep it from starving or losing strength.",
+    "When an army is adjacent to an undefended enemy city, use move to capture it immediately.",
+    "When holding key border cities threatened by enemy forces, use fortify to double or triple defensive strength.",
+    "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+    "When enemy armies or fleets threaten core positions or blockade ports, use move or fleet orders to counter them immediately.",
+    "When our army outnumbers the adjacent enemy city garrison by at least 2:1 and is fully supplied, use move to attack and capture the city.",
+    "When a seaport enemy port has been bombarded by fleet attack and its garrison is weakened, use fleet invade to land forces and capture it."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an army has low experience and is not immediately threatened, use drill to raise its combat readiness.",
+     "why": "We drilled excessively (45 times) instead of taking the fight to the enemy, leading to a stagnant front and eventual defeat."
+    }
+   ],
+   "strategy": "In the next game, I will balance recruiting and drilling with aggressive movement and attacks. Rather than letting armies sit and drill indefinitely, I will use superior numbers to capture enemy cities, maintain supply lines, and prevent the Confederacy from dominating the map."
+  }
+ ],
+ "seeds": [
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309,
+  310,
+  311,
+  312,
+  313,
+  314,
+  315,
+  316,
+  317,
+  318,
+  319,
+  320,
+  321,
+  322,
+  323,
+  324,
+  325,
+  326,
+  327,
+  328,
+  329,
+  330,
+  331,
+  332,
+  333,
+  334,
+  335,
+  336,
+  337,
+  338,
+  339,
+  340,
+  341,
+  342,
+  343,
+  344,
+  345,
+  346,
+  347,
+  348,
+  349,
+  350
+ ],
+ "method": {
+  "mirror": true,
+  "track_record": true,
+  "actionable": true,
+  "contrast": true,
+  "plan": true
+ },
+ "frozen_sha": "9e8dbf7a8ec6b980"
+}

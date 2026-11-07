@@ -58,7 +58,7 @@ document.getElementById("file").addEventListener("change", e => {
 function load(lines) {
   header = lines[0].header; turns = []; let cur = null;
   for (const e of lines.slice(1)) {
-    if (e.turn_start !== undefined) { cur = { board: e.board, events: [] }; turns.push(cur); }
+    if (e.turn_start !== undefined || e.game_end !== undefined) { cur = { board: e.board, events: [] }; turns.push(cur); }
     else if (cur) cur.events.push(e);
   }
   k = 0; draw();

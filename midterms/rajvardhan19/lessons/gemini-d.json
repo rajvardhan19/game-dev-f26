@@ -1,0 +1,899 @@
+{
+ "format": 1,
+ "name": "gemini-d",
+ "model": "gemini-3.5-flash-lite",
+ "frozen": true,
+ "version": 20,
+ "lessons": [
+  "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+  "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+  "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+  "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+  "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+  "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+ ],
+ "strategy": "We will prioritize immediate defensive consolidation and strategic recruitment in the opening turns, fortifying key border cities to halt Confederate advances while using our naval fleet actively to contest enemy ports.",
+ "versions": [
+  {
+   "version": 0,
+   "lessons": [],
+   "strategy": "",
+   "note": "empty notebook"
+  },
+  {
+   "version": 1,
+   "after_game": {
+    "game": 5,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 11
+   },
+   "diagnosis": "The Union suffered repeated defeats because our armies attacked entrenched or superior Confederate forces at very low odds (around 20-40%), leading to massive casualties and the loss of the capital and key cities. Furthermore, armies were left to run out of supply without buying provisions or securing adjacent friendly cities, and too much time was wasted on idle drilling while the Rebels seized territory.",
+   "lessons": [
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When McDowell is available, advance immediately on Richmond.",
+     "why": "Led directly to disastrous low-odds attacks against J.E. Johnston in Richmond."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+     "why": "Armies repeatedly ran out of supplies and suffered severe attrition because supply orders were neglected or illegal due to timing."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+     "why": "Prevents suicide attacks at 20-30% odds that drain Union manpower."
+    }
+   ],
+   "strategy": "Next game, we will focus on defensive consolidation, maintaining army supply lines, avoiding low-odds attacks on fortified enemy forces, and building up our economic and military strength safely.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn."
+   }
+  },
+  {
+   "version": 2,
+   "after_game": {
+    "game": 10,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "In Games 6 through 10, the Union spent far too many turns endlessly drilling static armies while the Confederate computer relentlessly marched, captured cities, and overwhelmed our territory. Drilling gives experience, but it does not stop the enemy from seizing control of the map and winning via city dominance. We failed to actively contest enemy advances, utilize rail lines effectively, recruit new forces, or mount coordinated counter-offensives. To win, we must balance preparedness with active territorial defense and aggressive interception of advancing rebel armies.",
+   "lessons": [
+    "When an adjacent enemy army threatens a friendly city with inferior defensive odds, do not remain idle; instead, move to intercept, reinforce, or fortify before the enemy captures the position.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an enemy fleet is present in a port or blockading, use fleet sail or fleet attack to contest control rather than relying solely on passive positioning.",
+    "When recruit funds are available and strategic cities are losing friendly neighbors, use recruit to maintain field strength and garrison key hubs."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an adjacent enemy army threatens a friendly city with inferior defensive odds, do not remain idle; instead, move to intercept, reinforce, or fortify before the enemy captures the position.",
+     "why": "Previous lesson overly encouraged passive drilling while the enemy captured the entire map."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+     "why": "Replaced by a broader and more actionable naval engagement rule."
+    },
+    {
+     "kind": "added",
+     "lesson": "When recruit funds are available and strategic cities are losing friendly neighbors, use recruit to maintain field strength and garrison key hubs.",
+     "why": "We failed to raise troops in recent games, letting our army sizes dwindle while the Confederacy grew."
+    }
+   ],
+   "strategy": "Next game, we will immediately secure key positions like Paducah and Washington, actively block or counter Rebel army movements instead of endlessly drilling in place, maintain active supply lines, and aggressively use our fleet to disrupt Confederate operations.",
+   "openings": {
+    "standard": "drill 1, recruit Washington, build wooden, move 4 Paducah, end turn sympy ensure readiness and early control of Paducah without excessive passivity."
+   }
+  },
+  {
+   "version": 3,
+   "after_game": {
+    "game": 15,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 6
+   },
+   "diagnosis": "Notebook v2 performed poorly (-1.00 score) because it forced defensive moves without sufficient numbers and engaged in counter-productive fleet attacks when blockaded or outmatched. In both standard and alternate maps, excessive marching into unfavorable combat odds depleted our armies while the Rebels consolidated their forces. Returning to a sound defensive posture, maintaining supply lines, and focusing on careful drilling rather than reckless attacks will improve our longevity.",
+   "lessons": [
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When an adjacent enemy army threatens a friendly city with inferior defensive odds, do not remain idle; instead, move to intercept, reinforce, or fortify before the enemy captures the position.",
+     "why": "Led to chaotic, losing counter-attacks and failed defensive lunges that drained our troop strength."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When an enemy fleet is present in a port or blockading, use fleet sail or fleet attack to contest control rather than relying solely on passive positioning.",
+     "why": "Resulted in disastrous fleet engagements and refused orders when blockaded or outgunned."
+    },
+    {
+     "kind": "dropped",
+     "lesson": "When recruit funds are available and strategic cities are losing friendly neighbors, use recruit to maintain field strength and garrison key hubs.",
+     "why": "Distracted from crucial supply management and core defensive drilling priorities."
+    }
+   ],
+   "strategy": "We will revert to our proven defensive strategy from notebook v1. On the standard map, we will drill our primary armies to build experience, construct wooden naval vessels to secure coastal superiority, and avoid unprofitable attacks against superior Rebel concentrations. We will maintain supply levels vigilantly and fortify critical positions to outlast the Confederate forces.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn sympy ensure early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 4,
+   "after_game": {
+    "game": 20,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "We focused heavily on drilling and static defense while failing to actively capture enemy territory, recruit new forces, or properly leverage our fleets and railways to shift the strategic balance. As a result, the Confederates outmaneuvered us and captured key cities.",
+   "lessons": [
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "We failed to recruit enough troops throughout the games, leaving us outnumbered in cities and unable to hold territory."
+    }
+   ],
+   "strategy": "We will actively recruit new troops to expand our forces, secure key cities early by capturing objective points, maintain supply lines, and use our fleets and railways efficiently to counter Rebel movements.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end term ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 5,
+   "after_game": {
+    "game": 25,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 9
+   },
+   "diagnosis": "In these games, our excessive drilling of existing armies instead of actively recruiting new forces or aggressively advancing allowed the Confederate computer to steadily capture neutral and Union cities, eventually winning on city count. Our armies gained high experience levels, but remained passive while the enemy out-expanded us economically and territorially.",
+   "lessons": [
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+     "why": "This lesson remains active; no changes made to it."
+    }
+   ],
+   "strategy": "For the next game, we will balance our focus between expanding our forces via recruitment in secure cities, cautiously advancing when odds favor us, and utilizing our naval fleet effectively to blockade enemy ports while maintaining strong defensive fortifications.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 6,
+   "after_game": {
+    "game": 30,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "In these games, we overly focused on continuous drilling without aggressive expansion or sufficient defensive positioning, leading to the loss of key cities and our capital. While our recruitment efforts in the alternate map built up men, we failed to leverage our forces to capture Confederate territory or protect our supply lines, resulting in low supply states and ultimate defeat.",
+   "lessons": [
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "In multiple games (e.g., Game 28 and 30), we lost the Union capital and key cities because our armies remained stationary drilling while the Confederates marched unopposed."
+    }
+   ],
+   "strategy": "We will maintain aggressive recruitment in secure cities and balanced drilling while immediately pivoting to intercept and defend against Confederate advances toward our capital and vital cities, ensuring our supply lines remain intact.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 7,
+   "after_game": {
+    "game": 35,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 10
+   },
+   "diagnosis": "Across these games we relied far too heavily on endless drilling and building wooden ships while the Rebels aggressively seized cities and built up massive armies. On the standard map, moving Buell to Paducah triggered early friction, but we failed to capitalize or expand our forces through recruitment, leaving our armies outnumbered and outmaneuvered. On the alternate map, our failure to use aggressive moves and reinforcements allowed the Confederacy to secure territory unchecked. To win, we must actively recruit, consolidate forces, and contest enemy advances rather than endlessly drilling.",
+   "lessons": [
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an army is adjacent to a vulnerable enemy city with superior strength or favorable odds, use move to capture it rather than remaining idle.",
+    "When cash reserves exceed 400 and recruitment is available, use recruit in major cities to build up powerful regional field armies."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+     "why": "Constantly sailing fleets into ports led to heavy ship losses early on and did not stop the Rebel land victory condition."
+    },
+    {
+     "kind": "added",
+     "lesson": "When an army is adjacent to a vulnerable enemy city with superior strength or favorable odds, use move to capture it rather than remaining idle.",
+     "why": "We sat passively drilling while the Rebels captured city after city; we must take the offensive when odds are favorable."
+    },
+    {
+     "kind": "added",
+     "lesson": "When cash reserves exceed 400 and recruitment is available, use recruit in major cities to build up powerful regional field armies.",
+     "why": "We accumulated surplus cash while our total troop count dwindled relative to the growing Confederate forces."
+    }
+   ],
+   "strategy": "We will immediately pivot from passive drilling to aggressive territorial retention and recruitment. On the standard map, we will secure Paducah early, recruit heavily in major industrial hubs, and actively use rail and move to intercept Rebel advances. On the alternate map, we will prioritize raising forces in key central cities and countering Confederate incursions rather than idling.",
+   "openings": {
+    "standard": "troops, recruit Cincinnati, drill 1, move 4 Paducah, end turn ensuring early western footing while prioritizing recruitment and force concentration over mere drilling sketches."
+   }
+  },
+  {
+   "version": 8,
+   "after_game": {
+    "game": 40,
+    "scenario": "-",
+    "reason": "review failed; champion v6 restored",
+    "turns": 0
+   },
+   "diagnosis": "",
+   "lessons": [
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills."
+   ],
+   "changes": [],
+   "strategy": "We will maintain aggressive recruitment in secure cities and balanced drilling while immediately pivoting to intercept and defend against Confederate advances toward our capital and vital cities, ensuring our supply lines remain intact.",
+   "note": "review failed; champion v6 restored"
+  },
+  {
+   "version": 9,
+   "after_game": {
+    "game": 45,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 8
+   },
+   "diagnosis": "In these games, our armies spent too many turns continuously drilling while ignoring enemy advances and supply lines, leading to supply exhaustion, poor combat odds, and eventual collapse of our territory and capital. We must prioritize supplying armies before they starve, fortifying key cities, and concentrating for defense rather than endless drills.",
+   "lessons": [
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+     "why": "Keeping standard lessons consistent with current record performance while reinforcing supply and defense priorities."
+    }
+   ],
+   "strategy": "We will strictly monitor army supply levels to prevent starvation and zero-supply penalties, maintain defensive concentrations around vital cities and the capital, and expand recruitment when funds permit rather than over-drilling.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 10,
+   "after_game": {
+    "game": 50,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 6
+   },
+   "diagnosis": "In these training games, our armies spent excessive turns drilling while the Confederacy aggressively captured strategic cities and accumulated superior numbers. On the alternate map, we neglected recruitment and expansion, leaving our forces too small to resist rebel advances. On the standard map, while we attempted an opening push into Paducah, our armies remained passive and failed to secure vital territory or prevent the loss of our capital. To succeed, we must balance drilling with aggressive recruitment, timely defensive concentrations, and proactive city captures.",
+   "lessons": [
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "We failed to recruit in alternate map games, leaving our total troop count severely stagnated while the enemy expanded."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "We allowed rebel columns to capture Washington and Philadelphia while our armies were occupied drilling."
+    }
+   ],
+   "strategy": "We will aggressively recruit in secure cities during the early turns to expand our troop numbers, maintain disciplined drilling for experienced units, and use rail and movement orders to quickly intercept rebel advances toward Washington and key supply centers.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 11,
+   "after_game": {
+    "game": 55,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "In these games, our excessive drilling without active expansion, recruitment, or aggressive defensive maneuvering allowed the Confederate computer to steadily accumulate cities, outnumber us, and achieve technical victories. While drilling increases experience, failing to recruit, expand, or properly counter enemy movements leaves our armies isolated, starved of supply, and eventually overwhelmed. We must balance experience building with proactive recruitment and decisive counter-attacks.",
+   "lessons": [
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+     "why": "Retained as a fundamental rule to prevent supply attrition and army destruction."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Retained to ensure defensive responsiveness against Confederate advances."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "Retained to emphasize building troop numbers rather than endless drilling."
+    }
+   ],
+   "strategy": "Our strategy for the next games will focus on aggressive recruitment and reinforcement to counter Confederate numerical superiority, ensuring our armies are adequately supplied and positioned defensively rather than idling and drilling while the enemy captures cities.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 12,
+   "after_game": {
+    "game": 60,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 9
+   },
+   "diagnosis": "In these games, our armies spent too much time continuously drilling instead of expanding our military forces via recruitment or actively capturing and defending territory. We accumulated large cash reserves while the Rebels steadily outgrew and out-flanked us, eventually capturing our capital or seizing enough cities for victory.",
+   "lessons": [
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "We must prioritize building up our troop numbers and expanding our active armies rather than idling away turns drilling when cash is abundant."
+    }
+   ],
+   "strategy": "We will balance our focus between maintaining sufficient military strength through recruitment and strategic positioning, avoiding prolonged inactivity or excessive drilling while ensuring critical supply lines and capitals are well defended.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 13,
+   "after_game": {
+    "game": 65,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "In these training games, we continued to rely heavily on drilling core armies while neglecting territorial expansion and timely offensive maneuvers. Although drilling raises experience, it leaves our forces idle while the Confederacy captures critical cities and out-expands our income base. Our fleet engagements were handled reasonably well initially, but our failure to aggressively press territorial control and protect supply lines led to repeated defeats by city control or time.",
+   "lessons": [
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Ensures we react promptly to enemy advances rather than passively drilling while losing territory."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "Emphasizes force expansion over endless drilling to match Confederate numbers."
+    }
+   ],
+   "strategy": "Next game, we will balance experience-building through drilling with proactive recruitment and decisive offensive and defensive maneuvers. We will prioritize securing key cities early, maintaining strong supply lines, and utilizing our fleet and rail network to respond rapidly to Confederate threats before they can overwhelm our income and territorial integrity.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 14,
+   "after_game": {
+    "game": 70,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 6
+   },
+   "diagnosis": "In Training Round 14, notebook v13 performed worse than our baseline notebook v9, averaging +1.00 compared to +2.80. Across our test games (Games 66-70), our armies relied too heavily on endless drilling while the Confederacy aggressively captured strategic cities and territory, leading to technical defeats. We must shift from passive drilling to active defense, fortifying vulnerable border positions, capturing enemy cities, and expanding our forces via recruitment.",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+     "why": "Reordered priority to keep defensive concentration and recruitment rules ahead of routine supply maintenance."
+    }
+   ],
+   "strategy": "We will prioritize immediate defensive consolidation and strategic recruitment in the opening turns, fortifying key border cities to halt Confederate advances while using our naval fleet actively to contest enemy ports.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 15,
+   "after_game": {
+    "game": 75,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 11
+   },
+   "diagnosis": "In this round of games, our armies spent too much time drilling while the Confederacy aggressively captured territory and cities. On the standard map, our opening push to Paducah succeeded initially, but our main forces became bogged down in endless drilling rather than reinforcing key positions, leading to supply exhaustion and lost cities. On the alternate map, despite heavy recruitment, we failed to coordinate counterattacks effectively against Confederate advances. To achieve victory, we must balance experience-building drills with timely movement, aggressive defense of core supply hubs, a",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Refined wording to emphasize immediate defensive concentration over drilling when vital hubs are threatened, based on prior stable performance."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "Maintained emphasis on expansion via recruitment when safe, supporting steady troop growth."
+    }
+   ],
+   "strategy": "Our overall strategy for the next games is to balance essential force drilling with active territorial defense and prompt resupply. We will secure early footholds, avoid unfavorable attacks, and respond rapidly to Confederate incursions before they can overwhelm our cities.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 16,
+   "after_game": {
+    "game": 80,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "In these training games, our armies spent too much time drilling while rebel forces steadily captured strategic cities and accumulated control. On the alternate map we successfully expanded our military strength, but we failed to use movement orders to check rebel advances or counterattack effectively. On the standard map, we suffered from critical supply failures because we did not monitor or resupply armies promptly, leading to attrition and defeat.",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Retained from v14 as it remains fundamental for capital defense based on historical record."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+     "why": "Retained from v14 to prevent catastrophic supply attrition as seen in recent standard map games."
+    }
+   ],
+   "strategy": "We will maintain a balanced approach of recruiting aggressively to build superior numbers, keeping our armies supplied and well-positioned, and utilizing movement and rail to counter rebel incursions rather than idling on drills while cities fall.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 17,
+   "after_game": {
+    "game": 85,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 6
+   },
+   "diagnosis": "In these games, our excessive drilling without proactive offensive expansion allowed the Confederate computer to seize key cities and outnumber us. We also suffered from failing to supply armies promptly, leading to supply exhaustion and lost units.",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Maintained from notebook v14 as it correctly prioritizes capital defense."
+    },
+    {
+     "kind": "revised",
+     "lesson": "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+     "why": "Maintained from notebook v14 to prevent catastrophic supply depletion."
+    }
+   ],
+   "strategy": "We will focus on stabilizing our supply lines, reinforcing our borders, and avoiding costly uncoordinated attacks while building up our forces for decisive counter-offensives.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 18,
+   "after_game": {
+    "game": 90,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 9
+   },
+   "diagnosis": "In this round of games, our armies were overly fixated on drilling instead of taking initiative, securing key cities, or responding to enemy captures. We allowed the Rebel computer to freely maneuver and seize cities, resulting in defeat by city control or capital capture. We also had issues with supply management where armies ran out of supply or were blockaded without prompt relief.",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+     "why": "Kept from notebook v14 as it remains our most reliable foundational defensive rule."
+    }
+   ],
+   "strategy": "For the next round, we will strictly adhere to our defensive concentration and timely resupply rules while ensuring our opening moves establish secure footholds without reckless attacks.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 19,
+   "after_game": {
+    "game": 95,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 9
+   },
+   "diagnosis": "In this round of games, our armies spent too much time continuously drilling while the Confederacy aggressively attacked, captured key hubs, and outflanked our positions. Furthermore, we often neglected regular recruitment and reinforcement to keep our numbers high, leading to gradual attrition and eventual defeat. We must balance experience building with active recruitment, proper supply management, and timely defense of our capital and vital cities.",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+     "why": "We failed to recruit aggressively enough in early turns, letting Confederate forces outnumber us over time."
+    }
+   ],
+   "strategy": "We will prioritize a balanced opening: raise initial troops and reinforce secure cities early, maintain strong defensive lines around vital hubs, use supply management diligently, and avoid reckless attacks while building up our forces before attempting major pushes.",
+   "openings": {
+    "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+   }
+  },
+  {
+   "version": 20,
+   "after_game": {
+    "game": 100,
+    "scenario": "-",
+    "reason": "final notebook: champion v14",
+    "turns": 0
+   },
+   "diagnosis": "",
+   "lessons": [
+    "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+    "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+    "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+    "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+    "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+    "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+   ],
+   "changes": [],
+   "strategy": "We will prioritize immediate defensive consolidation and strategic recruitment in the opening turns, fortifying key border cities to halt Confederate advances while using our naval fleet actively to contest enemy ports.",
+   "note": "final notebook: champion v14"
+  }
+ ],
+ "seeds": [
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309,
+  310,
+  311,
+  312,
+  313,
+  314,
+  315,
+  316,
+  317,
+  318,
+  319,
+  320,
+  321,
+  322,
+  323,
+  324,
+  325,
+  326,
+  327,
+  328,
+  329,
+  330,
+  331,
+  332,
+  333,
+  334,
+  335,
+  336,
+  337,
+  338,
+  339,
+  340,
+  341,
+  342,
+  343,
+  344,
+  345,
+  346,
+  347,
+  348,
+  349,
+  350
+ ],
+ "method": {
+  "mirror": true,
+  "track_record": true,
+  "actionable": true,
+  "priority": true,
+  "openings": true,
+  "select": true
+ },
+ "round_size": 5,
+ "champion": {
+  "version": 14,
+  "lessons": [
+   "When an enemy army threatens our capital or critical supply hubs, use move or rail to concentrate our forces for defense rather than continuing routine drills.",
+   "When an idle army is in a secure city with recruitment available, use recruit to expand our military strength rather than only drilling.",
+   "When an army is adjacent to an enemy city with inferior numbers or unfavorable odds, do not move or attack; instead, drill or fortify until superior strength or supply is secured.",
+   "When a naval fleet is built, use fleet sail to clear or blockade enemy ports rather than engaging in unguided raids.",
+   "When a new army is raised with recruit, let it rest and do not order it to move on the same turn.",
+   "When an army has supply 1 or less, use supply <army> immediately before moving or ending the turn."
+  ],
+  "openings": {
+   "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+  },
+  "strategy": "We will prioritize immediate defensive consolidation and strategic recruitment in the opening turns, fortifying key border cities to halt Confederate advances while using our naval fleet actively to contest enemy ports.",
+  "score": 3.0
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "version": 0,
+   "score": -1.0,
+   "accepted": true,
+   "champion": 0,
+   "after_game": 5
+  },
+  {
+   "round": 2,
+   "version": 1,
+   "score": 0.4,
+   "accepted": true,
+   "champion": 1,
+   "after_game": 10
+  },
+  {
+   "round": 3,
+   "version": 2,
+   "score": -1.0,
+   "accepted": false,
+   "champion": 1,
+   "after_game": 15
+  },
+  {
+   "round": 4,
+   "version": 3,
+   "score": 0.2,
+   "accepted": true,
+   "champion": 3,
+   "after_game": 20
+  },
+  {
+   "round": 5,
+   "version": 4,
+   "score": 0.2,
+   "accepted": true,
+   "champion": 4,
+   "after_game": 25
+  },
+  {
+   "round": 6,
+   "version": 5,
+   "score": 0.8,
+   "accepted": true,
+   "champion": 5,
+   "after_game": 30
+  },
+  {
+   "round": 7,
+   "version": 6,
+   "score": 3.0,
+   "accepted": true,
+   "champion": 6,
+   "after_game": 35
+  },
+  {
+   "round": 8,
+   "version": 7,
+   "score": 0.8,
+   "accepted": false,
+   "champion": 6,
+   "after_game": 40
+  },
+  {
+   "round": 9,
+   "version": 8,
+   "score": 2.2,
+   "accepted": false,
+   "champion": 6,
+   "after_game": 45
+  },
+  {
+   "round": 10,
+   "version": 9,
+   "score": 2.8,
+   "accepted": true,
+   "champion": 9,
+   "after_game": 50
+  },
+  {
+   "round": 11,
+   "version": 10,
+   "score": -0.6,
+   "accepted": false,
+   "champion": 9,
+   "after_game": 55
+  },
+  {
+   "round": 12,
+   "version": 11,
+   "score": 1.4,
+   "accepted": false,
+   "champion": 9,
+   "after_game": 60
+  },
+  {
+   "round": 13,
+   "version": 12,
+   "score": 0.4,
+   "accepted": false,
+   "champion": 9,
+   "after_game": 65
+  },
+  {
+   "round": 14,
+   "version": 13,
+   "score": 1.0,
+   "accepted": false,
+   "champion": 9,
+   "after_game": 70
+  },
+  {
+   "round": 15,
+   "version": 14,
+   "score": 3.0,
+   "accepted": true,
+   "champion": 14,
+   "after_game": 75
+  },
+  {
+   "round": 16,
+   "version": 15,
+   "score": -0.6,
+   "accepted": false,
+   "champion": 14,
+   "after_game": 80
+  },
+  {
+   "round": 17,
+   "version": 16,
+   "score": 0.0,
+   "accepted": false,
+   "champion": 14,
+   "after_game": 85
+  },
+  {
+   "round": 18,
+   "version": 17,
+   "score": 0.0,
+   "accepted": false,
+   "champion": 14,
+   "after_game": 90
+  },
+  {
+   "round": 19,
+   "version": 18,
+   "score": 0.8,
+   "accepted": false,
+   "champion": 14,
+   "after_game": 95
+  },
+  {
+   "round": 20,
+   "version": 19,
+   "score": 1.2,
+   "accepted": false,
+   "champion": 14,
+   "after_game": 100
+  }
+ ],
+ "openings": {
+  "standard": "drill 1, drill 2, build wooden, move 4 Paducah, end turn ensuring early western footing while prioritizing experience building and fleet establishment."
+ },
+ "frozen_sha": "66a976c6197fdf1f"
+}

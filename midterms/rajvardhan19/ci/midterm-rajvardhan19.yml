@@ -37,5 +37,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Rule invariants, legal and illegal actions, terminal outcomes, regressions, episode limits, QB64 fidelity
         run: python -m unittest discover -s tests -v
+      - name: Browser UI bridge (its own engine snapshot and process; no hidden fields, no evaluation seeds)
+        run: python -m unittest discover -s play-ui -p 'test_*.py' -v
       - name: Baseline episodes run end to end through the engine process
         run: python -m cws.evaluate --players original-ai random passive --run ci --quiet

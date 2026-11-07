@@ -1,0 +1,166 @@
+{"header": {"player": "original-ai", "scenario": "standard", "seed": 103, "status": "terminal", "reason": "Rebel victory: capital captured", "winner": "Rebel", "score": 40, "turns": 14, "date": "July 1863", "cities_union": 16, "steps": 151, "invalid_actions": 0, "model_calls": 0, "failed_calls": 0, "fallback_actions": 0, "input_tokens": 0, "output_tokens": 0, "model_latency_total": 0.0, "wall_seconds": 0.14, "config": {"limits": {"max_steps": 600, "max_model_calls": 150, "max_wall_seconds": 1800.0, "max_actions_per_turn": 40, "max_failures_per_turn": 3, "max_batch": 8, "engine_timeout": 60.0, "decision_timeout": 45.0}, "player": {}}}}
+{"turn_start": 1, "board": {"date": "March 1861", "cash": 525, "vp": [190, 241], "owners": "RNRRRUURURRRUUURRNNNNRRRRRRRNUURRRUURRUR", "forts": "0000200001001000000000120021000010000212", "union": [[1, 39, 40000], [2, 7, 28000], [3, 13, 7500], [4, 36, 10000], [5, 9, 12500]], "rebel": [[21, 33, 30000], [22, 12, 20000], [23, 26, 14000], [24, 38, 7500]]}, "t": 0.027}
+{"turn": 1, "action": "fortify Washington", "source": "scripted", "accepted": true, "text": "Washington fortifications increased to 2", "t": 0.028}
+{"turn": 1, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Cincinnati, Ind'naplis, St. Louis, Washington", "t": 0.031}
+{"turn": 1, "action": "recruit St. Louis", "source": "scripted", "accepted": true, "text": "Army 4 Buell in St. Louis strength increased to 17000", "t": 0.032}
+{"turn": 1, "action": "recruit St. Louis", "source": "scripted", "accepted": true, "text": "Army 4 Buell in St. Louis strength increased to 24000", "t": 0.032}
+{"turn": 1, "action": "build wooden", "source": "scripted", "accepted": true, "text": "Union navy increased to 5", "t": 0.033}
+{"turn": 1, "action": "fleet sail Mobile", "source": "scripted", "accepted": true, "text": "Union fleet of 5 ship(s) is sailing from Phildelpha to Mobile NAVAL COMBAT: Union 5 ship(s), Confederates 1 ship(s) Union ship SUNK! Rebel ship SUNK! Rebel fleet DEFEATED", "t": 0.034}
+{"turn": 1, "action": "rail 5 Ind'naplis", "source": "scripted", "accepted": true, "text": "Pope is taking the train from Columbus to Ind'naplis", "t": 0.034}
+{"turn": 1, "action": "move 2 Louisville", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Cincinnati to Louisville", "t": 0.035}
+{"turn": 1, "action": "move 3 Manassas", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Manassas", "t": 0.035}
+{"turn": 1, "action": "move 4 Paducah", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from St. Louis to Paducah", "t": 0.036}
+{"turn": 1, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1861.", "t": 0.037}
+{"turn_start": 2, "board": {"date": "May 1861", "cash": 299, "vp": [249, 236], "owners": "RNRRRUURURRRRUURRNNNRRRRRRRRUUURRRUURRUR", "forts": "0000200001000000000000120021000020000222", "union": [[1, 39, 40000], [2, 7, 25000], [3, 14, 5500], [4, 29, 24000], [5, 15, 12500]], "rebel": [[21, 33, 30000], [22, 13, 18800], [23, 21, 11000], [24, 10, 7500], [25, 23, 6300]]}, "t": 0.037}
+{"turn": 2, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Paducah", "t": 0.038}
+{"turn": 2, "action": "recruit Paducah", "source": "scripted", "accepted": true, "text": "Army 4 Buell in Paducah strength increased to 27000", "t": 0.038}
+{"turn": 2, "action": "recruit Paducah", "source": "scripted", "accepted": true, "text": "Army 4 Buell in Paducah strength increased to 30000", "t": 0.039}
+{"turn": 2, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Mobile Mobile fortifications damaged", "t": 0.039}
+{"turn": 2, "action": "move 2 Louisville", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Cincinnati to Louisville", "t": 0.04}
+{"turn": 2, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harrisburg to Baltimore", "t": 0.041}
+{"turn": 2, "action": "move 4 Memphis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Paducah to Memphis", "t": 0.041}
+{"turn": 2, "action": "move 5 Louisville", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Ind'naplis to Louisville", "t": 0.042}
+{"turn": 2, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 2", "t": 0.043}
+{"turn": 2, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now July 1861.", "t": 0.043}
+{"turn_start": 3, "board": {"date": "July 1861", "cash": 313, "vp": [289, 310], "owners": "RNRRRUURURRRRRURRNNNRRRRRRRRUUURRRUURRUR", "forts": "0000200001000000000000110021000020000222", "union": [[1, 39, 40000], [2, 7, 23300], [3, 30, 3300], [4, 29, 28200], [5, 15, 9700]], "rebel": [[21, 33, 51000], [22, 14, 17400], [23, 21, 5600], [24, 10, 7500], [25, 23, 4300]]}, "t": 0.044}
+{"turn": 3, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Chrlstn WV, Sprngfield, St. Louis, Washington", "t": 0.044}
+{"turn": 3, "action": "recruit Washington", "source": "scripted", "accepted": true, "text": "Army 1 McDowell in Washington strength increased to 42300 ISOLATED !", "t": 0.045}
+{"turn": 3, "action": "recruit Chrlstn WV", "source": "scripted", "accepted": true, "text": "Placing NEW army 6 Grant in Chrlstn WV Size = 4800", "t": 0.045}
+{"turn": 3, "action": "recruit Chrlstn WV", "source": "scripted", "accepted": true, "text": "Army 6 Grant in Chrlstn WV strength increased to 7800", "t": 0.046}
+{"turn": 3, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Mobile Mobile fortifications damaged", "t": 0.046}
+{"turn": 3, "action": "move 2 Louisville", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Cincinnati to Louisville", "t": 0.047}
+{"turn": 3, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Phildelpha to Baltimore", "t": 0.048}
+{"turn": 3, "action": "move 4 Memphis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Paducah to Memphis", "t": 0.048}
+{"turn": 3, "action": "move 5 Louisville", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Ind'naplis to Louisville", "t": 0.049}
+{"turn": 3, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 3", "t": 0.049}
+{"turn": 3, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now September 1861.", "t": 0.05}
+{"turn_start": 4, "board": {"date": "September 1861", "cash": 296, "vp": [354, 394], "owners": "RURRRUURURRRRRRRRNNNURRRRRRRUURRRRUURRUR", "forts": "0000200001000000000000100021000020000222", "union": [[1, 39, 42300], [2, 21, 23300], [3, 2, 3300], [4, 29, 26300], [5, 7, 8500], [6, 6, 7800]], "rebel": [[21, 33, 51000], [22, 31, 17400], [23, 15, 7700], [24, 10, 7500], [25, 23, 6600], [26, 17, 4800]]}, "t": 0.05}
+{"turn": 4, "action": "supply 1", "source": "scripted", "accepted": true, "text": "McDowell has received supplies", "t": 0.051}
+{"turn": 4, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Mobile Citizens of Mobile stand firm against the attack", "t": 0.051}
+{"turn": 4, "action": "move 2 Nashville", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Louisville to Nashville", "t": 0.052}
+{"turn": 4, "action": "move 3 Harper Fy", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Baltimore to Harper Fy", "t": 0.053}
+{"turn": 4, "action": "move 4 Memphis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Paducah to Memphis", "t": 0.053}
+{"turn": 4, "action": "move 5 Columbus", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Cincinnati to Columbus", "t": 0.054}
+{"turn": 4, "action": "move 6 Frnt Royal", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Chrlstn WV to Frnt Royal", "t": 0.054}
+{"turn": 4, "action": "drill 1", "source": "scripted", "accepted": true, "text": "McDowell has drilled to reach experience level 4", "t": 0.055}
+{"turn": 4, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now November 1861.", "t": 0.056}
+{"turn_start": 5, "board": {"date": "November 1861", "cash": 293, "vp": [385, 455], "owners": "RURRRUURRRRUURRRRNNNURRRRRRRUURRRRUURRUR", "forts": "0000200001000000000000100021000020000222", "union": [[1, 39, 42300], [2, 21, 19400], [3, 13, 3300], [4, 29, 24500], [5, 7, 7500], [6, 12, 7800]], "rebel": [[21, 33, 51000], [22, 38, 17400], [23, 9, 6500], [24, 10, 10500], [25, 23, 5000], [26, 27, 4800], [27, 26, 8000]]}, "t": 0.056}
+{"turn": 5, "action": "supply 2", "source": "scripted", "accepted": true, "text": "McClellan has received supplies", "t": 0.057}
+{"turn": 5, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Cincinnati, Harper Fy, Paducah, Washington", "t": 0.057}
+{"turn": 5, "action": "recruit Cincinnati", "source": "scripted", "accepted": true, "text": "Army 5 Pope in Cincinnati strength increased to 12500", "t": 0.058}
+{"turn": 5, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Mobile Mobile is now  NEUTRAL", "t": 0.059}
+{"turn": 5, "action": "move 2 Nashville", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Louisville to Nashville", "t": 0.06}
+{"turn": 5, "action": "move 3 Manassas", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Manassas", "t": 0.06}
+{"turn": 5, "action": "move 4 Memphis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Paducah to Memphis", "t": 0.061}
+{"turn": 5, "action": "move 5 Columbus", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Cincinnati to Columbus", "t": 0.062}
+{"turn": 5, "action": "move 6 Fredr'kbrg", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Frnt Royal to Fredr'kbrg", "t": 0.062}
+{"turn": 5, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now January 1862.", "t": 0.063}
+{"turn_start": 6, "board": {"date": "January 1862", "cash": 319, "vp": [431, 494], "owners": "RURRRUURRRUUURRRRNNRUURNRURRUURRRRUURRUR", "forts": "0000200001000000000000100021000020000222", "union": [[1, 39, 42300], [2, 26, 19400], [3, 22, 3300], [4, 29, 23300], [5, 7, 11400], [6, 11, 7800]], "rebel": [[21, 33, 51000], [22, 38, 17400], [23, 9, 4500], [24, 10, 10500], [25, 23, 3400], [26, 28, 4800], [27, 20, 16000], [28, 3, 4800]]}, "t": 0.064}
+{"turn": 6, "action": "supply 1", "source": "scripted", "accepted": true, "text": "McDowell has received supplies", "t": 0.064}
+{"turn": 6, "action": "supply 4", "source": "scripted", "accepted": true, "text": "Buell has received supplies", "t": 0.065}
+{"turn": 6, "action": "fleet invade", "source": "scripted", "accepted": true, "text": "Placing NEW army 7 Banks in Mobile Size = 2600 Banks has captured Mobile", "t": 0.066}
+{"turn": 6, "action": "rail 1 Louisville", "source": "scripted", "accepted": true, "text": "McDowell is taking the train from Washington to Louisville", "t": 0.066}
+{"turn": 6, "action": "move 2 Chattnooga", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Nashville to Chattnooga", "t": 0.067}
+{"turn": 6, "action": "move 3 Frnt Royal", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Manassas to Frnt Royal", "t": 0.068}
+{"turn": 6, "action": "move 4 Memphis", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Paducah to Memphis", "t": 0.068}
+{"turn": 6, "action": "move 5 Columbus", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Cincinnati to Columbus", "t": 0.068}
+{"turn": 6, "action": "move 6 Manassas", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Fredr'kbrg to Manassas", "t": 0.069}
+{"turn": 6, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now March 1862.", "t": 0.07}
+{"turn_start": 7, "board": {"date": "March 1862", "cash": 360, "vp": [481, 509], "owners": "RURURUURURUUURRRRNNRUUUURURRUURRRRUURRUR", "forts": "0000200001000000000000000021000020000222", "union": [[1, 21, 40100], [2, 4, 17500], [3, 12, 3300], [4, 23, 22800], [5, 9, 11400], [6, 22, 7800], [7, 24, 3500]], "rebel": [[21, 33, 51000], [22, 38, 17400], [23, 15, 4500], [24, 10, 10500], [25, 17, 1500], [26, 28, 4800], [27, 20, 10000], [28, 27, 4800]]}, "t": 0.07}
+{"turn": 7, "action": "supply 2", "source": "scripted", "accepted": true, "text": "McClellan has received supplies", "t": 0.071}
+{"turn": 7, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Columbus, Sprngfield", "t": 0.072}
+{"turn": 7, "action": "recruit Columbus", "source": "scripted", "accepted": true, "text": "Army 5 Pope in Columbus strength increased to 16400", "t": 0.072}
+{"turn": 7, "action": "build wooden", "source": "scripted", "accepted": true, "text": "Union navy increased to 4", "t": 0.073}
+{"turn": 7, "action": "fleet sail NewOrleans", "source": "scripted", "accepted": true, "text": "Union fleet of 4 ship(s) is sailing from Mobile to NewOrleans", "t": 0.074}
+{"turn": 7, "action": "move 1 Ind'naplis", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Louisville to Ind'naplis", "t": 0.075}
+{"turn": 7, "action": "move 2 Atlanta", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Chattnooga to Atlanta", "t": 0.076}
+{"turn": 7, "action": "move 3 Fredr'kbrg", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Frnt Royal to Fredr'kbrg", "t": 0.076}
+{"turn": 7, "action": "move 4 Jackson MS", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Memphis to Jackson MS", "t": 0.077}
+{"turn": 7, "action": "move 5 Pittsburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Columbus to Pittsburg", "t": 0.078}
+{"turn": 7, "action": "move 6 Frnt Royal", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Manassas to Frnt Royal", "t": 0.078}
+{"turn": 7, "action": "move 7 Montgomery", "source": "scripted", "accepted": true, "text": "Army 7 Banks is moving from Mobile to Montgomery", "t": 0.079}
+{"turn": 7, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1862.", "t": 0.08}
+{"turn_start": 8, "board": {"date": "May 1862", "cash": 417, "vp": [563, 555], "owners": "UURURURRURUUURURUNNRUUUUURRRRUURRRUURRUR", "forts": "0000200001000000000000000021000020000222", "union": [[1, 15, 36100], [2, 1, 17500], [3, 11, 3300], [4, 17, 22100], [5, 31, 14800], [6, 12, 7800], [7, 25, 3500]], "rebel": [[21, 33, 51000], [22, 38, 17400], [23, 7, 4500], [24, 29, 10500], [26, 14, 4800], [27, 26, 10000], [28, 27, 4800]]}, "t": 0.08}
+{"turn": 8, "action": "supply 1", "source": "scripted", "accepted": true, "text": "McDowell has received supplies", "t": 0.081}
+{"turn": 8, "action": "supply 5", "source": "scripted", "accepted": true, "text": "Pope has received supplies", "t": 0.081}
+{"turn": 8, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Harper Fy, Ind'naplis, Pittsburg", "t": 0.082}
+{"turn": 8, "action": "recruit Pittsburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope in Pittsburg strength increased to 22800", "t": 0.083}
+{"turn": 8, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards NewOrleans Ashby suffered 200 casualties", "t": 0.084}
+{"turn": 8, "action": "rail 7 Washington", "source": "scripted", "accepted": true, "text": "Banks is taking the train from Montgomery to Washington", "t": 0.085}
+{"turn": 8, "action": "move 1 Cincinnati", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Ind'naplis to Cincinnati", "t": 0.086}
+{"turn": 8, "action": "move 2 Savannah", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Atlanta to Savannah", "t": 0.086}
+{"turn": 8, "action": "move 3 Manassas", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Fredr'kbrg to Manassas", "t": 0.087}
+{"turn": 8, "action": "move 4 NewOrleans", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Jackson MS to NewOrleans", "t": 0.088}
+{"turn": 8, "action": "move 5 Harrisburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Pittsburg to Harrisburg", "t": 0.088}
+{"turn": 8, "action": "move 6 Fredr'kbrg", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Frnt Royal to Fredr'kbrg", "t": 0.089}
+{"turn": 8, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now July 1862.", "t": 0.09}
+{"turn_start": 9, "board": {"date": "July 1862", "cash": 359, "vp": [623, 620], "owners": "UURRRUURRRUUUUURUNNRUUURURURRRURRUURRRUR", "forts": "0000200001000000000000000021000020000222", "union": [[1, 7, 36100], [2, 34, 17500], [3, 22, 3300], [4, 27, 22100], [5, 14, 22800], [6, 11, 7800], [7, 39, 3500]], "rebel": [[21, 33, 65000], [22, 38, 17400], [23, 9, 4500], [24, 36, 10500], [26, 30, 4800], [27, 4, 10000], [28, 24, 4600], [29, 32, 10800]]}, "t": 0.09}
+{"turn": 9, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Cincinnati, Harrisburg, Washington", "t": 0.091}
+{"turn": 9, "action": "recruit Harrisburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope in Harrisburg strength increased to 25800", "t": 0.092}
+{"turn": 9, "action": "recruit Harrisburg", "source": "scripted", "accepted": true, "text": "Army 5 Pope in Harrisburg strength increased to 28800", "t": 0.093}
+{"turn": 9, "action": "fleet sail Jacksnvil", "source": "scripted", "accepted": true, "text": "Union fleet of 4 ship(s) is sailing from NewOrleans to Jacksnvil", "t": 0.094}
+{"turn": 9, "action": "rail 5 Sprngfield", "source": "scripted", "accepted": true, "text": "Pope is taking the train from Harrisburg to Sprngfield", "t": 0.095}
+{"turn": 9, "action": "move 1 Columbus", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Cincinnati to Columbus", "t": 0.095}
+{"turn": 9, "action": "move 2 Chrlstn SC", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Savannah to Chrlstn SC", "t": 0.096}
+{"turn": 9, "action": "move 3 Frnt Royal", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Manassas to Frnt Royal", "t": 0.096}
+{"turn": 9, "action": "move 6 Manassas", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Fredr'kbrg to Manassas", "t": 0.097}
+{"turn": 9, "action": "drill 4", "source": "scripted", "accepted": true, "text": "Buell has drilled to reach experience level 3", "t": 0.098}
+{"turn": 9, "action": "drill 7", "source": "scripted", "accepted": true, "text": "Banks has drilled to reach experience level 2", "t": 0.098}
+{"turn": 9, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now September 1862.", "t": 0.099}
+{"turn_start": 10, "board": {"date": "September 1862", "cash": 257, "vp": [623, 694], "owners": "RRRRRUURURUUUUURRNNRUUURRRURRRRRRUURRRUR", "forts": "0000200001000000000000000021000020000222", "union": [[1, 9, 36100], [2, 34, 15600], [3, 12, 3300], [4, 27, 22100], [5, 35, 27400], [6, 22, 7800], [7, 39, 3500]], "rebel": [[21, 33, 65000], [22, 17, 17400], [23, 31, 4500], [24, 36, 7000], [26, 2, 4800], [27, 1, 10000], [28, 25, 4600], [29, 5, 10000]]}, "t": 0.099}
+{"turn": 10, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Harrisburg", "t": 0.1}
+{"turn": 10, "action": "recruit Harrisburg", "source": "scripted", "accepted": true, "text": "Placing NEW army 8 Burnside in Harrisburg Size = 4800", "t": 0.1}
+{"turn": 10, "action": "recruit Harrisburg", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Harrisburg strength increased to 7800", "t": 0.101}
+{"turn": 10, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Jacksnvil Jacksnvil is now  NEUTRAL", "t": 0.102}
+{"turn": 10, "action": "rail 1 Louisville", "source": "scripted", "accepted": true, "text": "McDowell is taking the train from Columbus to Louisville", "t": 0.103}
+{"turn": 10, "action": "move 2 Atlanta", "source": "scripted", "accepted": true, "text": "Army 2 McClellan is moving from Savannah to Atlanta", "t": 0.103}
+{"turn": 10, "action": "move 3 Harper Fy", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Frnt Royal to Harper Fy", "t": 0.104}
+{"turn": 10, "action": "move 4 Mobile", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from NewOrleans to Mobile", "t": 0.104}
+{"turn": 10, "action": "move 5 St. Louis", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from Sprngfield to St. Louis", "t": 0.105}
+{"turn": 10, "action": "move 6 Washington", "source": "scripted", "accepted": true, "text": "Army 6 Grant is moving from Manassas to Washington", "t": 0.105}
+{"turn": 10, "action": "drill 7", "source": "scripted", "accepted": true, "text": "Banks has drilled to reach experience level 3", "t": 0.106}
+{"turn": 10, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now November 1862.", "t": 0.107}
+{"turn_start": 11, "board": {"date": "November 1862", "cash": 266, "vp": [637, 720], "owners": "RRRRRUURRRUUUUUNRNNRUURURRURRRRRRRUURRUR", "forts": "0000200001000000000000000021000020000222", "union": [[1, 21, 36100], [3, 13, 3300], [4, 24, 22100], [5, 36, 25900], [6, 39, 7800], [7, 39, 3200], [8, 14, 7800]], "rebel": [[21, 33, 65000], [22, 23, 17400], [23, 9, 4500], [24, 29, 3800], [26, 2, 4000], [27, 34, 8000], [28, 17, 4600], [29, 5, 10000]]}, "t": 0.107}
+{"turn": 11, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Harrisburg, Louisville", "t": 0.108}
+{"turn": 11, "action": "recruit Harrisburg", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Harrisburg strength increased to 10800", "t": 0.108}
+{"turn": 11, "action": "recruit Louisville", "source": "scripted", "accepted": true, "text": "Army 1 McDowell in Louisville strength increased to 39100", "t": 0.109}
+{"turn": 11, "action": "fleet invade", "source": "scripted", "accepted": true, "text": "Placing NEW army 9 Sherman in Jacksnvil Size = 1600 Sherman has captured Jacksnvil", "t": 0.11}
+{"turn": 11, "action": "join Washington", "source": "scripted", "accepted": true, "text": "New army 6 of 11000 is commanded by Grant", "t": 0.111}
+{"turn": 11, "action": "move 1 Paducah", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Louisville to Paducah", "t": 0.111}
+{"turn": 11, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Baltimore", "t": 0.112}
+{"turn": 11, "action": "move 4 Montgomery", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Mobile to Montgomery", "t": 0.113}
+{"turn": 11, "action": "move 5 Paducah", "source": "scripted", "accepted": true, "text": "Army 5 Pope is moving from St. Louis to Paducah", "t": 0.113}
+{"turn": 11, "action": "move 8 Phildelpha", "source": "scripted", "accepted": true, "text": "Army 8 Burnside is moving from Harrisburg to Phildelpha", "t": 0.114}
+{"turn": 11, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now January 1863.", "t": 0.115}
+{"turn_start": 12, "board": {"date": "January 1863", "cash": 306, "vp": [673, 746], "owners": "RRRRRURRRRUUUUURRNNRUURUURRRUURRRRUURRUR", "forts": "0000200001000000000000000001000020000222", "union": [[1, 29, 39100], [3, 13, 2900], [4, 25, 22100], [5, 29, 25900], [6, 39, 11000], [8, 30, 10800]], "rebel": [[21, 33, 65000], [22, 17, 17400], [23, 7, 4500], [24, 23, 3800], [26, 2, 3500], [27, 16, 7400], [28, 27, 4600], [29, 10, 10000]]}, "t": 0.115}
+{"turn": 12, "action": "supply 1", "source": "scripted", "accepted": true, "text": "McDowell has received supplies", "t": 0.115}
+{"turn": 12, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Phildelpha", "t": 0.116}
+{"turn": 12, "action": "recruit Phildelpha", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Phildelpha strength increased to 22800", "t": 0.117}
+{"turn": 12, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Jacksnvil J.E.B. Stuart suffered 200 casualties", "t": 0.118}
+{"turn": 12, "action": "join Paducah", "source": "scripted", "accepted": true, "text": "New army 1 of 65000 is commanded by McDowell", "t": 0.118}
+{"turn": 12, "action": "rail 8 St. Louis", "source": "scripted", "accepted": true, "text": "Burnside is taking the train from Phildelpha to St. Louis", "t": 0.119}
+{"turn": 12, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Baltimore", "t": 0.12}
+{"turn": 12, "action": "move 4 Atlanta", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Montgomery to Atlanta", "t": 0.12}
+{"turn": 12, "action": "drill 6", "source": "scripted", "accepted": true, "text": "Grant has drilled to reach experience level 3", "t": 0.121}
+{"turn": 12, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now March 1863.", "t": 0.122}
+{"turn_start": 13, "board": {"date": "March 1863", "cash": 289, "vp": [682, 778], "owners": "UURRRURRRRUUUURRRNNRUURRURRRURRRRRUURRUR", "forts": "0000200001000000000000000001000020000222", "union": [[1, 29, 65000], [3, 2, 2900], [4, 1, 22100], [6, 39, 11000], [8, 36, 22800]], "rebel": [[21, 33, 65000], [22, 24, 17400], [23, 15, 4500], [24, 17, 3800], [26, 30, 3500], [27, 38, 7200], [28, 17, 4600], [29, 10, 10000]]}, "t": 0.122}
+{"turn": 13, "action": "troops", "source": "scripted", "accepted": true, "text": "No cities offer recruits this time.", "t": 0.122}
+{"turn": 13, "action": "fleet attack", "source": "scripted", "accepted": true, "text": "Union fleet bombards Jacksnvil Jacksnvil is now  NEUTRAL", "t": 0.123}
+{"turn": 13, "action": "move 1 Fort Dnlsn", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Paducah to Fort Dnlsn", "t": 0.124}
+{"turn": 13, "action": "move 3 Phildelpha", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Baltimore to Phildelpha", "t": 0.124}
+{"turn": 13, "action": "move 4 Savannah", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Atlanta to Savannah", "t": 0.125}
+{"turn": 13, "action": "move 8 Paducah", "source": "scripted", "accepted": true, "text": "Army 8 Burnside is moving from St. Louis to Paducah", "t": 0.125}
+{"turn": 13, "action": "drill 6", "source": "scripted", "accepted": true, "text": "Grant has drilled to reach experience level 4", "t": 0.126}
+{"turn": 13, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now May 1863.", "t": 0.127}
+{"turn_start": 14, "board": {"date": "May 1863", "cash": 301, "vp": [652, 787], "owners": "URRRRURRRUUUUURNRNNRUURRURRRURRRRURURRUR", "forts": "0000200000000000000000000001000020000222", "union": [[1, 10, 63000], [3, 13, 2600], [4, 34, 22100], [6, 39, 11000], [8, 29, 22800]], "rebel": [[21, 33, 65000], [22, 5, 17400], [23, 35, 4500], [26, 2, 3200], [27, 38, 7200], [28, 17, 8400], [29, 26, 6200]]}, "t": 0.127}
+{"turn": 14, "action": "troops", "source": "scripted", "accepted": true, "text": "Recruiting offered in: Paducah", "t": 0.127}
+{"turn": 14, "action": "recruit Paducah", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Paducah strength increased to 25800", "t": 0.128}
+{"turn": 14, "action": "recruit Paducah", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Paducah strength increased to 28800", "t": 0.129}
+{"turn": 14, "action": "recruit Paducah", "source": "scripted", "accepted": true, "text": "Army 8 Burnside in Paducah strength increased to 31800", "t": 0.129}
+{"turn": 14, "action": "fleet invade", "source": "scripted", "accepted": true, "text": "Placing NEW army 5 Pope in Jacksnvil Size = 4800 Pope has captured Jacksnvil", "t": 0.13}
+{"turn": 14, "action": "rail 8 Montgomery", "source": "scripted", "accepted": true, "text": "Burnside is taking the train from Paducah to Montgomery", "t": 0.131}
+{"turn": 14, "action": "move 1 Nashville", "source": "scripted", "accepted": true, "text": "Army 1 McDowell is moving from Fort Dnlsn to Nashville", "t": 0.131}
+{"turn": 14, "action": "move 3 Baltimore", "source": "scripted", "accepted": true, "text": "Army 3 Fremont is moving from Harper Fy to Baltimore", "t": 0.132}
+{"turn": 14, "action": "move 4 Chrlstn SC", "source": "scripted", "accepted": true, "text": "Army 4 Buell is moving from Savannah to Chrlstn SC", "t": 0.132}
+{"turn": 14, "action": "drill 6", "source": "scripted", "accepted": true, "text": "Grant has drilled to reach experience level 5", "t": 0.133}
+{"turn": 14, "action": "end turn", "source": "scripted", "accepted": true, "text": "Turn resolved. It is now July 1863.", "t": 0.134}

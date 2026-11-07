@@ -1,7 +1,8 @@
 """The model-driven Union player.
 
 It receives the observation, the legal actions and, in "history" mode, a
-bounded summary of its own last turns. It has no tools: the request carries
+bounded summary of its own last turns. A learning player also gets its own
+lessons notebook, written by itself after earlier games (cws/players/learner.py). It has no tools: the request carries
 no function declarations and automatic function calling is disabled. It
 cannot read files, the Game, the rule map or the opponent's code; the only
 thing it can do is name actions, which the runner submits through the
@@ -81,10 +82,65 @@ the turn. "note" is one or two sentences on your plan, which you will see again 
 memory is on."""
 
 
-def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None) -> str:
+PLAN_SYSTEM = SYSTEM.split("Reply with JSON only")[0] + (
+    'Reply with JSON only: {"plan": "..."}: your plan for this turn, before you give any orders, in 3-6 short lines: '
+    'what each army will do and why, what to recruit, and what to protect.')
+PLAN_SCHEMA = {"type": "object", "properties": {"plan": {"type": "string"}}, "required": ["plan"]}
+
+
+def front_summary(obs: dict) -> list[str]:
+    """The map organised by army, from the observation only: neighbours, who holds them, the enemy men seen there."""
+    cities = {c["id"]: c for c in obs["cities"]}
+    foes_at: dict[int, list] = {}
+    mine_at: dict[int, list] = {}
+    for a in obs["enemy_armies"]:
+        foes_at.setdefault(a["city"], []).append(a)
+    for a in obs["your_armies"]:
+        mine_at.setdefault(a["city"], []).append(a)
+    lines = ["FRONT SUMMARY (the map above, organised by army):"]
+    for a in obs["your_armies"]:
+        if not a["city"]:
+            continue                                     # on the train
+        here = cities[a["city"]]
+        parts = []
+        for nb in here["neighbors"]:
+            n, foes = cities[nb], foes_at.get(nb, [])
+            if foes:
+                parts.append(f"{n['name']} ({n['owner']}, fort {n['fort']}): enemy {sum(f['men'] for f in foes):,} men")
+            elif n["owner"] != "Union":
+                parts.append(f"{n['name']} ({n['owner']}, no army: can be taken by moving in)")
+            else:
+                ours = sum(f["men"] for f in mine_at.get(nb, []))
+                parts.append(f"{n['name']} (yours, {f'{ours:,} of your men' if ours else 'empty'})")
+        lines.append(f"- {a['id']} {a['name']}, {a['men']:,} men at {here['name']} ({a['order']}): " + "; ".join(parts))
+    threats = set()
+    for cid, foes in foes_at.items():
+        for nb in cities[cid]["neighbors"]:
+            if cities[nb]["owner"] == "Union":
+                g = sum(x["men"] for x in mine_at.get(nb, []))
+                threats.add(f"{cities[nb]['name']} (your men there: {g:,}) is next to {sum(f['men'] for f in foes):,} "
+                            f"enemy men at {cities[cid]['name']}")
+    if threats:
+        lines += ["THREATENED UNION CITIES:"] + [f"- {t}" for t in sorted(threats)]
+    return lines
+
+
+def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None,
+           lessons: list[str] | None = None, priority: bool = False, opening: str | None = None,
+           fronts: bool = False, plan: str | None = None) -> str:
     t = obs["treasury"]
     vp = obs["victory_points"]
-    lines = [
+    lines = []
+    if lessons:
+        lines += ["YOUR LESSONS FROM EARLIER GAMES (your own notebook, in priority order: when two conflict, "
+                  "follow the earlier one):" if priority else
+                  "YOUR LESSONS FROM EARLIER GAMES (your own notebook, written after each game):"]
+        lines += [f"{i}. {lesson}" for i, lesson in enumerate(lessons, 1)] + [""]
+    if opening and obs["turn"] == 1:
+        lines += ["YOUR OPENING PLAN FOR THIS MAP (written by you after earlier games; this is turn 1):", opening, ""]
+    if plan:
+        lines += ["YOUR PLAN FOR THIS TURN (written by you at the start of the turn):", plan, ""]
+    lines += [
         f"DATE {obs['date']} (turn {obs['turn']}, {obs['turns_left']} turns until the deadline)",
         f"UNION cash {t['Union']['cash']} income {t['Union']['income']} cities {t['Union']['cities']} | "
         f"REBEL cash {t['Rebel']['cash']} income {t['Rebel']['income']} cities {t['Rebel']['cities']}",
@@ -105,6 +161,8 @@ def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None
     for a in obs["enemy_armies"]:
         lines.append(f"{a['id']} {a['name']} | {a['men']} | {a['city_name']} ({a['city']}) | "
                      f"{'yes' if a['out_of_supply'] else 'no'}")
+    if fronts:
+        lines += [""] + front_summary(obs)
     nv = obs["navies"]
     for side in ("Union", "Rebel"):
         f = nv[side]
@@ -140,31 +198,51 @@ def render(obs: dict, legal: list[str], memory: dict, history: list[dict] | None
 class ModelPlayer:
     uses_model = True
 
-    def __init__(self, client, memory: str = "history", history_turns: int = 3) -> None:
+    def __init__(self, client, memory: str = "history", history_turns: int = 3,
+                 lessons: list[str] | None = None, name: str | None = None, priority: bool = False,
+                 opening: str | None = None, fronts: bool = False, plan: bool = False) -> None:
         if memory not in ("history", "obs-only"):
             raise ValueError("memory must be 'history' or 'obs-only'")
         self.client = client
         self.memory = memory
         self.history_turns = history_turns
-        self.name = f"model-{memory}"
+        self.lessons = list(lessons) if lessons is not None else None
+        self.priority, self.opening = priority, opening
+        self.fronts, self.plan = fronts, plan              # execution aids (2026-10-26); off by default
+        self._plans: dict[int, str] = {}
+        self.name = name or f"model-{memory}"
         self._notes: dict[int, str] = {}
         self.config = {"provider": client.provider, "model": client.model, "memory": memory,
                        "history_turns": history_turns if memory == "history" else 0,
-                       "max_output_tokens": client.max_output_tokens, "timeout_seconds": client.timeout}
+                       "max_output_tokens": client.max_output_tokens, "timeout_seconds": client.timeout,
+                       "fronts": fronts, "plan": plan}
 
     def decide(self, obs: dict, legal: list[str], memory: dict) -> Decision:
         history = None
         if self.memory == "history":
             history = [dict(h, note=self._notes.get(h["turn"], "")) for h in memory["turns"][-self.history_turns:]]
-        prompt = render(obs, legal, memory, history)
         started = time.monotonic()
+        plan_in = plan_out = 0
+        if self.plan and obs["turn"] not in self._plans:  # plan, then act: one extra call at the start of a turn
+            self._plans[obs["turn"]] = ""
+            try:
+                r = self.client.generate(PLAN_SYSTEM, render(obs, legal, memory, history, self.lessons, self.priority,
+                                                             self.opening, self.fronts), PLAN_SCHEMA)
+                plan_in, plan_out = r["input_tokens"], r["output_tokens"]
+                if r["complete"]:
+                    self._plans[obs["turn"]] = str(json.loads(r["text"]).get("plan", ""))[:800]
+            except Exception:                            # no plan this turn; the orders call still runs
+                pass
+        prompt = render(obs, legal, memory, history, self.lessons, self.priority, self.opening, self.fronts,
+                        self._plans.get(obs["turn"]) or None)
         try:
             reply = self.client.generate(SYSTEM, prompt, SCHEMA)
         except Exception as error:                       # timeouts, quota, network: a failed call
             return Decision([], "model", True, False, f"{type(error).__name__}: {str(error)[:200]}",
                             time.monotonic() - started)
         latency = time.monotonic() - started
-        d = Decision([], "model", True, True, "", latency, reply["input_tokens"], reply["output_tokens"], raw=reply["text"][:2000])
+        d = Decision([], "model", True, True, "", latency, reply["input_tokens"] + plan_in,
+                     reply["output_tokens"] + plan_out, raw=reply["text"][:2000])
         if not reply["complete"]:
             d.ok, d.error = False, f"incomplete response ({reply['finish']})"
             return d

@@ -20,11 +20,15 @@ from .runner import Limits, run_episode
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Training blocks: 201-208 for gemini-a, 301-350 for gemini-b (both declared 2026-10-26).
+TRAIN_SEEDS = list(range(201, 209)) + list(range(301, 351))
+
 # Declared 2026-10-23, before any prompt tuning or live call (SUITE.md).
 SUITE = {
-    "standard": {"dev": [101, 102], "eval": [1, 2]},
-    "alternate": {"dev": [101, 102], "eval": [1, 2]},
-    "reckless": {"dev": [], "eval": [1, 2]},          # held out: never used while tuning
+    "standard": {"dev": [101, 102, 103, 104], "eval": [1, 2],     # dev 103-104 added 2026-10-26
+                 "train": TRAIN_SEEDS},                           # the learning player's notebooks only
+    "alternate": {"dev": [101, 102, 103, 104], "eval": [1, 2], "train": TRAIN_SEEDS},
+    "reckless": {"dev": [], "eval": [1, 2], "train": []},          # held out: never used while tuning
 }
 BASELINE_EXTRA_SEEDS = list(range(3, 21))            # free extra trials for the cheap players
 
@@ -32,7 +36,21 @@ BASELINE_EXTRA_SEEDS = list(range(3, 21))            # free extra trials for the
 PRICES = {"gemini-3.5-flash-lite": {"input_per_m": 0.30, "output_per_m": 2.50,
                                     "as_of": "2026-10-23",
                                     "source": "third-party listings (Maxim, Requesty) quoting Vertex AI; "
-                                              "Google's pricing page not retrieved"}}
+                                              "Google's pricing page not retrieved"},
+          "gemini-3.5-flash": {"input_per_m": 1.50, "output_per_m": 9.00,
+                               "as_of": "2026-10-27",
+                               "source": "third-party listings (Maxim, pricepertoken) quoting Vertex AI; "
+                                         "Google's pricing page not retrieved"},
+          "gemini-3.7-flash": {"input_per_m": 0.75, "output_per_m": 3.75,
+                               "as_of": "2026-10-27",
+                               "source": "introductory rate to 2026-12-31 (DataCamp, TechJack); "
+                                         "Google's pricing page not retrieved"}}
+
+
+def price_for(model: str) -> dict | None:
+    """The longest PRICES key the model name starts with, so flash-lite is never priced as flash."""
+    keys = [k for k in PRICES if model.startswith(k)]
+    return PRICES[max(keys, key=len)] if keys else None
 
 TIER = {"win": 2, "held out": 1, "decisive loss": 0, "incomplete": -1}
 
@@ -55,7 +73,7 @@ def rank(outcome: dict) -> tuple:
     return (TIER[t], -turns if t == "win" else turns)
 
 
-def make_player(name: str, seed: float, args):
+def make_player(name: str, seed: float, args, scenario: str | None = None):
     if name == "original-ai":
         return OriginalAI(seed)
     if name == "random":
@@ -66,18 +84,41 @@ def make_player(name: str, seed: float, args):
         from .players.model_player import ModelPlayer, VertexClient
         if not args.live:
             sys.exit("Model players make paid calls: pass --live to confirm.")
-        client = VertexClient(timeout=args.timeout)
-        return ModelPlayer(client, memory=name[len("model-"):], history_turns=3)
+        client = VertexClient(timeout=args.timeout, max_output_tokens=getattr(args, "max_output_tokens", 2048))
+        if name == "model-lessons":
+            from .players.learner import LessonBook
+            if not getattr(args, "lessons", None):
+                sys.exit("model-lessons needs --lessons PATH, a frozen notebook (python -m cws.learn freeze)")
+            book = LessonBook(Path(args.lessons))
+            if not book.frozen:
+                sys.exit(f"{args.lessons} is not frozen: freeze it before validation or evaluation")
+            method = book.data.get("method", {})
+            opening = book.data.get("openings", {}).get(scenario) if method.get("openings") else None
+            chosen = aids(args)                          # a notebook keeps the aids it learned with
+            chosen = {k: chosen[k] or bool(method.get(k)) for k in chosen}
+            player = ModelPlayer(client, "history", 3, lessons=book.lessons, name="model-lessons",
+                                 priority=bool(method.get("priority")), opening=opening, **chosen)
+            player.config.update(lessons_book=book.data["name"], lessons_version=book.version,
+                                 lessons_sha=book.sha())
+            return player
+        return ModelPlayer(client, memory=name[len("model-"):], history_turns=3, **aids(args))
     raise SystemExit(f"unknown player {name!r}")
 
 
+def aids(args) -> dict:
+    """Execution aids for model players: --aids fronts,plan."""
+    chosen = set(filter(None, (getattr(args, "aids", "") or "").split(",")))
+    if chosen - {"fronts", "plan"}:
+        raise SystemExit(f"unknown aids {sorted(chosen - {'fronts', 'plan'})}")
+    return {"fronts": "fronts" in chosen, "plan": "plan" in chosen}
+
+
 def cost(result) -> float | None:
-    model = result.config.get("player", {}).get("model", "")
-    for key, price in PRICES.items():
-        if model.startswith(key):
-            return round(result.input_tokens / 1e6 * price["input_per_m"]
-                         + result.output_tokens / 1e6 * price["output_per_m"], 5)
-    return None
+    price = price_for(result.config.get("player", {}).get("model", ""))
+    if price is None:
+        return None
+    return round(result.input_tokens / 1e6 * price["input_per_m"]
+                 + result.output_tokens / 1e6 * price["output_per_m"], 5)
 
 
 def table(rows: list[dict]) -> str:
@@ -110,25 +151,31 @@ def table(rows: list[dict]) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--players", nargs="+", default=["original-ai", "random", "passive"])
-    ap.add_argument("--split", choices=["eval", "dev"],
-                    help="dev seeds for prompt work, eval for the declared comparison; required for model players")
+    ap.add_argument("--split", choices=["eval", "dev", "train"],
+                    help="dev seeds for prompt work, eval for the declared comparison, train for the learning "
+                         "player's training seeds (reference runs); required for model players")
     ap.add_argument("--scenarios", nargs="+", default=list(SUITE))
+    ap.add_argument("--seeds", type=int, nargs="+",
+                    help="only these of the split's seeds (to finish a run an outage stopped); never adds a seed")
     ap.add_argument("--extra-baseline-seeds", action="store_true",
                     help="also run the free players on seeds 3-20")
     ap.add_argument("--live", action="store_true", help="confirm paid model calls")
     ap.add_argument("--timeout", type=float, default=30.0, help="per model call, seconds")
     ap.add_argument("--run", default=datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--lessons", help="the frozen notebook for model-lessons (lessons/<name>.json)")
+    ap.add_argument("--max-output-tokens", type=int, default=2048, help="per model call (thinking models need more)")
+    ap.add_argument("--aids", default="", help="execution aids for model players: fronts, plan (comma-separated)")
     args = ap.parse_args()
 
     models = [p for p in args.players if p.startswith("model-")]
     if models and args.split is None:
-        sys.exit("Model players need an explicit --split: dev (seeds 101-102, for prompt work) "
+        sys.exit("Model players need an explicit --split: dev (seeds 101-104, for prompt work) "
                  "or eval (the held-out comparison seeds; see SUITE.md).")
     if models and not args.live:
         sys.exit("Model players make paid calls: pass --live to confirm.")
     args.split = args.split or "eval"
-    if args.split == "dev" and "reckless" in args.scenarios:
+    if args.split in ("dev", "train") and "reckless" in args.scenarios:
         args.scenarios = [s for s in args.scenarios if s != "reckless"]
     traces = ROOT / "traces" / args.run
     results = ROOT / "results" / args.run
@@ -137,13 +184,13 @@ def main() -> None:
     rows = []
     for player_name in args.players:
         for scenario in args.scenarios:
-            seeds = list(SUITE[scenario][args.split])
+            seeds = [s for s in SUITE[scenario][args.split] if not args.seeds or s in args.seeds]
             if args.extra_baseline_seeds and not player_name.startswith("model-"):
                 seeds += BASELINE_EXTRA_SEEDS
             for seed in seeds:
                 extra = seed not in SUITE[scenario][args.split]
-                player = make_player(player_name, seed, args)
-                limits = Limits(engine_timeout=args.timeout + 30)
+                player = make_player(player_name, seed, args, scenario)
+                limits = Limits(engine_timeout=args.timeout + 30, decision_timeout=max(45.0, args.timeout + 15))
                 printer = None if args.quiet else (lambda e: print("   ", json.dumps(e)[:200], flush=True))
                 print(f"== {player_name} {scenario} seed {seed}", flush=True)
                 r = run_episode(player, scenario, seed, limits,
@@ -154,6 +201,9 @@ def main() -> None:
                            run_date=datetime.date.today().isoformat(),
                            model_version=getattr(getattr(player, "client", None), "model_version", None))
                 rows.append(row)
+                if r.model_calls and r.failed_calls * 2 >= r.model_calls:
+                    sys.exit(f"stopping: {r.failed_calls} of {r.model_calls} model calls failed in {player_name} "
+                             f"{scenario} seed {seed} (check the connection and quota); that episode is not recorded.")
                 print(f"   -> {r.reason} | turns {r.turns} | Union cities {r.cities_union} | "
                       f"invalid {r.invalid_actions} | calls {r.model_calls} | {r.wall_seconds}s", flush=True)
                 with (results / "results.jsonl").open("a") as f:

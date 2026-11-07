@@ -155,5 +155,20 @@ class Labels(unittest.TestCase):
         self.assertEqual(sources - {None}, {"scripted"})
 
 
+class LiveView(unittest.TestCase):
+    def test_observation_after_every_step_and_none_in_the_trace(self):
+        seen, steps = [], []
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "t.jsonl"
+            r = run_episode(OriginalAI(1), "alternate", 1, trace_path=path, on_observation=seen.append,
+                            on_step=lambda e: steps.append(e) if "action" in e else None)
+            lines = path.read_text().splitlines()
+        turns = sum(1 for l in lines if '"turn_start"' in l)
+        self.assertEqual(len(seen), len(steps) + turns + 1)             # every step, every turn start, the end
+        self.assertEqual(seen[-1]["turn"], r.turns + 1)
+        self.assertTrue(all("cities" in o and "your_armies" in o for o in seen))
+        self.assertFalse(any('"observation"' in l for l in lines))     # the live view is not traced
+
+
 if __name__ == "__main__":
     unittest.main()

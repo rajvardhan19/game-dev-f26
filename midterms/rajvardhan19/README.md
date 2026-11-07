@@ -8,9 +8,9 @@ Union against the game's own computer player. A Gemini model plays the same
 side through a five-operation interface, and is compared with the original
 game's own AI playing the Union.
 
-- **Recording:** TODO: link (3-5 minutes; an agent playing with no manual move selection)
+- **Recording (4:53):** [midterm-recording.mp4 on Google Drive](https://drive.google.com/file/d/1lBMvWObch5PYz8692f84vclE1mzdGbTb/view), viewable with a Columbia (LionMail) account. Gemini 3.7 Flash with its own notebook (`gemini-h`) plays practice war 103 in the browser UI's *Watch an AI* mode, with no manual move selection; it ends with the held-out results and the limits.
 - **Evaluation:** [EVALUATION.md](EVALUATION.md) · **Suite:** [SUITE.md](SUITE.md)
-- **Agent team log:** [AGENT-TEAM.md](AGENT-TEAM.md) · **Peer notes:** [PEER-NOTES.md](PEER-NOTES.md)
+- **Agent team log:** [AGENT-TEAM.md](AGENT-TEAM.md) · **Peer notes:** [PEER-NOTES.md](PEER-NOTES.md) · **Playtest guide:** [PLAYTEST.md](PLAYTEST.md) · **Agent session:** [docs/agent-session.md](docs/agent-session.md)
 - **Rules and evidence:** [docs/rule-source-map.md](docs/rule-source-map.md) · **Open questions:** [QUESTIONS.md](QUESTIONS.md)
 
 ## Scope statement
@@ -83,6 +83,14 @@ python -m cws.play --scenario alternate --seed 7
 The quickest way to see an ending is to type `end turn` repeatedly: the
 Confederacy wins in about 8 turns.
 
+**Play in the browser** (the same engine process, rules and screen, with a map; standard library only):
+
+```sh
+python play-ui/server.py                    # then open http://127.0.0.1:8765
+```
+
+Under *New campaign*, choose a random war (a seed no experiment uses) or practice war 101-104. *Watch an AI* hands a war to the 1998 AI (free) or, with `--live`, to a Gemini player, and shows every order it submits as it plays. It is built for a desktop browser; details in [play-ui/README.md](play-ui/README.md).
+
 **Watch an agent play** (no input from you):
 
 ```sh
@@ -94,6 +102,7 @@ python -m cws.play --watch random --seed 3
 
 ```sh
 python -m unittest discover -s tests -v
+python -m unittest discover -s play-ui -p 'test_*.py' -v   # the browser UI's bridge
 ```
 
 **Evaluate the baselines** (free, about 15 s):
@@ -119,8 +128,19 @@ uv run --extra live python -m cws.evaluate --players model-history --split dev -
 uv run --extra live python -m cws.evaluate --players model-history model-obs-only --split eval --live --run <date>-live
 ```
 
+**The learning player** (`model-lessons`) keeps a notebook of at most 12
+lessons. It rewrites the notebook itself after each training game, and the
+notebook is frozen before it is checked or evaluated:
+
+```sh
+uv run --extra live python -m cws.learn train --book lessons/gemini-a.json --run learn-<date> --live
+python -m cws.learn freeze --book lessons/gemini-a.json
+python -m cws.learn journal --book lessons/gemini-a.json --run learn-<date>   # results/<run>/journal.md
+uv run --extra live python -m cws.evaluate --players model-lessons --lessons lessons/gemini-a.json --split dev --live --run dev-<n>
+```
+
 `--live` is required for anything that makes paid calls. Model runs also
-need an explicit `--split`. `dev` (seeds 101-102) is for prompt work;
+need an explicit `--split`. `dev` (seeds 101-104) is for prompt work;
 `eval` is the declared comparison, whose seeds are held out from tuning.
 
 Each call has a 30-second timeout, one attempt and a 2,048-token output
@@ -186,6 +206,8 @@ is drawn from the city coordinates in `CITIES.GRD`.
 | `cws/runner.py`, `cws/evaluate.py` | Episode limits, fallbacks and traces; the declared suite |
 | `cws/players/` | `model_player.py` (Gemini), `baselines.py` (original AI, random, passive), `view.py` (masked board for the baseline) |
 | `cws/play.py` | Terminal play and watch |
+| `play-ui/` | Browser play: a local server over the same engine process and five operations, with its own tests |
+| `docs/agent-session.md` | The implementation agent's session with me, redacted; `python3 tools/export_session.py` regenerates it |
 | `tests/` | Deterministic checks (see [EVALUATION.md](EVALUATION.md#ci)) |
 | `tools/qb64-harness/` | The differential harness, its debugging aid and 48 recorded games |
 | `source/`, `data/original/` | The original source and data, unmodified, with the MIT licence |

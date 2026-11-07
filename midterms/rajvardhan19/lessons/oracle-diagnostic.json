@@ -1,0 +1,50 @@
+{
+ "format": 1,
+ "name": "oracle-diagnostic",
+ "model": "gemini-3.5-flash-lite",
+ "frozen": true,
+ "version": 1,
+ "lessons": [
+  "Every turn, use troops and then recruit in every offered city you can afford; keep less than $200 unspent.",
+  "Every turn, move an army into every adjacent city that is empty or neutral.",
+  "Every turn, attack adjacent enemy cities with your larger armies, even at modest odds: a lost battle costs little, a captured city counts.",
+  "Drill only an army that has nothing else useful to do this turn.",
+  "Keep one army in Washington; every other army advances.",
+  "Every turn, use rail to bring a rested army to the front.",
+  "Every turn, give the fleet an order: attack the enemy port it is in, sail to one, or raid.",
+  "On the alternate map you win at 60% of total income: take cities fast. On the standard map, take cities and survive to 1865."
+ ],
+ "strategy": "the original AI's tempo",
+ "versions": [
+  {
+   "version": 0,
+   "lessons": [],
+   "strategy": "",
+   "note": "empty notebook"
+  },
+  {
+   "version": 1,
+   "after_game": {
+    "game": 0,
+    "scenario": "-",
+    "reason": "written, not learned",
+    "turns": 0
+   },
+   "diagnosis": "",
+   "lessons": [
+    "Every turn, use troops and then recruit in every offered city you can afford; keep less than $200 unspent.",
+    "Every turn, move an army into every adjacent city that is empty or neutral.",
+    "Every turn, attack adjacent enemy cities with your larger armies, even at modest odds: a lost battle costs little, a captured city counts.",
+    "Drill only an army that has nothing else useful to do this turn.",
+    "Keep one army in Washington; every other army advances.",
+    "Every turn, use rail to bring a rested army to the front.",
+    "Every turn, give the fleet an order: attack the enemy port it is in, sail to one, or raid.",
+    "On the alternate map you win at 60% of total income: take cities fast. On the standard map, take cities and survive to 1865."
+   ],
+   "changes": [],
+   "strategy": "the original AI's tempo"
+  }
+ ],
+ "note": "DIAGNOSTIC ONLY, written by the implementation agent from the original AI's measured play (results/learn-20261026-b-reference). Never a player in the evaluation.",
+ "frozen_sha": "93bfd19f551cd1af"
+}

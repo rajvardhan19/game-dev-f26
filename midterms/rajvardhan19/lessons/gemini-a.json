@@ -1,0 +1,531 @@
+{
+ "format": 1,
+ "name": "gemini-a",
+ "model": "gemini-3.5-flash-lite",
+ "frozen": true,
+ "version": 16,
+ "lessons": [
+  "Never leave Washington or critical core cities under-defended against rapid enemy infantry or cavalry advances.",
+  "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+  "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+  "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+  "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+  "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+  "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+  "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+  "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+  "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+  "Fortify threatened key cities immediately with local forces when an active enemy army is in an adjacent region.",
+  "Aggressively contest enemy city captures in the early game to prevent the Confederacy from reaching the 28-city threshold."
+ ],
+ "strategy": "We will aggressively recruit and concentrate our starting forces while pushing outward from Washington and Springfield to contest enemy-held cities, preventing the Confederacy from achieving an early city-count victory.",
+ "versions": [
+  {
+   "version": 0,
+   "lessons": [],
+   "strategy": "",
+   "note": "empty notebook"
+  },
+  {
+   "version": 1,
+   "after_game": {
+    "game": 1,
+    "scenario": "standard",
+    "reason": "Rebel victory: share of total income",
+    "turns": 6
+   },
+   "diagnosis": "We spread our forces too thin, attacked enemy positions prematurely without sufficient strength or supply lines, and allowed Jackson to crush Fremont and capture Washington. We failed to consolidate our armies, leading to piecemeal defeats while the Rebels concentrated their strength.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+     "why": "We repeatedly threw small armies against prepared defenders like Jackson and Pemberton, resulting in heavy losses and retreats."
+    },
+    {
+     "kind": "added",
+     "lesson": "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+     "why": "Scattered forces allowed Confederate commanders like A.S. Johnston and Beauregard to defeat us in detail one by one."
+    },
+    {
+     "kind": "added",
+     "lesson": "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+     "why": "Fremont's small force was easily crushed by Jackson, leading directly to the loss of Washington and game over."
+    },
+    {
+     "kind": "added",
+     "lesson": "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+     "why": "Armies frequently went out of supplies, halving their combat strength and leaving them vulnerable to counterattacks."
+    },
+    {
+     "kind": "added",
+     "lesson": "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+     "why": "Drilling left units resting when they needed to retreat or reinforce active frontlines."
+    },
+    {
+     "kind": "added",
+     "lesson": "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+     "why": "The AI effectively used rail to redeploy Pemberton and Lee, whereas our responses were too slow."
+    },
+    {
+     "kind": "added",
+     "lesson": "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+     "why": "Our cash reserves dwindled by winter, preventing adequate supply purchases and leaving armies starving."
+    }
+   ],
+   "strategy": "In the next game, we will consolidate our scattered forces into two strong field armies, avoid reckless assaults on enemy territory, prioritize the defense of Washington and the East, maintain strict attention to supply lines, and steadily build up our economic and military capacity before advancing."
+  },
+  {
+   "version": 2,
+   "after_game": {
+    "game": 2,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "We concentrated armies in Baltimore and Springfield but failed to recruit or expand our territorial control. While we focused on drilling and minor engagements, the Rebels aggressively captured cities and outpaced us economically and territorially, leading to a defeat via city control.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new troops and capture neutral or enemy cities each turn to prevent the Confederacy from winning through territorial dominance."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Actively recruit new troops and capture neutral or enemy cities each turn to prevent the Confederacy from winning through territorial dominance.",
+     "why": "We lost the game entirely because the Rebels secured 28 cities while we neglected expansion and recruitment, holding only 8 cities."
+    }
+   ],
+   "strategy": "We will actively recruit troops to expand our forces, aggressively capture enemy and neutral cities to secure income and prevent a Rebel territorial victory, while maintaining solid defensive hubs around Washington and key positions."
+  },
+  {
+   "version": 3,
+   "after_game": {
+    "game": 3,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "We failed because we repeatedly drilled or scattered our forces while the Rebels rapidly mobilized, used trains to concentrate overwhelmingly large armies, and captured our border cities. Our armies ran out of supply and were easily crushed one by one.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new troops and capture neutral or enemy cities each turn to prevent the Confederacy from winning through territorial dominance.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+     "why": "We lost valuable turns and suffered supply issues while drilling instead of consolidating against the advancing Confederate armies."
+    }
+   ],
+   "strategy": "Next game, we will immediately halt all non-essential drilling, keep our main forces concentrated and supplied, push aggressively to secure key cities, and counter Rebel rail movements with our own focused concentrations."
+  },
+  {
+   "version": 4,
+   "after_game": {
+    "game": 4,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 3
+   },
+   "diagnosis": "The game was lost early due to failing to protect the capital of Washington and neglecting aggressive territorial expansion and recruitment. J.E.B. Stuart marched unopposed into Washington on Turn 3 while our armies were concentrated elsewhere or moving inefficiently, resulting in a sudden Rebel victory. We must balance front-line concentration with the strict defense of Washington and active city captures.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new troops and capture neutral or enemy cities each turn to prevent the Confederacy from winning through territorial dominance.",
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+     "why": "J.E.B. Stuart captured an undefended Washington on turn 3, ending the game instantly."
+    }
+   ],
+   "strategy": "In the next game, we will keep a garrison force permanently in or immediately adjacent to Washington to deter enemy captures, while simultaneously using our other armies to aggressively capture neutral territory and recruit troops to contest Confederate economic dominance."
+  },
+  {
+   "version": 5,
+   "after_game": {
+    "game": 5,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 10
+   },
+   "diagnosis": "We lost because our armies became cut off from supply lines, particularly in Washington and western sectors, leading to severe troop attrition and inability to fight effectively. We also neglected recruitment, allowing the Confederacy to outnumber and out-territory us.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new troops and capture neutral or enemy cities each turn to prevent the Confederacy from winning through territorial dominance.",
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+     "why": "McDowell's army starved in Washington because we missed the exact turn supply could be replenished."
+    },
+    {
+     "kind": "added",
+     "lesson": "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive.",
+     "why": "We failed to recruit new armies throughout the game, causing our total force to dwindle while the Rebels expanded."
+    }
+   ],
+   "strategy": "Next game we will maintain active recruitment to build our numbers, strictly monitor supply lines and buy supplies before winter/starvation hits, and consolidate our forces to defend key cities while steadily pushing back Confederate territorial gains."
+  },
+  {
+   "version": 6,
+   "after_game": {
+    "game": 6,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "We successfully recruited heavily to grow our army size, but the Confederacy continuously outmaneuvered us in territorial control and neutral city capture. We failed to actively expand our own city count, allowing them to secure 28 cities and trigger a territorial victory by December 1861.",
+   "lessons": [
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively capture neutral and enemy cities every single turn with available mobile forces to block Confederate territorial victory conditions.",
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Actively capture neutral and enemy cities every single turn with available mobile forces to block Confederate territorial victory conditions.",
+     "why": "Previous lessons focused vaguely on recruiting and capturing, but we lost strictly due to passive city control; we must actively march and capture cities."
+    }
+   ],
+   "strategy": "We will aggressively recruit in the spring, concentrate our large armies, and actively march to capture neutral and enemy cities every turn to deny the Confederacy the 28-city threshold while maintaining a solid defense around Washington."
+  },
+  {
+   "version": 7,
+   "after_game": {
+    "game": 7,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 3
+   },
+   "diagnosis": "The Confederate army under Jackson swept completely past our poorly defended eastern positions and captured Washington in July 1861, ending the game in a rapid defeat. We failed to leave an adequate garrison or army in the capital while launching peripheral offensives.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively capture neutral and enemy cities every single turn with available mobile forces to block Confederate territorial victory conditions.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "dropped",
+     "lesson": "Prioritize the defense of Washington and key regional hubs to prevent the loss of the capital and immediate defeat.",
+     "why": "It was redundant with the stricter, absolute rule against leaving Washington under-defended."
+    }
+   ],
+   "strategy": "We will secure Washington immediately with a strong standing force to prevent early decapitation strikes, while consolidating our remaining armies for a disciplined, secure advance that maintains unbroken supply and unassailable rear areas."
+  },
+  {
+   "version": 8,
+   "after_game": {
+    "game": 8,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 4
+   },
+   "diagnosis": "We successfully built up troop numbers through active recruitment and captured a few key cities, but our offensives failed because we repeatedly attacked defended positions without sufficient numerical superiority or leaders, leading to costly bounces at StLouis. Meanwhile, the Rebels swept through the west and captured enough cities to trigger a territorial victory.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively capture neutral and enemy cities every single turn with available mobile forces to block Confederate territorial victory conditions.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [],
+   "strategy": "Next game, we will prioritize massing our recruited forces into overwhelming single-front armies rather than piecemeal attacks on fortified cities like StLouis. We will aggressively contest neutral cities early to deny the Rebels their territorial victory threshold while maintaining a stout defense around our core."
+  },
+  {
+   "version": 9,
+   "after_game": {
+    "game": 9,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 7
+   },
+   "diagnosis": "We repeatedly threw uncoordinated, unsupplied attacks into fortified or superior enemy forces (like A.S. Johnston in Cincinnati), leading to heavy losses and shattered armies. Meanwhile, the Rebels methodically out-expanded us, capturing our core cities and winning via territorial dominance.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively capture neutral and enemy cities every single turn with available mobile forces to block Confederate territorial victory conditions.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+     "why": "This game's repeated failed attacks against A.S. Johnston at Cincinnati proved that attacking without superior numbers and high readiness results in catastrophic defeats."
+    }
+   ],
+   "strategy": "We will focus heavily on army concentration and maintaining secure supply lines, avoiding reckless attacks on enemy strongpoints. We will methodically secure border cities while keeping a strong defensive posture around Washington and our economic core."
+  },
+  {
+   "version": 10,
+   "after_game": {
+    "game": 10,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 3
+   },
+   "diagnosis": "We scattered our small starting forces into isolated attacks against stronger enemy concentrations in the west, leading to piecemeal defeats by A.S. Johnston and Beauregard. Meanwhile, we neglected recruiting new troops to expand our tiny armies, allowing the Confederates to easily overwhelm us in city count and force a rapid defeat.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new armies from available cities every turn to build up our forces so we can match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Actively recruit new armies from available cities every turn to build up our forces so we can match Confederate strength.",
+     "why": "We failed to recruit in previous games and lost due to sheer lack of numbers against larger Confederate forces."
+    }
+   ],
+   "strategy": "Next game, we will immediately focus on merging our starting forces into large, cohesive armies rather than sending small detachments on unsupported attacks. We will use our treasury to recruit heavily from available cities to build up numerical parity, maintain solid supply lines, and defend our core territory while steadily pushing back enemy forces."
+  },
+  {
+   "version": 11,
+   "after_game": {
+    "game": 11,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 9
+   },
+   "diagnosis": "We lost control of key border cities and allowed Confederate armies under Lee and Jackson to capture crucial northern territory while our forces became bottlenecked and starved of supplies. We failed to sufficiently concentrate our forces and protect our supply lines, leading to stagnation and eventual defeat.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new armies from available cities every turn to build up our forces so we can match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [],
+   "strategy": "Next game, we will immediately focus on consolidating our starting forces into robust offensive groups, securing our economic and supply lines early, and aggressively countering Rebel incursions while keeping our armies well-supplied and reinforced."
+  },
+  {
+   "version": 12,
+   "after_game": {
+    "game": 12,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 4
+   },
+   "diagnosis": "We concentrated forces in the East around Washington and secured initial successes in the West, but we failed to recruit new armies aggressively. This left our forces too small to hold extended fronts against Confederate counterattacks, leading to a loss of key cities and eventual defeat.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit new armies from available cities every turn to build up our forces so we can match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [],
+   "strategy": "Next game, we will heavily increase our recruitment rate from turn one, channeling funds into raising new armies across all available cities to ensure numerical parity with the Confederacy, while keeping our main forces concentrated and supplied."
+  },
+  {
+   "version": 13,
+   "after_game": {
+    "game": 13,
+    "scenario": "standard",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 10
+   },
+   "diagnosis": "We once again failed to recruit new armies or reinforce existing ones, leading to a steady attrition of our forces while the Confederacy grew massively in strength. Furthermore, we let armies like McDowell's run out of supplies repeatedly during winter, and our attempts to capture territory without sufficient force concentrations ended in defeat and loss of cities.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [
+    {
+     "kind": "revised",
+     "lesson": "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+     "why": "We failed to recruit any new troops throughout the game while Confederate strength doubled, leading to defeat."
+    }
+   ],
+   "strategy": "Next game we must aggressively use the recruit and reinforce commands to build our army sizes and match Confederate manpower, while strictly monitoring army supply and avoiding uncoordinated attacks."
+  },
+  {
+   "version": 14,
+   "after_game": {
+    "game": 14,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 5
+   },
+   "diagnosis": "We successfully increased recruitment compared to past games, but we failed to mount coordinated offensive campaigns or defend key positions effectively. The Confederates steadily captured cities while our forces remained scattered and reactive, eventually achieving a city-control victory.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy cavalry or infantry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Recruit actively from available cities each spring and autumn to replace casualties and keep army sizes competitive."
+   ],
+   "changes": [],
+   "strategy": "Next game we will maintain aggressive recruitment and force concentration while actively pushing outward to capture and hold strategic cities, preventing the enemy from out-expanding our territorial control."
+  },
+  {
+   "version": 15,
+   "after_game": {
+    "game": 15,
+    "scenario": "standard",
+    "reason": "Rebel victory: capital captured",
+    "turns": 5
+   },
+   "diagnosis": "We lost this game because we failed to secure our capital and allowed Jackson to repeatedly attack and capture Harper's Ferry and eventually Washington. While we tried to counter-attack in the West, our forces lacked sufficient concentration and leadership ratings to defeat enemy armies holding key cities, and we neglected defensive fortifications at Washington.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy infantry or cavalry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Fortify threatened key cities immediately with local forces when an active enemy army is in an adjacent region."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Fortify threatened key cities immediately with local forces when an active enemy army is in an adjacent region.",
+     "why": "Washington was left vulnerable to Jackson's repeated advances, leading directly to the loss of the capital and the game."
+    }
+   ],
+   "strategy": "Next game, we will prioritize the immediate defense and fortification of Washington while grouping our eastern forces under strong leadership to deter Stonewall Jackson. Simultaneously, we will methodically build up western armies through steady recruitment and maintain strict supply lines before attempting any offensive thrusts into Confederate territory."
+  },
+  {
+   "version": 16,
+   "after_game": {
+    "game": 16,
+    "scenario": "alternate",
+    "reason": "Rebel victory: cities controlled",
+    "turns": 4
+   },
+   "diagnosis": "The Confederacy quickly seized key Western and Border cities and rapidly expanded its city count to 28, triggering a technical victory in late 1861. Although Union recruitment improved, our forces remained fragmented and reactive, failing to contest the rebel land grab and capital expansion.",
+   "lessons": [
+    "Never leave Washington or critical core cities under-defended against rapid enemy infantry or cavalry advances.",
+    "Never attack fortified enemy positions or superior forces without a substantial numerical advantage and reliable supply lines.",
+    "Concentrate your starting armies into larger, powerful forces rather than scattering them across isolated cities.",
+    "Maintain a clear chain of supply by ensuring friendly neighbouring cities connect to all active armies every turn.",
+    "Drill armies only when they are safely out of immediate enemy reach and well-supplied.",
+    "Use rail transport strategically to shift reinforcements to threatened sectors before enemy breakthroughs occur.",
+    "Keep treasury reserves high enough to sustain recruitment and supply purchases through winter supply drops.",
+    "Actively recruit and reinforce armies from available cities every turn to build up our forces and match Confederate strength.",
+    "Never waste turns drilling when enemy armies are active nearby; focus entirely on concentration, supply, and movement.",
+    "Check army supply states every turn and use the supply command immediately before armies run out of food and starve.",
+    "Fortify threatened key cities immediately with local forces when an active enemy army is in an adjacent region.",
+    "Aggressively contest enemy city captures in the early game to prevent the Confederacy from reaching the 28-city threshold."
+   ],
+   "changes": [
+    {
+     "kind": "added",
+     "lesson": "Aggressively contest enemy city captures in the early game to prevent the Confederacy from reaching the 28-city threshold.",
+     "why": "Game 16 ended quickly due to the rapid rebel acquisition of 28 cities; we must project force outward rather than purely turtling."
+    }
+   ],
+   "strategy": "We will aggressively recruit and concentrate our starting forces while pushing outward from Washington and Springfield to contest enemy-held cities, preventing the Confederacy from achieving an early city-count victory."
+  }
+ ],
+ "frozen_sha": "e7862f80e966d088"
+}

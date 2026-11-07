@@ -1,6 +1,6 @@
 name: midterm-rajvardhan19
 
-# Deterministic checks for midterms/rajvardhan19 only. No secrets, no model
+# Deterministic checks for midterms/rajvardhan19 only. No credentials, no model
 # traffic, no installs beyond Python itself (the checks use the standard library).
 on:
   pull_request:

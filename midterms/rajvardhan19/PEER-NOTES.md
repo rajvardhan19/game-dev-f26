@@ -5,9 +5,15 @@ My partner played this build from [PLAYTEST.md](PLAYTEST.md), a 15-minute guide 
 
 ## Notes I gave (playtest of a classmate's build, week of November 2)
 
-I playtested a classmate's build for 15 minutes and sent my notes to them directly by text.
-The notes are private feedback, so they are not in this public repository; a copy is with my
-CourseWorks submission.
+It was pretty simple to set up and start, and nothing needed installing. The game’s text and responses felt like the original. When I tried a word it didn’t recognise, such as all, it gave a clear unknown-word response instead of an error.
+
+I wasn’t always sure where the points came from. I found the house, took the lamp, moved the rug and went down the trap door with 35 out of 45 points, without finding the egg in the forest. The game said the episode would end in the cellar, but I didn’t realise that entering it early would leave points behind. Is there any indication before going down that there are still points available elsewhere?
+
+I didn’t find any bugs or unexpected dead ends. The dark attic was unforgiving, but that seemed intentional: my second move, north, got me eaten by a grue, while turn on lamp followed by down was safe. That made me pay closer attention to the text.
+
+I made the same mistake as the model player by heading straight for the cellar once the trap door appeared. In that run, knowing when to stop exploring seemed to be the main challenge.
+
+The change I would make is a short message whenever the score changes, such as “+10 points.” That would make it easier to learn which actions earn points without constantly checking the status line.
 
 ## Notes I received
 
